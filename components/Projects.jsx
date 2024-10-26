@@ -1,7 +1,7 @@
 const Projects = () => {
     return (
       <section id="projects">
-        <div className="container">
+        <div className="container projects-container">
           <h2>Projects</h2>
           <div className="project">
             <h3>Fantasy Premier League Predictor</h3>
