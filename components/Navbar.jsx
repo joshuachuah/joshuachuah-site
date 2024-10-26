@@ -27,7 +27,9 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-content">
         <div className="nav-logo" onClick={() => scrollToSection('top')}>
-          JC
+          <div className="logo-circle">
+            <span className="logo-text">JC</span>
+          </div>
         </div>
         
         <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -35,7 +37,7 @@ const Navbar = () => {
         </div>
 
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <li onClick={() => scrollToSection('top')}>Home</li>
+          <li onClick={() => scrollToSection('intro')}>Home</li>
           <li onClick={() => scrollToSection('about')}>About</li>
           <li onClick={() => scrollToSection('skills')}>Skills</li>
           <li onClick={() => scrollToSection('projects')}>Projects</li>
