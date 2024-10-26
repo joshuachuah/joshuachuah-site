@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 
 const Intro = () => {
     const greetings = [
-        { text: "Hi", language: "English", animation: "bounceIn" },
-        { text: "你好", language: "Chinese", animation: "flipIn" },
-        { text: "Hola", language: "Spanish", animation: "slideAndFade" },
-        { text: "Bonjour", language: "French", animation: "popUp" },
-        { text: "こんにちは", language: "Japanese", animation: "rotateIn" },
-        { text: "안녕하세요", language: "Korean", animation: "wave" },
-        { text: "Ciao", language: "Italian", animation: "rubberBand" },
-        { text: "Hallo", language: "German", animation: "swing" },
+        { text: "Hi 👋", language: "English", animation: "bounceIn" },
+        { text: "你好 👋", language: "Chinese", animation: "flipIn" },
+        { text: "Hola 👋", language: "Spanish", animation: "slideAndFade" },
+        { text: "Bonjour 👋", language: "French", animation: "popUp" },
+        { text: "こんにちは 👋", language: "Japanese", animation: "rotateIn" },
+        { text: "안녕하세요 👋", language: "Korean", animation: "wave" },
+        { text: "Ciao 👋", language: "Italian", animation: "rubberBand" },
+        { text: "Hallo 👋", language: "German", animation: "swing" },
     ];
     
     const [currentGreetingIndex, setCurrentGreetingIndex] = useState(0);
@@ -37,7 +37,7 @@ const Intro = () => {
                     </span>
                   </h3>
                   <h3>
-                    <span className="static-text">I'm Joshua! 👋</span>
+                    <span className="name-text">I'm Joshua!</span>
                   </h3>
                 </div>
                 <p>

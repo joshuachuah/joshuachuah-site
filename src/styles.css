@@ -1,19 +1,13 @@
 /* ==========================================================================
    1. Root & Reset Styles
    ========================================================================== */
-:root {
+   :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-  
-#root {
-    width: 100%;
-    margin: 0 auto;
-}
-
 
 * {
     margin: 0;
@@ -26,19 +20,112 @@ body {
     color: #333;
     line-height: 1.6;
 }
-  
+
+#root {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. Layout & Container Styles
+   ========================================================================== */
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
-  
-/* Header Section */
+
+section {
+    padding: 50px 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ==========================================================================
+   3. Navigation Styles
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: transparent;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links li {
+    cursor: pointer;
+    padding: 5px 0;
+    position: relative;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-links li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links li:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* ==========================================================================
+   4. Header Styles
+   ========================================================================== */
 header {
     background-color: #A2D2DF;
     color: #fff;
     text-align: center;
-    padding: 100px 0;
+    padding: 170px 0 100px 0;
 }
 
 header h1 {
@@ -49,7 +136,10 @@ header p {
     font-size: 1.2em;
     margin: 10px 0;
 }
-  
+
+/* ==========================================================================
+   5. Button Styles
+   ========================================================================== */
 .btn {
     display: inline-block;
     margin-top: 20px;
@@ -58,112 +148,17 @@ header p {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #5d7d99; /* Darker shade of the original pink */
+    background-color: #5d7d99;
     cursor: pointer;
 }
-  
-/* Section Styles */
-section {
-    padding: 50px 0;
-}
-  
-section h2 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-}
-  
-/* Skills Section */
-.skills-list {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-  
-.skills-list li {
-    list-style: none;
-    padding: 10px 20px;
-    background: #e0e0e0;
-    border-radius: 5px;
-}
-  
-/* Projects Section */
-.project {
-    margin: 20px 0;
-}
-  
-.project h3 {
-    color: #0066cc;
-}
-  
-/* Contact Section */
-#contact .container {
-    text-align: center;
-}
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #1f1f2e;
-    color: #fff;
-    font-size: 0.9em;
-}
-
-.scroll-animation {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-out;
-}
-  
-.scroll-animation.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-  
-li i {
-    margin-right: 10px;
-    /* Optional: add specific colors for each icon */
-}
-
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-    }
-    
-    .skill-item {
-    animation: float 3s ease-in-out infinite;
-    }
-    
-    /* Stagger the floating animations */
-    .skill-item:nth-child(1) { animation-delay: 0s; }
-    .skill-item:nth-child(2) { animation-delay: 0.5s; }
-    .skill-item:nth-child(3) { animation-delay: 1s; }
-    .skill-item:nth-child(4) { animation-delay: 1.5s; }
-    .skill-item:nth-child(5) { animation-delay: 2s; }
-    .skill-item:nth-child(6) { animation-delay: 2.5s; }
-    .skill-item:nth-child(7) { animation-delay: 3s; }
-    
-    /* Add hover effect */
-    .skill-item:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-    }
-
-    /* Update existing skills styles */
+/* ==========================================================================
+   6. Skills Section Styles
+   ========================================================================== */
 .skills-list {
     display: flex;
     justify-content: center;
@@ -180,130 +175,32 @@ li i {
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: float 3s ease-in-out infinite;
-    }
+}
 
-.skill-item:hover{
+.skill-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Navbar Styles */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    background: transparent;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-  
-.navbar.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-}
-  
-.nav-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-  
-.nav-logo {
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    color: var(--primary-color);
-}
-  
-.nav-links {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-}
-  
-.nav-links li {
-    cursor: pointer;
-    padding: 5px 0;
-    position: relative;
-    color: #333;
-    font-weight: 500;
-}
-  
-.nav-links li::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-color);
-    transition: width 0.3s ease;
-}
+/* Stagger the floating animations */
+.skill-item:nth-child(1) { animation-delay: 0s; }
+.skill-item:nth-child(2) { animation-delay: 0.5s; }
+.skill-item:nth-child(3) { animation-delay: 1s; }
+.skill-item:nth-child(4) { animation-delay: 1.5s; }
+.skill-item:nth-child(5) { animation-delay: 2s; }
+.skill-item:nth-child(6) { animation-delay: 2.5s; }
+.skill-item:nth-child(7) { animation-delay: 3s; }
 
-.nav-links li:hover::after {
-    width: 100%;
-}
-  
-.nav-toggle {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-}
-  
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: block;
-}
-  
-.nav-links {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    gap: 20px;
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
-}
-
-.nav-links.active {
-    transform: translateY(0);
-}
-}
-
-/* Adjust header padding to account for fixed navbar */
-header {
-    padding-top: 170px !important;
-}
-
-/* intro Section Styles */
+/* ==========================================================================
+   7. Introduction Section Styles
+   ========================================================================== */
 .intro-section {
     min-height: 100vh;
-    padding: 100px 0;  /* Increased padding to account for navbar */
+    padding: 100px 0;
     background-color: #f8f9fa;
     display: flex;
     align-items: center;
-  }
-  
-  .intro-section .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  
+}
 
 .intro-profile {
     display: flex;
@@ -313,149 +210,105 @@ header {
     justify-content: center;
     padding: 20px;
 }
-  
-/* .profile-image {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-bottom: 30px;
-    border: 4px solid var(--primary-color);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-  
-.profile-image img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* This ensures the image covers the area without distortion */
-    /* object-position: center top; /* Adjusts the focal point of the image */
-/* } */
-  
-  .profile-text h3 {
+
+.profile-text h3 {
     color: var(--primary-color);
     margin-bottom: 15px;
     font-size: 1.8em;
-  }
-  
-  .profile-text p {
+    width: 100%;
+    text-align: center;
+}
+
+.profile-text p {
     font-size: 1.1em;
     line-height: 1.6;
     color: #666;
     max-width: 600px;
     margin: 0 auto;
-  }
+}
 
-/* Journey Styles */
+/* ==========================================================================
+   8. Journey Section Styles
+   ========================================================================== */
 .journey-section {
-  min-height: 100vh;
-  padding: 100px 0;
-  background-color: #fff;
+    min-height: 100vh;
+    padding: 100px 0;
+    background-color: #fff;
 }
 
 .journey-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
 }
-  
-  .journey-item {
+
+.journey-item {
     padding: 20px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-  }
-  
-  .journey-item:hover {
+}
+
+.journey-item:hover {
     transform: translateY(-5px);
-  }
-  
-  .journey-icon {
+}
+
+.journey-icon {
     font-size: 2em;
     color: var(--primary-color);
     margin-bottom: 15px;
-  }
-  
-  .journey-item h4 {
+}
+
+.journey-item h4 {
     color: #333;
     margin-bottom: 10px;
-  }
-  
-  .journey-item .subtitle {
+}
+
+.journey-item .subtitle {
     color: #666;
     font-size: 0.9em;
-  }
-  
-  /* Interests Section */
-  .intro-interests {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .intro-interests h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .intro-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .intro-journey {
-      grid-template-columns: 1fr;
-    }
-  
-    .profile-image {
-        width: 200px;
-        height: 200px;
-    }
-  }
+}
 
-  @media (max-width: 480px) {
-    .profile-image {
-      width: 180px;
-      height: 180px;
-    }
-  }
-
-  .greeting-container {
+/* ==========================================================================
+   9. Greeting Styles
+   ========================================================================== */
+.greeting-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
-  }
-  
-  .greeting {
+}
+
+.greeting {
     display: inline-block;
-    min-width: 100px; /* Adjust based on your longest greeting */
+    min-width: 100px;
     text-align: center;
     font-size: 1.5em;
-  }
-  
-  .name-text{
-    font-size: 2em;
-  }
+}
 
-  .profile-text h3 {
-    width: 100%;
-    text-align: center;
-  }
-  
-  /* Base animation styles */
-  .bounceIn {
+.name-text {
+    font-size: 2em;
+}
+
+/* ==========================================================================
+   10. Animation Keyframes
+   ========================================================================== */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.bounceIn {
     animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   
@@ -489,75 +342,61 @@ header {
   }
   
   /* Animation keyframes */
-  @keyframes bounceIn {
+
+@keyframes flipIn {
     0% {
-      transform: scale(0.3);
-      opacity: 0;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
+        transform: rotateX(90deg);
+        opacity: 0;
     }
     100% {
-      transform: scale(1);
-      opacity: 1;
+        transform: rotateX(0deg);
+        opacity: 1;
     }
-  }
-  
-  @keyframes flipIn {
+}
+
+@keyframes slideAndFade {
     0% {
-      transform: rotateX(90deg);
-      opacity: 0;
+        transform: translateX(-20px);
+        opacity: 0;
     }
     100% {
-      transform: rotateX(0deg);
-      opacity: 1;
+        transform: translateX(0);
+        opacity: 1;
     }
-  }
-  
-  @keyframes slideAndFade {
+}
+
+@keyframes popUp {
     0% {
-      transform: translateX(-20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes popUp {
-    0% {
-      transform: scale(0);
-      opacity: 0;
+        transform: scale(0);
+        opacity: 0;
     }
     80% {
-      transform: scale(1.1);
+        transform: scale(1.1);
     }
     100% {
-      transform: scale(1);
-      opacity: 1;
+        transform: scale(1);
+        opacity: 1;
     }
-  }
-  
-  @keyframes rotateIn {
+}
+
+@keyframes rotateIn {
     0% {
-      transform: rotate(-180deg) scale(0);
-      opacity: 0;
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
     }
     100% {
-      transform: rotate(0) scale(1);
-      opacity: 1;
+        transform: rotate(0) scale(1);
+        opacity: 1;
     }
-  }
-  
-  @keyframes wave {
+}
+
+@keyframes wave {
     0%, 100% { transform: translateY(0); }
     25% { transform: translateY(-10px) rotate(5deg); }
     75% { transform: translateY(10px) rotate(-5deg); }
-  }
-  
-  @keyframes rubberBand {
+}
+
+@keyframes rubberBand {
     0% { transform: scale3d(1, 1, 1); }
     30% { transform: scale3d(1.25, 0.75, 1); }
     40% { transform: scale3d(0.75, 1.25, 1); }
@@ -565,12 +404,52 @@ header {
     65% { transform: scale3d(0.95, 1.05, 1); }
     75% { transform: scale3d(1.05, 0.95, 1); }
     100% { transform: scale3d(1, 1, 1); }
-  }
-  
-  @keyframes swing {
+}
+
+@keyframes swing {
     20% { transform: rotate3d(0, 0, 1, 15deg); }
     40% { transform: rotate3d(0, 0, 1, -10deg); }
     60% { transform: rotate3d(0, 0, 1, 5deg); }
     80% { transform: rotate3d(0, 0, 1, -5deg); }
     100% { transform: rotate3d(0, 0, 1, 0deg); }
-  }
+}
+
+/* ==========================================================================
+   11. Media Queries
+   ========================================================================== */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-journey {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Add mobile-specific styles here */
+}
