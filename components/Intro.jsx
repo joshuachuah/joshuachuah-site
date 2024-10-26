@@ -37,12 +37,14 @@ const Intro = () => {
                     </span>
                   </h3>
                   <h3>
-                    <span className="name-text">I'm Joshua!</span>
+                    <span className="name-text">I'm <span className="highlight-name">Joshua</span></span>
                   </h3>
                 </div>
                 <p>
-                  I'm a passionate Full-Stack Developer and Data Analyst based in Kalamazoo, MI. 
-                  I love turning complex problems into simple, beautiful, and intuitive solutions.
+                  I'm a passionate Full-Stack Developer based in Kalamazoo, MI. 
+                </p>
+                <p>
+                I love turning complex problems into simple, beautiful, and intuitive solutions.
                 </p>
               </div>
             </div>
