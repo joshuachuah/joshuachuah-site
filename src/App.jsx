@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Intro from '../components/Intro'
 import Journey from '../components/Journey';
 import useScrollAnimation from '../hooks/useScrollAnimation';
+import Footer from '../components/Footer'
 import './styles.css'; // Your existing CSS file
 
 function App() {
@@ -16,10 +17,7 @@ function App() {
       <Journey />
       <Skills />
       <Projects />
-
-      <footer>
-        <p>  Joshua Chuah &copy; {new Date().getFullYear()} </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
