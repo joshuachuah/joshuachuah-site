@@ -1,6 +1,6 @@
-/* Reset & Basic Styles */
-
-
+/* ==========================================================================
+   1. Root & Reset Styles
+   ========================================================================== */
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-synthesis: none;
@@ -20,7 +20,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-  
+
 body {
     font-family: Arial, sans-serif;
     color: #333;
@@ -186,3 +186,391 @@ li i {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: transparent;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+  
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+  
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+  
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+  
+.nav-links li {
+    cursor: pointer;
+    padding: 5px 0;
+    position: relative;
+    color: #333;
+    font-weight: 500;
+}
+  
+.nav-links li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links li:hover::after {
+    width: 100%;
+}
+  
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+  
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+}
+  
+.nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+}
+
+.nav-links.active {
+    transform: translateY(0);
+}
+}
+
+/* Adjust header padding to account for fixed navbar */
+header {
+    padding-top: 170px !important;
+}
+
+/* intro Section Styles */
+.intro-section {
+    min-height: 100vh;
+    padding: 100px 0;  /* Increased padding to account for navbar */
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+  }
+  
+  .intro-section .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  
+
+.intro-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+}
+  
+/* .profile-image {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+  
+.profile-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This ensures the image covers the area without distortion */
+    /* object-position: center top; /* Adjusts the focal point of the image */
+/* } */
+  
+  .profile-text h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.8em;
+  }
+  
+  .profile-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+/* Journey Styles */
+.journey-section {
+  min-height: 100vh;
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+  
+  .journey-item {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .journey-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .journey-icon {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
+  
+  .journey-item h4 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .journey-item .subtitle {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  /* Interests Section */
+  .intro-interests {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .intro-interests h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .intro-journey {
+      grid-template-columns: 1fr;
+    }
+  
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .profile-image {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  .greeting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .greeting {
+    display: inline-block;
+    min-width: 100px; /* Adjust based on your longest greeting */
+    text-align: center;
+    font-size: 1.5em;
+  }
+  
+  .name-text{
+    font-size: 2em;
+  }
+
+  .profile-text h3 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Base animation styles */
+  .bounceIn {
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .flipIn {
+    animation: flipIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .slideAndFade {
+    animation: slideAndFade 0.5s ease-out;
+  }
+  
+  .popUp {
+    animation: popUp 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  
+  .rotateIn {
+    animation: rotateIn 0.6s ease-out;
+  }
+  
+  .wave {
+    animation: wave 0.8s ease-in-out;
+  }
+  
+  .rubberBand {
+    animation: rubberBand 0.8s cubic-bezier(.25, .46, .45, .94);
+  }
+  
+  .swing {
+    animation: swing 1s ease-in-out;
+    transform-origin: top center;
+  }
+  
+  /* Animation keyframes */
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.3);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes flipIn {
+    0% {
+      transform: rotateX(90deg);
+      opacity: 0;
+    }
+    100% {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideAndFade {
+    0% {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes popUp {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    80% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rotateIn {
+    0% {
+      transform: rotate(-180deg) scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(0) scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-10px) rotate(5deg); }
+    75% { transform: translateY(10px) rotate(-5deg); }
+  }
+  
+  @keyframes rubberBand {
+    0% { transform: scale3d(1, 1, 1); }
+    30% { transform: scale3d(1.25, 0.75, 1); }
+    40% { transform: scale3d(0.75, 1.25, 1); }
+    50% { transform: scale3d(1.15, 0.85, 1); }
+    65% { transform: scale3d(0.95, 1.05, 1); }
+    75% { transform: scale3d(1.05, 0.95, 1); }
+    100% { transform: scale3d(1, 1, 1); }
+  }
+  
+  @keyframes swing {
+    20% { transform: rotate3d(0, 0, 1, 15deg); }
+    40% { transform: rotate3d(0, 0, 1, -10deg); }
+    60% { transform: rotate3d(0, 0, 1, 5deg); }
+    80% { transform: rotate3d(0, 0, 1, -5deg); }
+    100% { transform: rotate3d(0, 0, 1, 0deg); }
+  }
