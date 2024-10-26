@@ -67,13 +67,14 @@ section h2 {
 }
 
 .nav-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .nav-logo {
@@ -81,12 +82,16 @@ section h2 {
     font-weight: bold;
     cursor: pointer;
     color: var(--primary-color);
+    display: flex;
+    align-items: center;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
-    list-style: none;
+    gap: 2.5rem;  /* Increased spacing between links */
+    margin-left: auto;  /* This pushes the links to the right */
+    padding-left: 200px;  /* Increased right padding */
+    margin-left: 150px;  /* Added right margin */
 }
 
 .nav-links li {
@@ -95,6 +100,8 @@ section h2 {
     position: relative;
     color: #333;
     font-weight: 500;
+    list-style: none;
+    transition: all 0.3s ease;
 }
 
 .nav-links li::after {
@@ -116,6 +123,40 @@ section h2 {
     display: none;
     cursor: pointer;
     font-size: 24px;
+}
+
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.logo-text {
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Add hover effect */
+.logo-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Adjust logo for scrolled navbar if needed */
+.navbar.scrolled .logo-circle {
+    border-color: #000;
+}
+
+.navbar.scrolled .logo-text {
+    color: #000;
 }
 
 /* ==========================================================================
@@ -159,23 +200,65 @@ header p {
 /* ==========================================================================
    6. Skills Section Styles
    ========================================================================== */
+.skills-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;  /* Account for navbar height */
+    background-color: #f8f9fa;
+}
+
+.skills-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .skills-list {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .skill-item {
     list-style: none;
-    padding: 12px 20px;
+    padding: 15px 25px;
     border-radius: 8px;
     font-weight: 500;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: float 3s ease-in-out infinite;
+    font-size: 1.1em;
+    min-width: 120px;
+    text-align: center;
+
 }
+
+.skills-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    min-width: 120px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Optional: Add categories with different background tints */
+/* .skill-item[data-category="frontend"] { background-color: rgba(97, 218, 251, 0.05); }
+.skill-item[data-category="backend"] { background-color: rgba(51, 103, 145, 0.05); }
+.skill-item[data-category="tools"] { background-color: rgba(252, 198, 36, 0.05); } */
 
 .skill-item:hover {
     transform: translateY(-5px);
@@ -230,45 +313,162 @@ header p {
 /* ==========================================================================
    8. Journey Section Styles
    ========================================================================== */
-.journey-section {
+   .journey-section {
     min-height: 100vh;
-    padding: 100px 0;
-    background-color: #fff;
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-.journey-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+.journey-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    color: #2d3436;
 }
 
-.journey-item {
-    padding: 20px;
+.title-icon {
+    margin-right: 1rem;
+    color: #6c5ce7;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #6c5ce7 15%,
+        #6c5ce7 85%,
+        transparent
+    );
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    width: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 3rem;
+    transform: translateX(-100px);
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 3rem;
+    transform: translateX(100px);
+}
+
+.timeline-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:nth-child(odd) .timeline-icon {
+    right: -25px;
+}
+
+.timeline-item:nth-child(even) .timeline-icon {
+    left: -25px;
+}
+
+.timeline-content {
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
 }
 
-.journey-item:hover {
-    transform: translateY(-5px);
+.timeline-content h3 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
 }
 
-.journey-icon {
-    font-size: 2em;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.journey-item h4 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.journey-item .subtitle {
+.timeline-content h4 {
     color: #666;
-    font-size: 0.9em;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    color: #2d3436;
+    line-height: 1.6;
+}
+
+/* Animation classes */
+.timeline-item.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item:hover .timeline-icon {
+    transform: scale(1.1) rotate(360deg);
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 80px !important;
+    }
+    
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-icon {
+        left: 5px !important;
+    }
+}
+
+/* Add some floating animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.timeline-icon {
+    animation: float 3s ease-in-out infinite;
 }
 
 /* ==========================================================================
@@ -293,8 +493,25 @@ header p {
     font-size: 2em;
 }
 
+.highlight-name {
+    color: #64ffda; /* Modern teal color - you can change this */
+    font-weight: 700;
+    background: linear-gradient(120deg, #FF69B4 0%, #9370DB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 /* ==========================================================================
-   10. Animation Keyframes
+   10. Projects Section
+   ========================================================================== */
+.projects-container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* ==========================================================================
+   11. Animation Keyframes
    ========================================================================== */
 @keyframes float {
     0% { transform: translateY(0px); }
@@ -415,7 +632,7 @@ header p {
 }
 
 /* ==========================================================================
-   11. Media Queries
+   12. Media Queries
    ========================================================================== */
 @media (max-width: 768px) {
     .nav-toggle {
@@ -452,4 +669,78 @@ header p {
 
 @media (max-width: 480px) {
     /* Add mobile-specific styles here */
+}
+
+
+/* ==========================================================================
+   13. Footer
+   ========================================================================== */
+
+.footer {
+    background-color: var(--bg-dark, #1a1a1a);
+    color: var(--text-light, #ffffff);
+    padding: 2rem 0;
+    margin-top: auto;  /* Pushes footer to bottom if content is short */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-social a {
+    color: var(--text-light, #ffffff);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--primary-color, #64ffda);
+    transform: translateY(-3px);
+}
+
+.footer-text {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-text p {
+    margin: 0.5rem 0;
+}
+
+/* Make sure the footer stays at the bottom */
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer {
+        padding: 1.5rem 0;
+    }
+    
+    .footer-social {
+        gap: 1rem;
+    }
+    
+    .footer-social a {
+        font-size: 1.25rem;
+    }
 }
