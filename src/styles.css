@@ -200,161 +200,212 @@ header p {
 /* ==========================================================================
    6. Skills Section Styles
    ========================================================================== */
-   .skills-section {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
-    padding: 80px 0;
-    position: relative;
-    overflow: hidden;
+.skills-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
 }
 
-.section-title {
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skills-orbit-container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-skill {
+    position: absolute;
+    width: 120px;  
+    height: 120px; 
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+
+.center-icon {
+    font-size: 2.5rem; 
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.center-skill-name {
+    color: inherit;
+    font-size: 0.9rem;
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
-    color: #2d3436;
+    animation: fadeIn 0.3s ease;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.orbit-path {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: rotate 30s linear infinite;
 }
 
 .skill-tag {
-    position: relative;
-    padding: 0.5rem;
-    background: white;
-    border-radius: 12px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.skill-tag::before {
-    content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-        from 0deg at 50% 50%,
-        transparent,
-        var(--skill-color),
-        transparent 60%
-    );
-    animation: rotate 4s linear infinite;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.skill-tag:hover::before {
-    opacity: 0.15;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    margin: -40px;
+    background: var(--skill-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .skill-content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: var(--skill-bg);
-    padding: 1rem;
-    border-radius: 8px;
-    z-index: 1;
-    height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
 }
 
 .skill-icon {
-    font-size: 1.5rem;
-    color: var(--skill-color);
-    transition: all 0.3s ease;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
 .skill-name {
-    color: #2d3436;
-    font-weight: 500;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: -25px;
+  width: 100%;
+  text-align: center;
 }
 
-@keyframes rotate {
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
     from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Hover effects */
-.skill-tag:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-}
-
-.skill-tag:hover .skill-icon {
-    transform: scale(1.1);
-}
-
-/* Add shimmer effect */
-.skill-tag::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 255, 255, 0.8),
-        transparent
-    );
-    transform: translate(-100%, -100%);
-    transition: 0.5s;
-}
-
-.skill-tag:hover::after {
-    transform: translate(0, 0);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .skill-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.5rem;
-        padding: 0.8rem;
-    }
-}
-
-/* Optional: Add subtle entrance animation */
-@keyframes fadeInUp {
-    from {
+        transform: scale(0.8);
         opacity: 0;
-        transform: translateY(20px);
     }
     to {
+        transform: scale(1);
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
-.skill-tag {
-    animation: fadeInUp 0.5s ease forwards;
-    animation-delay: calc(var(--index) * 0.1s);
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
 }
 
+/* animations */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counter-rotate {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+/* hover effects */
+.skill-tag:hover {
+  transform: scale(1.2);
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.skill-tag:hover .skill-name {
+  opacity: 1;
+}
+
+/* responsive adjustments */
+@media (max-width: 768px) {
+  .skills-orbit-container {
+    width: 400px;
+    height: 400px;
+  }
+
+  .skill-tag {
+    width: 60px;
+    height: 60px;
+    margin: -30px;
+  }
+
+
+  @keyframes counter-rotate {
+    from {
+      transform: rotate(0deg) translateX(160px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(160px) rotate(-360deg);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-orbit-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .skill-tag {
+    width: 50px;
+    height: 50px;
+    margin: -25px;
+  }
+
+  @keyframes counter-rotate {
+    from {
+      transform: rotate(0deg) translateX(120px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(120px) rotate(-360deg);
+    }
+  }
+}
 /* ==========================================================================
    7. Introduction Section Styles
    ========================================================================== */

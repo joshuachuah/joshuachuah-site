@@ -105,35 +105,92 @@ const skillsData = [
     color: '#2A2A2A',
     bgColor: 'rgba(42, 42, 42, 0.1)',
     category: 'Security'
-  }
+  },
+  {
+    icon: faJira,
+    name: 'Jira',
+    color: '#0052CC',
+    bgColor: 'rgba(0, 82, 204, 0.1)',
+    category: 'Tools'
+  },
+  {
+    icon: faBitbucket,
+    name: 'Bitbucket',
+    color: '#2684FF',
+    bgColor: 'rgba(38, 132, 255, 0.1)',
+    category: 'Tools'
+  },
+  {
+    icon: faBootstrap,
+    name: 'Bootstrap',
+    color: '#7952B3',
+    bgColor: 'rgba(121, 82, 179, 0.1)',
+    category: 'Frontend'
+  },
 ];
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null);
+  const totalSkills = skillsData.length;
   
+  const calculatePosition = (index) => {
+    const angle = (360 / totalSkills) * index;
+    return {
+      '--skill-bg': skillsData[index].bgColor,
+      '--skill-color': skillsData[index].color,
+      transform: `rotate(${angle}deg) translateX(250px)`,
+      animationDelay: `${-(index * (30 / totalSkills))}s`
+    };
+  };
+
   return (
     <section id="skills" className="skills-section">
       <div className="container">
         <h2 className="section-title">Skills & Technologies</h2>
         
-        <div className="skills-grid">
-          {skillsData.map((skill, index) => (
-            <div
-              key={index}
-              className="skill-tag"
-              style={{
-                '--skill-color': skill.color,
-                '--skill-bg': skill.bgColor
-              }}
-              onMouseEnter={() => setHoveredSkill(index)}
-              onMouseLeave={() => setHoveredSkill(null)}
-            >
-              <div className="skill-content">
-                <FontAwesomeIcon icon={skill.icon} className="skill-icon" />
-                <span className="skill-name">{skill.name}</span>
+        <div className="skills-orbit-container">
+          <div className="center-skill" 
+               style={{
+                 background: hoveredSkill !== null ? 
+                   skillsData[hoveredSkill].bgColor : 
+                   'transparent'
+               }}>
+            {hoveredSkill !== null && (
+              <div className="center-content">
+                <FontAwesomeIcon 
+                  icon={skillsData[hoveredSkill].icon}
+                  className="center-icon"
+                  style={{ color: skillsData[hoveredSkill].color }}
+                />
+                <span className="center-skill-name" style={{ color: skillsData[hoveredSkill].color }}>
+                  {skillsData[hoveredSkill].name}
+                </span>
               </div>
-            </div>
-          ))}
+            )}
+          </div>
+
+          <div className="orbit-path">
+            {skillsData.map((skill, index) => (
+              <div
+                key={index}
+                className="skill-tag"
+                style={calculatePosition(index)}
+                onMouseEnter={() => setHoveredSkill(index)}
+                onMouseLeave={() => setHoveredSkill(null)}
+              >
+                <div className="skill-content">
+                  <FontAwesomeIcon 
+                    icon={skill.icon} 
+                    className="skill-icon"
+                    style={{ 
+                      color: skill.color,
+                      transform: `scale(${hoveredSkill === index ? 1.2 : 1})`
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
