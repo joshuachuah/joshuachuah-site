@@ -110,7 +110,7 @@ const skillsData = [
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null);
-
+  
   return (
     <section id="skills" className="skills-section">
       <div className="container">
