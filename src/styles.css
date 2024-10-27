@@ -200,79 +200,160 @@ header p {
 /* ==========================================================================
    6. Skills Section Styles
    ========================================================================== */
-.skills-section {
+   .skills-section {
     min-height: 100vh;
+    background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #2d3436;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-tag {
+    position: relative;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent,
+        var(--skill-color),
+        transparent 60%
+    );
+    animation: rotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.skill-tag:hover::before {
+    opacity: 0.15;
+}
+
+.skill-content {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 80px 0;  /* Account for navbar height */
-    background-color: #f8f9fa;
-}
-
-.skills-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.skills-list {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 40px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.skill-item {
-    list-style: none;
-    padding: 15px 25px;
+    gap: 1rem;
+    background: var(--skill-bg);
+    padding: 1rem;
     border-radius: 8px;
+    z-index: 1;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.skill-icon {
+    font-size: 1.5rem;
+    color: var(--skill-color);
+    transition: all 0.3s ease;
+}
+
+.skill-name {
+    color: #2d3436;
     font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    animation: float 3s ease-in-out infinite;
-    font-size: 1.1em;
-    min-width: 120px;
-    text-align: center;
-
 }
 
-.skills-list {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.skill-item {
-    min-width: 120px;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-/* Optional: Add categories with different background tints */
-/* .skill-item[data-category="frontend"] { background-color: rgba(97, 218, 251, 0.05); }
-.skill-item[data-category="backend"] { background-color: rgba(51, 103, 145, 0.05); }
-.skill-item[data-category="tools"] { background-color: rgba(252, 198, 36, 0.05); } */
-
-.skill-item:hover {
+/* Hover effects */
+.skill-tag:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Stagger the floating animations */
-.skill-item:nth-child(1) { animation-delay: 0s; }
-.skill-item:nth-child(2) { animation-delay: 0.5s; }
-.skill-item:nth-child(3) { animation-delay: 1s; }
-.skill-item:nth-child(4) { animation-delay: 1.5s; }
-.skill-item:nth-child(5) { animation-delay: 2s; }
-.skill-item:nth-child(6) { animation-delay: 2.5s; }
-.skill-item:nth-child(7) { animation-delay: 3s; }
+.skill-tag:hover .skill-icon {
+    transform: scale(1.1);
+}
+
+/* Add shimmer effect */
+.skill-tag::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent
+    );
+    transform: translate(-100%, -100%);
+    transition: 0.5s;
+}
+
+.skill-tag:hover::after {
+    transform: translate(0, 0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .skill-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 0.8rem;
+    }
+}
+
+/* Optional: Add subtle entrance animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skill-tag {
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: calc(var(--index) * 0.1s);
+}
 
 /* ==========================================================================
    7. Introduction Section Styles
