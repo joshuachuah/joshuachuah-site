@@ -494,6 +494,7 @@ header p {
     margin-bottom: 4rem;
     width: 50%;
     opacity: 0;
+    transform: translateX(-100px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -558,8 +559,8 @@ header p {
 
 /* Animation classes */
 .timeline-item.show {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1 !important;
+    transform: translateX(0) !important;
 }
 
 .timeline-item:hover .timeline-icon {

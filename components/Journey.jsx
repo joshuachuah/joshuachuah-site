@@ -18,14 +18,22 @@ const Journey = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
+          // Remove 'show' class when element is not intersecting
+          if (!entry.isIntersecting) {
+            entry.target.classList.remove('show');
+          } else {
+            // Add 'show' class with delay when intersecting
             setTimeout(() => {
               entry.target.classList.add('show');
             }, index * 300);
           }
         });
       },
-      { threshold: 0.2 }
+      { 
+        threshold: 0.2,
+        // Add root margin to trigger slightly before element comes into view
+        rootMargin: '50px' 
+      }
     );
 
     cardsRef.current.forEach((card) => {
