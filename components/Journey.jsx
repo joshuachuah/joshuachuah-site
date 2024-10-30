@@ -62,7 +62,7 @@ const Journey = () => {
     {
       icon: faCloud,
       title: "Cloud Explorer",
-      description: "Currently diving deep into cloud computing and modern development practices",
+      description: "Currently diving into cloud computing and modern development practices",
       color: "#50E3C2",
       animation: "slide-right"
     },
