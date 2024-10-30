@@ -10,7 +10,7 @@ const Footer = () => {
               <a href="https://github.com/joshuachuah" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faGithub} />
               </a>
-              <a href="https://www.linkedin.com/in/joshua-chuah-916a15259/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/joshua-chuah00/" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
               {/* Add other social links as needed */}
