@@ -4,8 +4,8 @@ const Projects = () => {
         <div className="container projects-container">
           <h2>Projects</h2>
           <div className="project">
-            <h3>Fantasy Premier League Predictor</h3>
-            <p>Machine learning model to predict player points using historical data. Achieved MSE of 18.25.</p>
+            <h3>Unofficial Website for G(I)-DILE</h3>
+            <p>An unofficial website that I made for the K-Pop girl ground G(I)-IDLE.</p>
           </div>
           <div className="project">
             <h3>NBA Predictor App</h3>
