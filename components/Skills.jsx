@@ -152,26 +152,6 @@ const skillsData = [
   }
 ];
 
-const learningData = [
-  { 
-    topic: 'Machine Learning', 
-    progress: 65,
-    description: 'Deep learning, Neural Networks, TensorFlow',
-    color: '#6c5ce7'
-  },
-  { 
-    topic: 'Cloud Architecture', 
-    progress: 80,
-    description: 'AWS, Azure, Cloud Infrastructure',
-    color: '#00cec9'
-  },
-  { 
-    topic: 'Cybersecurity', 
-    progress: 45,
-    description: 'Penetration Testing, Network Security',
-    color: '#fd79a8'
-  }
-];
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null);
@@ -190,30 +170,6 @@ const Skills = () => {
     <section id="skills" className="skills-section">
       <div className="container">
         <h2 className="section-title">Skills & Technologies</h2>
-
-        <div className="skills-layout">
-          <div className="learning-progress scroll-animation">
-            <h3 className="learning-title">Currently Learning</h3>
-            {learningData.map((path, index) => (
-              <div key={index} className="progress-item">
-                <div className="progress-header">
-                  <h4>{path.topic}</h4>
-                  <span className="progress-percentage">{path.progress}%</span>
-                </div>
-                <div className="progress-bar">
-                  <div 
-                    className="progress-fill" 
-                    style={{ 
-                      width: `${path.progress}%`,
-                      background: `linear-gradient(90deg, ${path.color}, ${path.color}dd)`
-                    }}
-                  />
-                </div>
-                <p className="progress-description">{path.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
         
         <div className="skills-orbit-container">
           <div className="center-skill" 
