@@ -10,34 +10,47 @@ const projectsData = [
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     githubLink: "https://github.com/joshuachuah/unofficial-website",
     // liveLink: "https://gidle-website.com",
-    image: "images/GIDLE.JPG" // Add your project image path
+    // media: {
+    //   type: "video",
+    //   source: "video/source.MP4"
+    // },
+    image: "images/GIDLE.JPG"
   },
   {
     title: "NBA Predictor App",
     description: "Developed an app for analyzing NBA datasets to predict player performance using Python.",
     technologies: ["Python", "Pandas", "Scikit-learn", "Django"],
     githubLink: "https://github.com/joshuachuah/StatsPicksNBA",
-    // liveLink: "https://nba-predictor.com",
-    image: "images/NBA Logo.png" // Add your project image path
+    // media: {
+    //   type: "video",
+    //   source: "video/source.MP4"
+    // },
+     image: "images/NBA Logo.png"
   },
   {
     title: "Broken Song",
     description: "A program that traverses through a directory tree looking for pieces of an mp3.",
     technologies: ["C"],
     githubLink: "https://github.com/joshuachuah/Broken-Song",
-    // liveLink: "https://nba-predictor.com",
-    image: "images/music notes.jpg" // Add your project image path
+    // media: {
+    //   type: "video",
+    //   source: "images/eunchae spread 2.MP4"
+    // },
+     image: "images/music notes.jpg"
   },
   {
     title: "Hearthstone Card Parser",
     description: "A program that parses a .csv file full of Hearthstone card data. It will also de-duplicate, sort and then nicely print out the cards.",
     technologies: ["C"],
     githubLink: "https://github.com/joshuachuah/hearthstone-parser",
-    // liveLink: "https://nba-predictor.com",
-    image: "images/Hearthstone.jpg" // Add your project image path
+    // media: {
+    //   type: "video",
+    //   source: "video/source.MP4"
+    // },
+     image: "images/Hearthstone.jpg"
   }
-  
 ];
+
 
 const Projects = () => {
   return (
@@ -49,6 +62,20 @@ const Projects = () => {
           {projectsData.map((project, index) => (
             <div key={index} className="project-card scroll-animation">
               <div className="project-image">
+                {/* {project.media.type === 'video' ? (
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="project-video"
+                  >
+                    <source src={project.media.source} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <img src={project.media.source} alt={project.title} />
+                )} */}
                 <img src={project.image} alt={project.title} />
                 <div className="project-links">
                   {project.githubLink && (

@@ -175,96 +175,73 @@ const learningData = [
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null);
-  const totalSkills = skillsData.length;
   
-  const calculatePosition = (index) => {
-    const angle = (360 / totalSkills) * index;
-    return {
-      '--skill-bg': skillsData[index].bgColor,
-      '--skill-color': skillsData[index].color,
-      transform: `rotate(${angle}deg) translateX(250px)`,
-    };
-  };
+  const skillsByCategory = skillsData.reduce((acc, skill) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = [];
+    }
+    acc[skill.category].push(skill);
+    return acc;
+  }, {});
 
   return (
     <section id="skills" className="skills-section">
-      <div className="container">
+      <div className="container skills-container">
         <h2 className="section-title">Skills & Technologies</h2>
-
-        <div className="skills-layout">
-          <div className="learning-progress scroll-animation">
-            <h3 className="learning-title">Currently Learning</h3>
-            {learningData.map((path, index) => (
-              <div key={index} className="progress-item">
-                <div className="progress-header">
-                  <h4>{path.topic}</h4>
-                  <span className="progress-percentage">{path.progress}%</span>
+        
+        <div className="skills-content">
+          {/* Left side - Skills list */}
+          <div className="skills-list">
+            {Object.entries(skillsByCategory).map(([category, skills]) => (
+              <div key={category} className="skill-category">
+                <h3 className="category-title">{category}</h3>
+                <div className="category-skills">
+                  {skills.map((skill, index) => (
+                    <div 
+                      key={index} 
+                      className="skill-item"
+                      style={{
+                        '--skill-color': skill.color,
+                        '--skill-bg': skill.bgColor
+                      }}
+                    >
+                      {skill.isDevicon ? (
+                        <i className={skill.icon}></i>
+                      ) : (
+                        <FontAwesomeIcon icon={skill.icon} />
+                      )}
+                      <span className="skill-name">{skill.name}</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="progress-bar">
-                  <div 
-                    className="progress-fill" 
-                    style={{ 
-                      width: `${path.progress}%`,
-                      background: `linear-gradient(90deg, ${path.color}, ${path.color}dd)`
-                    }}
-                  />
-                </div>
-                <p className="progress-description">{path.description}</p>
               </div>
             ))}
           </div>
-        </div>
-        
-        <div className="skills-orbit-container">
-          <div className="center-skill" 
-               style={{
-                 background: hoveredSkill !== null ? 
-                   skillsData[hoveredSkill].bgColor : 
-                   'transparent'
-               }}>
-            {hoveredSkill !== null && (
-              <div className="center-content">
-                {skillsData[hoveredSkill].isDevicon ? (
-                  <i className={skillsData[hoveredSkill].icon} style={{ fontSize: '2.5rem' }}></i>
-                ) : (
-                  <FontAwesomeIcon 
-                    icon={skillsData[hoveredSkill].icon}
-                    className="center-icon"
-                    style={{ color: skillsData[hoveredSkill].color }}
-                  />
-                )}
-                <span className="center-skill-name" style={{ color: skillsData[hoveredSkill].color }}>
-                  {skillsData[hoveredSkill].name}
-                </span>
-              </div>
-            )}
-          </div>
 
-          <div className="orbit-path">
-            {skillsData.map((skill, index) => (
-              <div
-                key={index}
-                className="skill-tag"
-                style={calculatePosition(index)}
-                onMouseEnter={() => setHoveredSkill(index)}
-                onMouseLeave={() => setHoveredSkill(null)}
-              >
-                <div className="skill-content">
+          {/* Right side - Matrix Rain animation */}
+          <div className="skills-visualization">
+            <div className="matrix-container">
+              {skillsData.map((skill, index) => (
+                <div 
+                  key={index}
+                  className="matrix-node"
+                  style={{
+                    '--index': index,
+                    '--color': skill.color,
+                    '--bg': skill.bgColor,
+                    '--col': index % 8,
+                    '--delay': `${index * -0.5}s`,
+                    '--duration': `${4 + Math.random() * 4}s`
+                  }}
+                >
                   {skill.isDevicon ? (
-                    <i className={skill.icon} style={{ fontSize: '1.5rem' }}></i>
+                    <i className={skill.icon}></i>
                   ) : (
-                    <FontAwesomeIcon 
-                      icon={skill.icon} 
-                      className="skill-icon"
-                      style={{ 
-                        color: skill.color,
-                        transform: `scale(${hoveredSkill === index ? 1.2 : 1})`
-                      }}
-                    />
+                    <FontAwesomeIcon icon={skill.icon} />
                   )}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
