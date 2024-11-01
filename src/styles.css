@@ -418,6 +418,15 @@ header p {
     align-items: center;
 }
 
+.intro-grid {
+  display: flex;
+  align-items: center;
+  gap: 8rem; /* Adjust spacing between image and content */
+  max-width: 1200px; /* Adjust based on your design */
+  margin: 0 auto;
+  padding: 2rem;
+}
+
 .intro-profile {
     display: flex;
     flex-direction: column;
@@ -425,6 +434,19 @@ header p {
     text-align: center;
     justify-content: center;
     padding: 20px;
+    gap: 2rem;
+}
+
+.profile-image {
+  flex-shrink: 0;
+}
+
+.profile-pic {
+  width: 500px; /* adjust size as needed */
+  height: 500px;
+  border-radius: 50%; /* for circular image */
+  object-fit: cover;
+  object-position: center 80%; 
 }
 
 .profile-text h3 {
@@ -441,6 +463,10 @@ header p {
     color: #666;
     max-width: 600px;
     margin: 0 auto;
+}
+
+.intro-content {
+  flex: 1;
 }
 
 /* ==========================================================================
@@ -611,7 +637,7 @@ header p {
 .greeting-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -620,11 +646,11 @@ header p {
     display: inline-block;
     min-width: 100px;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 3em;
 }
 
 .name-text {
-    font-size: 2em;
+    font-size: 4em;
 }
 
 .highlight-name {
