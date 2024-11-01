@@ -34,7 +34,7 @@ const projectsData = [
     githubLink: "https://github.com/joshuachuah/Broken-Song",
     // media: {
     //   type: "video",
-    //   source: "images/eunchae spread 2.MP4"
+    //   source: "video/source.MP4"
     // },
      image: "images/music notes.jpg"
   },
