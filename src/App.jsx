@@ -6,7 +6,7 @@ import Journey from '../components/Journey';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import Footer from '../components/Footer'
 import Contact from '../components/Contact';
-import './styles.css'; // Your existing CSS file
+import './styles.css';
 
 function App() {
   useScrollAnimation(); // Custom hook for scroll animations
