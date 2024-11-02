@@ -91,8 +91,8 @@ const skillsData = [
   {
     icon: 'devicon-docker-plain colored',
     name: 'Docker',
-    color: '#00084D',
-    bgColor: 'rgba(36, 150, 237, 0.08)',
+    color: '#2496ED',
+    bgColor: 'rgba(36, 150, 237, 0.1)',
     category: 'Tools',
     isDevicon: true
   },
@@ -174,8 +174,7 @@ const learningData = [
 ];
 
 const Skills = () => {
-  const [hoveredSkill, setHoveredSkill] = useState(null);
-  
+  // Organize skills by category
   const skillsByCategory = skillsData.reduce((acc, skill) => {
     if (!acc[skill.category]) {
       acc[skill.category] = [];
@@ -190,33 +189,26 @@ const Skills = () => {
         <h2 className="section-title">Skills & Technologies</h2>
         
         <div className="skills-content">
-          {/* Left side - Skills list */}
-          <div className="skills-list">
-            {Object.entries(skillsByCategory).map(([category, skills]) => (
-              <div key={category} className="skill-category">
-                <h3 className="category-title">{category}</h3>
-                <div className="category-skills">
-                  {skills.map((skill, index) => (
-                    <div 
-                      key={index} 
-                      className="skill-item"
-                      style={{
-                        '--skill-color': skill.color,
-                        '--skill-bg': skill.bgColor
-                      }}
-                    >
-                      {skill.isDevicon ? (
-                        <i className={skill.icon}></i>
-                      ) : (
-                        <FontAwesomeIcon icon={skill.icon} />
-                      )}
-                      <span className="skill-name">{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
+        <div className="skills-grid">
+            {skillsData.map((skill, index) => (
+              <div 
+                key={index} 
+                className="skill-item"
+                style={{
+                  '--skill-color': skill.color,
+                  '--skill-bg': skill.bgColor
+                }}
+              >
+                {skill.isDevicon ? (
+                  <i className={skill.icon}></i>
+                ) : (
+                  <FontAwesomeIcon icon={skill.icon} />
+                )}
+                <span className="skill-name">{skill.name}</span>
               </div>
             ))}
           </div>
+
 
           {/* Right side - Matrix Rain animation */}
           <div className="skills-visualization">

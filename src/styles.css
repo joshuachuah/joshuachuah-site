@@ -210,6 +210,7 @@ header p {
   max-width: 1400px;
 }
 
+/* Left side styles */
 .skills-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -217,61 +218,53 @@ header p {
   margin-top: 2rem;
 }
 
-/* Left side styles */
-.skills-list {
-  padding: 2rem;
-}
-
-.skill-category {
-  margin-bottom: 2rem;
-}
-
-.category-title {
-  font-size: 1.5rem;
-  color: #2d3436;
-  margin-bottom: 1rem;
-  position: relative;
-  padding-left: 1rem;
-}
-
-.category-title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 4px;
-  height: 70%;
-  background: var(--primary-color, #6c5ce7);
-  transform: translateY(-50%);
-  border-radius: 2px;
-}
-
-.category-skills {
+.skills-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  padding: 2rem;
+  height: 600px;
+  overflow-y: auto;
 }
 
 .skill-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   background: var(--skill-bg);
   border-radius: 8px;
-  cursor: pointer;
+  color: var(--skill-color);
   transition: all 0.3s ease;
+
+  /* adding these properties for consistent size */
+  width: 150px;  /* or whatever fixed width  */
+  height: 45px;  /* or whatever fixed height  */
+  justify-content: center; /* center contents horizontally */
 }
 
 .skill-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .skill-item i,
 .skill-item svg {
   font-size: 1.2rem;
-  color: var(--skill-color);
+}
+
+.skill-name {
+  font-weight: 500;
+}
+
+
+.skills-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.skills-grid::-webkit-scrollbar-thumb {
+  background: rgba(108, 92, 231, 0.2);
+  border-radius: 3px;
 }
 
 /* Right side styles */
@@ -280,10 +273,11 @@ header p {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 400px;  /* Reduced from 600px */
-  max-height: 600px;  /* Added max-height */
-  width: 600px;       /* Added fixed width */
-  margin: 0 auto;     /* Center the container */
+  min-height: 400px;  /* from 600px */
+  max-height: 700px;  /* max-height */
+  width: 600px;       /* fixed width */
+  margin: 0 auto;     /* center the container */
+  height: 600px;
   perspective: 1000px;
   background: rgba(0, 0, 0, 0.05);
   border-radius: 12px;
@@ -350,7 +344,7 @@ header p {
   }
 }
 
-/* Add some variation to different columns */
+/* adding some variation to different columns */
 .matrix-node:nth-child(2n) {
   animation-duration: calc(var(--duration) * 1.2);
 }
@@ -363,7 +357,7 @@ header p {
   animation-duration: calc(var(--duration) * 1.1);
 }
 
-/* Optional: Add a trail effect */
+/* adding a trail effect */
 .matrix-node::after {
   content: '';
   position: absolute;
@@ -390,7 +384,7 @@ header p {
 .matrix-node::after {
   box-shadow: 0 0 20px var(--color);
 }
-/* Keep existing responsive styles */
+/* keep existing responsive styles */
 @media (max-width: 1024px) {
   .skills-content {
     grid-template-columns: 1fr;
@@ -401,7 +395,7 @@ header p {
   }
 }
 
-/* Optional: Adjust grid for different screen sizes */
+/* adjust grid for different screen sizes */
 @media (min-width: 1025px) and (max-width: 1200px) {
   .matrix-container {
     grid-template-columns: repeat(4, 1fr);
@@ -620,7 +614,7 @@ header p {
     }
 }
 
-/* Add some floating animations */
+/* adding some floating animations */
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -654,7 +648,7 @@ header p {
 }
 
 .highlight-name {
-    color: #64ffda; /* Modern teal color - you can change this */
+    color: #64ffda; /* modern teal color */
     font-weight: 700;
     background: linear-gradient(120deg, #FF69B4 0%, #9370DB 100%);
     -webkit-background-clip: text;
