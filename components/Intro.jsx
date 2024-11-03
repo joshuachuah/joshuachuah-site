@@ -30,7 +30,7 @@ const Intro = () => {
           <div className="intro-grid">
             <div className="profile-image">
               <img 
-                src="images/IMG_3104.JPG" 
+                src="images/78AEBCCD-6F8E-49AA-AFF3-F484F690792E.jpg" 
                 alt="Joshua's profile picture" 
                 className="profile-pic"
               />
@@ -52,6 +52,16 @@ const Intro = () => {
               <p>
                 I love turning complex problems into simple, beautiful, and intuitive solutions.
               </p>
+              <div className="button-container">
+            <button 
+              className="contact-btn"
+              onClick={() => {
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Contact Me
+            </button>
+          </div>
             </div>
           </div>
         </div>
