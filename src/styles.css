@@ -7,6 +7,10 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    --accent-color: #6c5ce7;
+    --accent-color-rgb: 108, 92, 231;
+    --text-color: #ffffff;
 }
 
 * {
@@ -478,6 +482,36 @@ header p {
 
 .intro-content {
   flex: 1;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 3rem;
+}
+
+.contact-btn {
+  padding: 12px 28px;
+  background: linear-gradient(45deg, #845EC2, #D65DB1);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(132, 94, 194, 0.4);
+  background: linear-gradient(45deg, #D65DB1, #845EC2);
+}
+
+.contact-btn:active {
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
