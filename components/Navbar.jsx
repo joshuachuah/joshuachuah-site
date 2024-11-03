@@ -26,7 +26,10 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-content">
-        <div className="nav-logo" onClick={() => scrollToSection('top')}>
+      <div className="nav-logo" onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          setIsMenuOpen(false);
+        }}>
           <div className="logo-circle">
             <span className="logo-text">JC</span>
           </div>
