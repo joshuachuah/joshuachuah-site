@@ -26,10 +26,10 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-content">
-      <div className="nav-logo" onClick={() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          setIsMenuOpen(false);
-        }}>
+        <div className="nav-logo" onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setIsMenuOpen(false);
+          }}>
           <div className="logo-circle">
             <span className="logo-text">JC</span>
           </div>
@@ -41,7 +41,7 @@ const Navbar = () => {
 
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <li onClick={() => scrollToSection('intro')}>Home</li>
-          <li onClick={() => scrollToSection('about')}>About</li>
+          <li onClick={() => scrollToSection('journey')}>About</li>
           <li onClick={() => scrollToSection('skills')}>Skills</li>
           <li onClick={() => scrollToSection('projects')}>Projects</li>
           <li onClick={() => scrollToSection('contact')}>Contact</li>
