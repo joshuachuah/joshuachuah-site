@@ -1,0 +1,178 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+.skills-section {
+    min-height: 100vh;
+    padding: 4rem 0;
+    background: $gradient-skills;
+    position: relative;
+
+    @include responsive(md){
+      padding: 2rem 0;
+      min-height: auto;
+    }
+
+    .skills-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .section-title{
+      font-size: 2.5rem;
+    }
+    .skills-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+  
+      @include responsive(lg) {
+        grid-template-columns: 1fr;
+      }
+
+      @include responsive(mg) {
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      @include responsive(md) {
+        gap: 1rem;
+        margin-top: 1rem;
+        padding-bottom: 2rem; // Add some bottom padding
+      }
+    }
+
+    @include responsive(sm) {
+      .skills-container {
+        padding: 0 1rem;
+      }
+
+      .skills-grid {
+        padding: 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.5rem;
+      }
+
+      .skill-item {
+        width: 100%; // Take full width of grid cell
+        margin-bottom: 0;
+      }
+    }
+  
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 2rem;
+      height: 600px;
+      overflow-y: auto;
+      
+      @include responsive(md){
+        height: auto; // Remove fixed height
+        max-height: none; // Remove max-height constraint
+        padding: 1rem;
+        justify-content: center;
+        gap: 0.75rem;
+      }
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+  
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background: rgba($accent-color, 0.2);
+        border-radius: 3px;
+      }
+    }
+  
+    .skill-item {
+      @include flex-center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--skill-bg, white);
+      border-radius: $border-radius-md;
+      color: var(--skill-color, #333);
+      transition: $transition-base;
+      width: 150px;
+      height: 45px;
+      box-shadow: $shadow-sm;
+      
+      @include responsive(md) {
+        width: calc(50% - 1rem); // Make items take up half the width minus gap
+        min-width: 120px; // Set minimum width
+        height: 40px;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.5rem; 
+      }
+
+      @include responsive(sm) {
+        width: calc(33.33% - 1rem); // 3 items per row on very small screens
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-md;
+      }
+  
+      i, svg {
+        font-size: 1.2rem;
+
+        @include responsive(md) {
+          font-size: 1rem;
+        }
+      }
+  
+      .skill-name {
+        font-weight: 500;
+
+        @include responsive(md) {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  
+    .skills-visualization {
+      @include flex-center;
+      min-height: 400px;
+      max-height: 700px;
+      width: 600px;
+      margin: 0 auto;
+      height: 600px;
+      perspective: 1000px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: $border-radius-lg;
+      overflow: hidden;
+  
+      .matrix-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
+        padding: 2rem;
+        transform-style: preserve-3d;
+      }
+  
+      .matrix-node {
+        @include flex-center;
+        font-size: 1.8rem;
+        color: var(--color);
+        background: var(--bg);
+        padding: 1.5rem;
+        border-radius: 50%;
+        animation: matrixRain var(--duration) linear infinite;
+        animation-delay: var(--delay);
+      }
+  
+      @include responsive(lg) {
+        display: none;
+      }
+    }
+  }

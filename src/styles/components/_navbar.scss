@@ -1,0 +1,196 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $navbar-height;
+  background: rgba(255, 255, 255, 0.2);
+  transition: $transition-base;
+  z-index: $z-navbar;
+  @include glassmorphism;
+  
+    &.scrolled {
+      background: transparent;
+      box-shadow: $shadow-md;
+    }
+
+  .nav-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    @include flex-between;
+      position: relative;
+    }
+  
+    .nav-logo {
+      @include flex-center;
+      gap: 10px;
+      cursor: pointer;
+      
+      .logo-circle {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #000;
+        border-radius: 50%;
+        @include flex-center;
+        background: transparent;
+        transition: $transition-base;
+  
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+      }
+  
+      .logo-text {
+        color: #000;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+    }
+
+  //   // Hamburger Menu Button
+  // .hamburger {
+  //   display: none;
+  //   background: none;
+  //   border: none;
+  //   cursor: pointer;
+  //   padding: 10px;
+  //   z-index: 100;
+
+  //   .hamburger-line {
+  //     display: block;
+  //     width: 25px;
+  //     height: 2px;
+  //     background: #333;
+  //     position: relative;
+  //     transition: $transition-base;
+
+  //     &::before,
+  //     &::after {
+  //       content: '';
+  //       position: absolute;
+  //       width: 100%;
+  //       height: 100%;
+  //       background: #333;
+  //       transition: $transition-base;
+  //     }
+
+  //     &::before { top: -8px; }
+  //     &::after { bottom: -8px; }
+
+  //     &.active {
+  //       background: transparent;
+
+  //       &::before {
+  //         top: 0;
+  //         transform: rotate(45deg);
+  //       }
+
+  //       &::after {
+  //         bottom: 0;
+  //         transform: rotate(-45deg);
+  //       }
+  //     }
+  //   }
+  // }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    justify-content: center;
+
+      li {
+        cursor: pointer;
+        padding: 5px 0;
+        position: relative;
+        color: #333;
+        font-weight: 500;
+        transition: $transition-base;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: $accent-color;
+          transition: width 0.3s ease;
+        }
+  
+        &:hover::after {
+          width: 100%;
+      }
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: $transition-base;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+
+  
+    .nav-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+  @include responsive(md) {
+    .nav-toggle{
+      display: block;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: $navbar-height;
+      left: 0;
+      right: 0;
+      height: auto;
+      max-height: calc(100vh - #{$navbar-height}); // This ensures it doesn't go beyond viewport
+      background: rgba(255, 255, 255, 0.95);
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      gap: 2rem;
+      transform: translateX(-100%); // Changed from translateY to translateX
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+      overflow-y: auto; // Makes the menu scrollable if content is too long
+
+      &.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      li {
+        width: 100%;
+        text-align: center;
+
+        a {
+          display: block;
+          padding: 1rem;
+          
+          &:hover {
+            background: rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+    }
+  }
+}
