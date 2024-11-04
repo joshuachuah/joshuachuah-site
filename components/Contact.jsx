@@ -61,10 +61,10 @@ const Contact = () => {
                 <a href="mailto:your.email@example.com" className="social-link">
                   <FontAwesomeIcon icon={faEnvelope} size="2x" />
                 </a>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
+                <a href="https://github.com/joshuachuah" target="_blank" rel="noopener noreferrer" className="social-link">
                   <FontAwesomeIcon icon={faGithub} size="2x" />
                 </a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
+                <a href="https://www.linkedin.com/in/joshua-chuah00/" target="_blank" rel="noopener noreferrer" className="social-link">
                   <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </a>
                 <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
