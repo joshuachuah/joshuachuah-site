@@ -53,15 +53,15 @@ const Intro = () => {
                 I love turning complex problems into simple, beautiful, and intuitive solutions.
               </p>
               <div className="button-container">
-            <button 
-              className="contact-btn"
-              onClick={() => {
-                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Contact Me
-            </button>
-          </div>
+                <button 
+                  className="contact-btn"
+                  onClick={() => {
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Contact Me
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -76,8 +76,7 @@ const Journey = () => {
     <section id="journey" className="journey-section">
       <div className="container">
         <h2 className="journey-title">
-        ✨
-          About Me
+          ✨ About Me
         </h2>
         
         <div className="timeline">
@@ -88,10 +87,10 @@ const Journey = () => {
               ref={(el) => (cardsRef.current[index] = el)}
               style={{'--accent-color': item.color}}
             >
-              <div className="timeline-icon">
+              <div className="timeline-icon floating">
                 {item.icon}
               </div>
-              <div className="timeline-content">
+              <div className="timeline-content floating-content">
                 <h3>{item.title}</h3>
                 {item.subtitle && <h4>{item.subtitle}</h4>}
                 <p>{item.description}</p>

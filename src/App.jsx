@@ -6,20 +6,32 @@ import Journey from '../components/Journey';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import Footer from '../components/Footer'
 import Contact from '../components/Contact';
-import './styles.css';
+import { useEffect } from 'react';
 
 function App() {
-  useScrollAnimation(); // Custom hook for scroll animations
+  const elementRef = useScrollAnimation();
+
+  useEffect(() => {
+    // Enable smooth scrolling
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Optional: Clean up when component unmounts
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
+  }, []);
 
   return (
     <div className="App">
       <Navbar />
+      <div ref={elementRef} className="scroll-animation">
       <Intro />
       <Journey />
       <Skills />
       <Projects />
       <Contact />
       <Footer />
+    </div>
     </div>
   );
 }

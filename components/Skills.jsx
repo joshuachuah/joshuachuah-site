@@ -7,6 +7,7 @@ import {
   faBug,
   faChartLine,
 } from '@fortawesome/free-solid-svg-icons';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const skillsData = [
   {
@@ -174,6 +175,8 @@ const learningData = [
 ];
 
 const Skills = () => {
+
+  const skillsRef = useScrollAnimation();
   // Organize skills by category
   const skillsByCategory = skillsData.reduce((acc, skill) => {
     if (!acc[skill.category]) {
@@ -188,15 +191,16 @@ const Skills = () => {
       <div className="container skills-container">
         <h2 className="section-title">Skills & Technologies</h2>
         
-        <div className="skills-content">
-        <div className="skills-grid">
+        <div className="skills-content scroll-animation" ref={skillsRef}>
+          <div className="skills-grid">
             {skillsData.map((skill, index) => (
               <div 
                 key={index} 
                 className="skill-item"
                 style={{
                   '--skill-color': skill.color,
-                  '--skill-bg': skill.bgColor
+                  '--skill-bg': skill.bgColor,
+                  '--index': index
                 }}
               >
                 {skill.isDevicon ? (

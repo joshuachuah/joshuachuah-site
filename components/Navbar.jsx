@@ -18,22 +18,26 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     }
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-content">
-        <div className="nav-logo" onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setIsMenuOpen(false);
-          }}>
+        <div className="nav-logo" onClick={() => scrollToSection('intro')}>
           <div className="logo-circle">
             <span className="logo-text">JC</span>
           </div>
         </div>
+
         
         <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />

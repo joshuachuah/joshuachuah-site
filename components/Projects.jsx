@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const projectsData = [
   {
@@ -53,29 +54,17 @@ const projectsData = [
 
 
 const Projects = () => {
+  const projectsRef = useScrollAnimation();
+
   return (
     <section id="projects" className="projects-section">
       <div className="container">
         <h2 className="section-title">Projects</h2>
         
-        <div className="projects-grid">
+        <div className="projects-grid" ref={projectsRef}>
           {projectsData.map((project, index) => (
-            <div key={index} className="project-card scroll-animation">
+            <div key={index} className="project-card">
               <div className="project-image">
-                {/* {project.media.type === 'video' ? (
-                  <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    className="project-video"
-                  >
-                    <source src={project.media.source} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <img src={project.media.source} alt={project.title} />
-                )} */}
                 <img src={project.image} alt={project.title} />
                 <div className="project-links">
                   {project.githubLink && (
