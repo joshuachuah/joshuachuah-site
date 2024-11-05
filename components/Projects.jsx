@@ -11,10 +11,6 @@ const projectsData = [
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     githubLink: "https://github.com/joshuachuah/unofficial-website",
     // liveLink: "https://gidle-website.com",
-    // media: {
-    //   type: "video",
-    //   source: "video/source.MP4"
-    // },
     image: "images/GIDLE.JPG"
   },
   {
@@ -22,33 +18,21 @@ const projectsData = [
     description: "Developed an app for analyzing NBA datasets to predict player performance using Python.",
     technologies: ["Python", "Pandas", "Scikit-learn", "Django"],
     githubLink: "https://github.com/joshuachuah/StatsPicksNBA",
-    // media: {
-    //   type: "video",
-    //   source: "video/source.MP4"
-    // },
-     image: "images/NBA Logo.png"
+    image: "images/NBA Logo.png"
   },
   {
     title: "Broken Song",
     description: "A program that traverses through a directory tree looking for pieces of an mp3.",
     technologies: ["C"],
     githubLink: "https://github.com/joshuachuah/Broken-Song",
-    // media: {
-    //   type: "video",
-    //   source: "video/source.MP4"
-    // },
-     image: "images/music notes.jpg"
+    image: "images/music notes.jpg"
   },
   {
     title: "Hearthstone Card Parser",
     description: "A program that parses a .csv file full of Hearthstone card data. It will also de-duplicate, sort and then nicely print out the cards.",
     technologies: ["C"],
     githubLink: "https://github.com/joshuachuah/hearthstone-parser",
-    // media: {
-    //   type: "video",
-    //   source: "video/source.MP4"
-    // },
-     image: "images/Hearthstone.jpg"
+    image: "images/Hearthstone.jpg"
   }
 ];
 
@@ -59,7 +43,7 @@ const Projects = () => {
   return (
     <section id="projects" className="projects-section">
       <div className="container">
-        <h2 className="section-title">Projects</h2>
+        <h2 className="section-title"> 👨🏻‍💻 Projects</h2>
         
         <div className="projects-grid" ref={projectsRef}>
           {projectsData.map((project, index) => (

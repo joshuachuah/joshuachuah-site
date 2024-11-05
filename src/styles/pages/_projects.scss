@@ -14,7 +14,7 @@
 
   .projects-grid {
     display: grid;
-    // Changed to show exactly 2 columns
+    // changed to show exactly 2 columns
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     padding: 2rem;
@@ -25,13 +25,13 @@
     }
 
     @include responsive(md) {
-      grid-template-columns: repeat(2, 1fr); // Keep 2 columns
+      grid-template-columns: repeat(2, 1fr); // keep 2 columns
       gap: 1rem;
       padding: 1rem;
     }
 
     @include responsive(sm) {
-      grid-template-columns: 1fr; // Single column only for very small devices
+      grid-template-columns: 1fr; // single column only for very small devices
       gap: 1rem;
     }
   }
@@ -177,6 +177,80 @@
         background: white;
         box-shadow: $shadow-md;
       }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .project-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-content {
+      h3 {
+        color: var(--text-primary);
+      }
+
+      p {
+        color: var(--text-secondary);
+      }
+    }
+
+    .tech-stack {
+      .tech-tag {
+        background: rgba(255, 255, 255, 0.08);
+        color: $accent-color;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.12);
+        }
+      }
+    }
+
+    .project-links {
+      a {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.12);
+          color: $accent-color;
+          transform: translateY(-2px);
+        }
+
+        svg {
+          transition: transform 0.3s ease;
+        }
+
+        &:hover svg {
+          transform: translateX(4px);
+        }
+      }
+    }
+
+    img {
+      border-radius: 12px 12px 0 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // section title styling
+  .section-title {
+    color: var(--text-primary);
+    
+    &::after {
+      background: $accent-color;
     }
   }
 }
