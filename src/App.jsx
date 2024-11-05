@@ -12,13 +12,22 @@ function App() {
   const elementRef = useScrollAnimation();
 
   useEffect(() => {
-    // Enable smooth scrolling
+    // enable smooth scrolling
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Optional: Clean up when component unmounts
+    // clean up when component unmounts
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
+  }, []);
+
+  useEffect(() => {
+    // check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.body.style.backgroundColor = '#121212';
+    }
   }, []);
 
   return (
