@@ -8,11 +8,9 @@ const Journey = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, index) => {
-          // Remove 'show' class when element is not intersecting
           if (!entry.isIntersecting) {
             entry.target.classList.remove('show');
           } else {
-            // Add 'show' class with delay when intersecting
             setTimeout(() => {
               entry.target.classList.add('show');
             }, index * 300);
@@ -21,7 +19,6 @@ const Journey = () => {
       },
       { 
         threshold: 0.2,
-        // Add root margin to trigger slightly before element comes into view
         rootMargin: '50px' 
       }
     );
@@ -76,7 +73,7 @@ const Journey = () => {
     <section id="journey" className="journey-section">
       <div className="container">
         <h2 className="journey-title">
-          ✨ About Me
+          ✨ About Me 
         </h2>
         
         <div className="timeline">
