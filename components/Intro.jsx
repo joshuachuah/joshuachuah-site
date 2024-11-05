@@ -30,7 +30,7 @@ const Intro = () => {
           <div className="intro-grid">
             <div className="profile-image">
               <img 
-                src="images/78AEBCCD-6F8E-49AA-AFF3-F484F690792E.jpg" 
+                src="images/profile picture.jpg" 
                 alt="Joshua's profile picture" 
                 className="profile-pic"
               />

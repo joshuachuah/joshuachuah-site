@@ -49,20 +49,7 @@ const Projects = () => {
           {projectsData.map((project, index) => (
             <div key={index} className="project-card">
               <div className="project-image">
-                {project.media.type === 'video' ? (
-                  <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    className="project-video"
-                  >
-                    <source src={project.media.source} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <img src={project.media.source} alt={project.title} />
-                )}
+                <img src={project.image} alt={project.title} />
                 <div className="project-links">
                   {project.githubLink && (
                     <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
