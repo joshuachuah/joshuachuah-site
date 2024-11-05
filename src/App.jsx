@@ -6,20 +6,41 @@ import Journey from '../components/Journey';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import Footer from '../components/Footer'
 import Contact from '../components/Contact';
-import './styles.css'; // Your existing CSS file
+import { useEffect } from 'react';
 
 function App() {
-  useScrollAnimation(); // Custom hook for scroll animations
+  const elementRef = useScrollAnimation();
+
+  useEffect(() => {
+    // enable smooth scrolling
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // clean up when component unmounts
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
+  }, []);
+
+  useEffect(() => {
+    // check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.body.style.backgroundColor = '#121212';
+    }
+  }, []);
 
   return (
     <div className="App">
       <Navbar />
+      <div ref={elementRef} className="scroll-animation">
       <Intro />
       <Journey />
       <Skills />
       <Projects />
       <Contact />
       <Footer />
+    </div>
     </div>
   );
 }

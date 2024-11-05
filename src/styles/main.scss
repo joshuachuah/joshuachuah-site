@@ -1,0 +1,101 @@
+// Abstracts
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// Base
+@use 'base/reset';
+@use 'base/animations';
+
+// Layout
+@use 'layout/app'; 
+@use 'layout/grid';
+@use 'layout/header';
+@use 'layout/footer';
+
+// Components
+@use 'components/navbar';
+@use 'components/skills';
+@use 'components/timeline';
+@use 'components/theme.toggle';
+
+// Pages
+@use 'pages/home';
+@use 'pages/projects';
+@use 'pages/contact';
+
+@use 'sass:color';
+
+// Flexbox
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  @mixin flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  // Container
+  @mixin container {
+    width: 90%;
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+  
+  // Glass Effect
+  @mixin glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  // Responsive Design
+  @mixin responsive($breakpoint) {
+    @if $breakpoint == sm {
+      @media (max-width: $breakpoint-sm) { @content; }
+    } @else if $breakpoint == md {
+      @media (max-width: $breakpoint-md) { @content; }
+    } @else if $breakpoint == lg {
+      @media (max-width: $breakpoint-lg) { @content; }
+    } @else if $breakpoint == xl {
+      @media (max-width: $breakpoint-xl) { @content; }
+    }
+  }
+  
+  // Hover Effect
+  @mixin hover-lift {
+    transition: $transition-base;
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: $shadow-md;
+    }
+  }
+  
+  // Typography
+  @mixin heading-1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: $text-color;
+  }
+  
+  @mixin heading-2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  // Gradient Text
+  @mixin gradient-text {
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }

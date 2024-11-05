@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const projectsData = [
   {
@@ -10,53 +11,43 @@ const projectsData = [
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     githubLink: "https://github.com/joshuachuah/unofficial-website",
     // liveLink: "https://gidle-website.com",
-    media: {
-      type: "video",
-      source: "images/le-sserafim-chaewon_wJwUjuKr_54_clip-1.MP4"
-    }
+    image: "images/GIDLE.JPG"
   },
   {
     title: "NBA Predictor App",
     description: "Developed an app for analyzing NBA datasets to predict player performance using Python.",
     technologies: ["Python", "Pandas", "Scikit-learn", "Django"],
     githubLink: "https://github.com/joshuachuah/StatsPicksNBA",
-    media: {
-      type: "video",
-      source: "images/video0-2.MP4"
-    }
+    image: "images/NBA Logo.png"
   },
   {
     title: "Broken Song",
     description: "A program that traverses through a directory tree looking for pieces of an mp3.",
     technologies: ["C"],
     githubLink: "https://github.com/joshuachuah/Broken-Song",
-    media: {
-      type: "video",
-      source: "images/eunchae spread 2.MP4"
-    }
+    image: "images/music notes.jpg"
   },
   {
     title: "Hearthstone Card Parser",
     description: "A program that parses a .csv file full of Hearthstone card data. It will also de-duplicate, sort and then nicely print out the cards.",
     technologies: ["C"],
     githubLink: "https://github.com/joshuachuah/hearthstone-parser",
-    media: {
-      type: "video",
-      source: "images/Sullyoon cameltoe 2.MP4"
-    }
+    image: "images/Hearthstone.jpg"
   }
 ];
 
 
 const Projects = () => {
+  const projectsRef = useScrollAnimation();
+
   return (
     <section id="projects" className="projects-section">
       <div className="container">
-        <h2 className="section-title">Projects</h2>
+        <h2 className="section-title"> 👨🏻‍💻 Projects</h2>
         
-        <div className="projects-grid">
+        <div className="projects-grid" ref={projectsRef}>
           {projectsData.map((project, index) => (
-            <div key={index} className="project-card scroll-animation">
+            <div key={index} className="project-card">
               <div className="project-image">
                 {project.media.type === 'video' ? (
                   <video 

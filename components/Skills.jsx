@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShieldHalved,faBug,faChartLine,} from '@fortawesome/free-solid-svg-icons';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 import 'devicon/devicon.min.css';
-
-import { 
-  faShieldHalved,
-  faBug,
-  faChartLine,
-} from '@fortawesome/free-solid-svg-icons';
 
 const skillsData = [
   {
@@ -91,8 +87,8 @@ const skillsData = [
   {
     icon: 'devicon-docker-plain colored',
     name: 'Docker',
-    color: '#00084D',
-    bgColor: 'rgba(36, 150, 237, 0.08)',
+    color: '#2496ED',
+    bgColor: 'rgba(36, 150, 237, 0.1)',
     category: 'Tools',
     isDevicon: true
   },
@@ -153,74 +149,60 @@ const skillsData = [
 ];
 
 
+
 const Skills = () => {
-  const [hoveredSkill, setHoveredSkill] = useState(null);
-  const totalSkills = skillsData.length;
-  
-  const calculatePosition = (index) => {
-    const angle = (360 / totalSkills) * index;
-    return {
-      '--skill-bg': skillsData[index].bgColor,
-      '--skill-color': skillsData[index].color,
-      transform: `rotate(${angle}deg) translateX(250px)`,
-    };
-  };
+  const skillsRef = useScrollAnimation();
 
   return (
     <section id="skills" className="skills-section">
-      <div className="container">
-        <h2 className="section-title">Skills & Technologies</h2>
+      <div className="container skills-container">
+        <h2 className="section-title">🛠️ Skills & Technologies</h2>
         
-        <div className="skills-orbit-container">
-          <div className="center-skill" 
-               style={{
-                 background: hoveredSkill !== null ? 
-                   skillsData[hoveredSkill].bgColor : 
-                   'transparent'
-               }}>
-            {hoveredSkill !== null && (
-              <div className="center-content">
-                {skillsData[hoveredSkill].isDevicon ? (
-                  <i className={skillsData[hoveredSkill].icon} style={{ fontSize: '2.5rem' }}></i>
-                ) : (
-                  <FontAwesomeIcon 
-                    icon={skillsData[hoveredSkill].icon}
-                    className="center-icon"
-                    style={{ color: skillsData[hoveredSkill].color }}
-                  />
-                )}
-                <span className="center-skill-name" style={{ color: skillsData[hoveredSkill].color }}>
-                  {skillsData[hoveredSkill].name}
-                </span>
-              </div>
-            )}
-          </div>
-
-          <div className="orbit-path">
+        <div className="skills-content scroll-animation" ref={skillsRef}>
+          <div className="skills-grid">
             {skillsData.map((skill, index) => (
-              <div
-                key={index}
-                className="skill-tag"
-                style={calculatePosition(index)}
-                onMouseEnter={() => setHoveredSkill(index)}
-                onMouseLeave={() => setHoveredSkill(null)}
+              <div 
+                key={index} 
+                className="skill-item"
+                style={{
+                  '--skill-color': skill.color,
+                  '--skill-bg': skill.bgColor,
+                  '--index': index
+                }}
               >
-                <div className="skill-content">
-                  {skill.isDevicon ? (
-                    <i className={skill.icon} style={{ fontSize: '1.5rem' }}></i>
-                  ) : (
-                    <FontAwesomeIcon 
-                      icon={skill.icon} 
-                      className="skill-icon"
-                      style={{ 
-                        color: skill.color,
-                        transform: `scale(${hoveredSkill === index ? 1.2 : 1})`
-                      }}
-                    />
-                  )}
-                </div>
+                {skill.isDevicon ? (
+                  <i className={`${skill.icon} skill-icon`}></i>
+                ) : (
+                  <FontAwesomeIcon icon={skill.icon} className="skill-icon" />
+                )}
+                <span className="skill-name">{skill.name}</span>
               </div>
             ))}
+          </div>
+
+          <div className="skills-visualization">
+            <div className="matrix-container">
+              {skillsData.map((skill, index) => (
+                <div 
+                  key={index}
+                  className="matrix-node"
+                  style={{
+                    '--index': index,
+                    '--color': skill.color,
+                    '--bg': skill.bgColor,
+                    '--col': index % 8,
+                    '--delay': `${index * -0.5}s`,
+                    '--duration': `${4 + Math.random() * 4}s`
+                  }}
+                >
+                  {skill.isDevicon ? (
+                    <i className={`${skill.icon} matrix-icon`}></i>
+                  ) : (
+                    <FontAwesomeIcon icon={skill.icon} className="matrix-icon" />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

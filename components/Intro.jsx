@@ -28,24 +28,39 @@ const Intro = () => {
       <section id="intro" className="intro-section">
         <div className="container">
           <div className="intro-grid">
-            <div className="intro-profile">
-              <div className="profile-text">
-                <div className="greeting-container">
-                  <h3>
-                    <span className={`greeting ${greetings[currentGreetingIndex].animation}`}>
-                      {greetings[currentGreetingIndex].text}
-                    </span>
-                  </h3>
-                  <h3>
-                    <span className="name-text">I'm <span className="highlight-name">Joshua</span></span>
-                  </h3>
-                </div>
-                <p>
-                  I'm a passionate Full-Stack Developer based in Kalamazoo, MI. 
-                </p>
-                <p>
+            <div className="profile-image">
+              <img 
+                src="images/78AEBCCD-6F8E-49AA-AFF3-F484F690792E.jpg" 
+                alt="Joshua's profile picture" 
+                className="profile-pic"
+              />
+            </div>
+            <div className="intro-content">
+              <div className="greeting-container">
+                <h3>
+                  <span className={`greeting ${greetings[currentGreetingIndex].animation}`}>
+                    {greetings[currentGreetingIndex].text}
+                  </span>
+                </h3>
+                <h3>
+                  <span className="name-text">I'm <span className="highlight-name">Joshua</span></span>
+                </h3>
+              </div>
+              <p>
+                I'm a passionate Full-Stack Developer based in Kalamazoo, MI. 
+              </p>
+              <p>
                 I love turning complex problems into simple, beautiful, and intuitive solutions.
-                </p>
+              </p>
+              <div className="button-container">
+                <button 
+                  className="contact-btn"
+                  onClick={() => {
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Contact Me
+                </button>
               </div>
             </div>
           </div>
