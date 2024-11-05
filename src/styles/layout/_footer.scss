@@ -1,7 +1,6 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-
 .footer {
     background-color: $bg-dark;
     color: $text-color;
@@ -12,6 +11,10 @@
       max-width: $container-width;
       margin: 0 auto;
       padding: 0 1rem;
+
+      @include responsive(sm) {
+        padding: 0 0.5rem;
+      }
     }
   
     &-content {
@@ -19,6 +22,10 @@
       flex-direction: column;
       align-items: center;
       gap: 1.5rem;
+
+      @include responsive(sm) {
+        gap: 1rem;
+      }
     }
   
     &-social {
@@ -30,11 +37,27 @@
         color: $text-color;
         font-size: 1.5rem;
         transition: $transition-base;
+        padding: 0.5rem;
   
         &:hover {
           color: $accent-color;
           transform: translateY(-3px);
         }
+
+        @include responsive(sm) {
+          font-size: 1.2rem;
+          padding: 0.3rem;
+        }
+      }
+
+      @include responsive(md) {
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      @include responsive(sm) {
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
       }
     }
   
@@ -45,18 +68,47 @@
   
       p {
         margin: 0.5rem 0;
-      }
-    }
-  
-    @include responsive(md) {
-      padding: 1.5rem 0;
-  
-      &-social {
-        gap: 1rem;
-  
-        a {
-          font-size: 1.25rem;
+
+        @include responsive(sm) {
+          margin: 0.3rem 0;
+          font-size: 0.8rem;
         }
       }
+
+      @include responsive(md) {
+        font-size: 0.85rem;
+      }
+
+      @include responsive(sm) {
+        font-size: 0.75rem;
+        max-width: 90%;
+        margin: 0 auto;
+      }
+    }
+  
+    @include responsive(lg) {
+      padding: 1.75rem 0;
+    }
+
+    @include responsive(md) {
+      padding: 1.5rem 0;
+    }
+
+    @include responsive(sm) {
+      padding: 1rem 0;
     }
   }
+
+  // Add touch device optimization
+  @media (hover: none) {
+  .footer-social a {
+    &:hover {
+      transform: none;
+    }
+    
+    &:active {
+      color: $accent-color;
+      transform: scale(0.95);
+    }
+  }
+}

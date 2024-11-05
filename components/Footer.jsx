@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
     return (
@@ -7,13 +8,17 @@ const Footer = () => {
         <div className="container footer-container">
           <div className="footer-content">
             <div className="footer-social">
+
+              <a href="mailto:jchuah07@gmail.com" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </a>
               <a href="https://github.com/joshuachuah" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faGithub} />
               </a>
               <a href="https://www.linkedin.com/in/joshua-chuah00/" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
-              {/* Add other social links as needed */}
+              {/* add social links here if needed */}
             </div>
             <div className="footer-text">
               <p>© {new Date().getFullYear()} Joshua Chuah. All rights reserved.</p>
