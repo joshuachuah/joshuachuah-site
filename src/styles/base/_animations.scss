@@ -1,116 +1,116 @@
 @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-  }
-  
-  @keyframes bounceIn {
-    0% { transform: scale(0.3); opacity: 0; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  
-  @keyframes flipIn {
-    0% { transform: rotateX(90deg); opacity: 0; }
-    100% { transform: rotateX(0deg); opacity: 1; }
-  }
-  
-  @keyframes slideAndFade {
-    0% { transform: translateX(-20px); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-  }
-  
-  @keyframes popUp {
-    0% { transform: scale(0); opacity: 0; }
-    80% { transform: scale(1.1); }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  
-  @keyframes rotateIn {
-    0% { transform: rotate(-180deg) scale(0); opacity: 0; }
-    100% { transform: rotate(0) scale(1); opacity: 1; }
-  }
-  
-  @keyframes wave {
-    0%, 100% { transform: translateY(0); }
-    25% { transform: translateY(-10px) rotate(5deg); }
-    75% { transform: translateY(10px) rotate(-5deg); }
-  }
-  
-  @keyframes rubberBand {
-    0% { transform: scale3d(1, 1, 1); }
-    30% { transform: scale3d(1.25, 0.75, 1); }
-    40% { transform: scale3d(0.75, 1.25, 1); }
-    50% { transform: scale3d(1.15, 0.85, 1); }
-    65% { transform: scale3d(0.95, 1.05, 1); }
-    75% { transform: scale3d(1.05, 0.95, 1); }
-    100% { transform: scale3d(1, 1, 1); }
-  }
-  
-  @keyframes swing {
-    20% { transform: rotate3d(0, 0, 1, 15deg); }
-    40% { transform: rotate3d(0, 0, 1, -10deg); }
-    60% { transform: rotate3d(0, 0, 1, 5deg); }
-    80% { transform: rotate3d(0, 0, 1, -5deg); }
-    100% { transform: rotate3d(0, 0, 1, 0deg); }
-  }
-  
-  @keyframes matrixRain {
-    0% {
-      transform: translateY(-150%) translateZ(0) rotate(0deg);
-      opacity: 0;
-    }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% {
-      transform: translateY(150%) translateZ(100px) rotate(360deg);
-      opacity: 0;
-    }
-  }
-  
-  // Hello animation for multiple languages
-  @keyframes textChange {
-    0%, 16.667% { transform: translateY(0); }
-    33.333%, 50% { transform: translateY(-25%); }
-    66.667%, 83.333% { transform: translateY(-50%); }
-    100% { transform: translateY(-75%); }
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  .bounceIn {
-    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes flipIn {
+  0% { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+@keyframes slideAndFade {
+  0% { transform: translateX(-20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes popUp {
+  0% { transform: scale(0); opacity: 0; }
+  80% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rotateIn {
+  0% { transform: rotate(-180deg) scale(0); opacity: 0; }
+  100% { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-10px) rotate(5deg); }
+  75% { transform: translateY(10px) rotate(-5deg); }
+}
+
+@keyframes rubberBand {
+  0% { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(0.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, 0.95, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+}
+
+@keyframes swing {
+  20% { transform: rotate3d(0, 0, 1, 15deg); }
+  40% { transform: rotate3d(0, 0, 1, -10deg); }
+  60% { transform: rotate3d(0, 0, 1, 5deg); }
+  80% { transform: rotate3d(0, 0, 1, -5deg); }
+  100% { transform: rotate3d(0, 0, 1, 0deg); }
+}
+
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-150%) translateZ(0) rotate(0deg);
+    opacity: 0;
   }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(150%) translateZ(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
   
-  .flipIn {
-    animation: flipIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  
-  .slideAndFade {
-    animation: slideAndFade 0.5s ease-out;
-  }
-  
-  .popUp {
-    animation: popUp 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-  
-  .rotateIn {
-    animation: rotateIn 0.6s ease-out;
-  }
-  
-  .wave {
-    animation: wave 0.8s ease-in-out;
-  }
-  
-  .rubberBand {
-    animation: rubberBand 0.8s cubic-bezier(.25, .46, .45, .94);
-  }
-  
-  .swing {
-    animation: swing 1s ease-in-out;
-    transform-origin: top center;
-  }
+// Hello animation for multiple languages
+@keyframes textChange {
+  0%, 16.667% { transform: translateY(0); }
+  33.333%, 50% { transform: translateY(-25%); }
+  66.667%, 83.333% { transform: translateY(-50%); }
+  100% { transform: translateY(-75%); }
+}
+
+.bounceIn {
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.flipIn {
+  animation: flipIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.slideAndFade {
+  animation: slideAndFade 0.5s ease-out;
+}
+
+.popUp {
+  animation: popUp 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.rotateIn {
+  animation: rotateIn 0.6s ease-out;
+}
+
+.wave {
+  animation: wave 0.8s ease-in-out;
+}
+
+.rubberBand {
+  animation: rubberBand 0.8s cubic-bezier(.25, .46, .45, .94);
+}
+
+.swing {
+  animation: swing 1s ease-in-out;
+  transform-origin: top center;
+}
