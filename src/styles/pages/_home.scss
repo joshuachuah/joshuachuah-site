@@ -9,7 +9,7 @@
   background-color: $bg-light;
 
   @include responsive(md) {
-    padding: 60px 0; // Reduced padding for mobile
+    padding: 60px 0; // reduced padding for mobile
   }
 
   .intro-grid {
@@ -161,12 +161,12 @@
     padding: 12px 28px;
     background: $gradient-primary;
     color: white;
-    border: none;
+    border: 2px solid transparent;;
     border-radius: 25px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, color 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
 
@@ -174,16 +174,18 @@
       padding: 10px 24px;
       font-size: 0.9rem;
     }
-  }
-  
-  .contact-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(132, 94, 194, 0.4);
-    background: $gradient-primary;
-  }
-  
-  .contact-btn:active {
-    transform: translateY(-1px);
+
+    &:hover{
+      background: transparent;
+      border: 2px solid #6c5ce7; // border becomes visible
+      color: #6c5ce7; // text color changes to match original button color
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
+    }
+
+    &:active{
+      transform: translateY(-1px);
+    }
   }
 
   .intro-content {
