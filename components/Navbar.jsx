@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import Toggle from './Toggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme === 'dark';
+    }
+    return false;
+  });
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -25,9 +24,25 @@ const Navbar = () => {
     }
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // only update theme when component mounts and when theme changes
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  const toggleTheme = () => {
+    setIsDark(prev => !prev);
   };
+
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -38,18 +53,24 @@ const Navbar = () => {
           </div>
         </div>
 
-        
-        <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
-        </div>
+        <div className="nav-right">
+          <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+            <li onClick={() => scrollToSection('intro')}>Home</li>
+            <li onClick={() => scrollToSection('journey')}>About</li>
+            <li onClick={() => scrollToSection('skills')}>Skills</li>
+            <li onClick={() => scrollToSection('projects')}>Projects</li>
+            <li onClick={() => scrollToSection('contact')}>Contact</li>
+          </ul>
 
-        <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <li onClick={() => scrollToSection('intro')}>Home</li>
-          <li onClick={() => scrollToSection('journey')}>About</li>
-          <li onClick={() => scrollToSection('skills')}>Skills</li>
-          <li onClick={() => scrollToSection('projects')}>Projects</li>
-          <li onClick={() => scrollToSection('contact')}>Contact</li>
-        </ul>
+        
+          <Toggle isDark={isDark} toggleTheme={toggleTheme} />
+
+        
+
+          <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+          </div>
+        </div>
       </div>
     </nav>
   );
