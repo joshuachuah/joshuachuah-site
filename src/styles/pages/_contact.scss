@@ -1,5 +1,6 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
+@use 'sass:color';
 
 
 .contact-section {
@@ -35,7 +36,7 @@
 }
 
 .contact-section {
-  padding-top: 20px !important; /* Reduced top padding */
+  padding-top: 20px !important; /* reduced top padding */
 }
 
 .contact-title {
@@ -44,7 +45,7 @@
   font-size: 2.5rem;
 }
 .contact-wrapper {
-  padding-top: 20px; /* Add some space between title and content */
+  padding-top: 20px; /* add some space between title and content */
 }
 .form-row {
   display: flex;
@@ -54,7 +55,7 @@
 
 .form-group.half {
   flex: 1;
-  min-width: 0; /* Prevents flex items from overflowing */
+  min-width: 0; /* prevents flex items from overflowing */
 }
 
 .form-label {
@@ -97,29 +98,28 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+
+  &:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+  svg{
+    transition: transform 0.3s ease;
+  }
+  &:hover svg{
+    transform: translateX(4px);
+  }
 }
 
-.submit-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
-}
-
-.submit-button svg {
-  transition: transform 0.3s ease;
-}
-
-.submit-button:hover svg {
-  transform: translateX(4px);
-}
-
-
-/* Add to your existing CSS */
 .contact-wrapper {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 4rem;
-max-width: 1200px;
-margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .contact-info {
@@ -130,34 +130,35 @@ padding: 2rem;
 }
 
 .contact-info h3 {
-font-size: 2rem;
-background: linear-gradient(45deg, #845EC2, #D65DB1);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-margin-bottom: 1rem;
+  font-size: 2rem;
+  background: linear-gradient(45deg, #845EC2, #D65DB1);
+  -webkit-background-clip: text; 
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
 }
 
 .contact-description {
-font-size: 1.1rem;
-line-height: 1.6;
-color: #666;
-margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 2rem;
 }
 
 .contact-socials {
-display: flex;
-gap: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .social-link {
-font-size: 1.5rem;
-color: #845EC2;
-transition: all 0.3s ease;
+  font-size: 1.5rem;
+  color: #845EC2;
+  transition: all 0.3s ease;
 }
 
 .social-link:hover {
-color: #D65DB1;
-transform: translateY(-3px);
+  color: #D65DB1;
+  transform: translateY(-3px);
 }
 
 /* Responsive Design */
@@ -191,13 +192,13 @@ transform: translateY(-3px);
   }
 
   .contact-content {
-    margin-top: 60px; // Increased for smaller screens
+    margin-top: 60px; // increased for smaller screens
     padding: 0.5rem;
     justify-content: center;
   }
 
   .contact-title {
-    margin-top: 80px; // Increased for smaller screens
+    margin-top: 80px; // increased for smaller screens
     margin-bottom: 30px;
   }
 }
@@ -213,22 +214,116 @@ transform: translateY(-3px);
   }
 
   .contact-content {
-    margin-top: 100px; // Even more space for very small screens
+    margin-top: 100px; // more space for very small screens
 
   }
 
   .contact-title {
-    margin-top: 100px; // Even more space for very small screens
+    margin-top: 100px; // more space for very small screens
     margin-bottom: 25px;
   }
 
   .form-input {
-    padding: 0.6rem; // Slightly smaller padding for inputs
+    padding: 0.6rem; // smaller padding for inputs
   }
 
   .contact-description {
-    font-size: 0.95rem; // Slightly smaller text
+    font-size: 0.95rem; //  smaller text
   }
 
   
+}
+
+[data-theme='dark'] {
+  .contact-form {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+
+    label {
+      color: var(--text-primary);
+    }
+
+    input, 
+    textarea {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      
+      &:focus {
+        border-color: $accent-color;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    button {
+      background: $accent-color;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: color.adjust($accent-color, $lightness: 5%);
+        transform: translateY(-2px);
+      }
+
+      svg {
+        transition: transform 0.3s ease;
+      }
+
+      &:hover svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  // style the social links in dark mode
+  .social-links, .contact-socials {
+    a, .social-link {
+      color: linear-gradient(135deg, #6c5ce7 0%, #a178df 100%);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      
+      &:hover {
+        color: #d65db1;
+        transform: translateY(-3px);
+        filter: drop-shadow(0 0 8px rgba(161, 120, 223, 0.5));
+        
+        &::after {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      
+      // add a subtle glow effect on hover
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(161, 120, 223, 0.2) 0%, transparent 70%);
+        top: 0;
+        left: 0;
+        transform: scale(0.8);
+        opacity: 0;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+    }
+  }
 }

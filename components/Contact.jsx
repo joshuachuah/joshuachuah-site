@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faPaperPlane,
-  faEnvelope 
-} from '@fortawesome/free-solid-svg-icons';
-import { 
-  faGithub, 
-  faLinkedin, 
-  faInstagram 
-} from '@fortawesome/free-brands-svg-icons';
+import { faPaperPlane,faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin, } from '@fortawesome/free-brands-svg-icons';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const Contact = () => {
@@ -45,7 +38,7 @@ const Contact = () => {
           </h2>
 
           <div className="contact-wrapper">
-            {/* Left Section */}
+            {/* left */}
             <div className="contact-info" ref={infoRef}>
               <div className="contact-description">
                 <p>Thank you for your interest in getting in touch</p>
@@ -58,7 +51,7 @@ const Contact = () => {
               </div>
               
               <div className="contact-socials">
-                <a href="mailto:your.email@example.com" className="social-link">
+                <a href="mailto:jchuah07@gmail.com" className="social-link">
                   <FontAwesomeIcon icon={faEnvelope} size="2x" />
                 </a>
                 <a href="https://github.com/joshuachuah" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -67,13 +60,10 @@ const Contact = () => {
                 <a href="https://www.linkedin.com/in/joshua-chuah00/" target="_blank" rel="noopener noreferrer" className="social-link">
                   <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </a>
-                <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
-                  <FontAwesomeIcon icon={faInstagram} size="2x" />
-                </a>
               </div>
             </div>
 
-            {/* Right Section (Form) */}
+            {/* right (form) */}
             <form onSubmit={handleSubmit} className="contact-form scroll-animation" ref={formRef}>
               <div className="form-row">
                 <div className="form-group half">
@@ -85,6 +75,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className="form-input"
+                    autoComplete='name'
                     required
                   />
                 </div>
@@ -98,6 +89,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="form-input"
+                    autoComplete='email'
                     required
                   />
                 </div>
