@@ -104,9 +104,9 @@
       box-shadow: $shadow-sm;
       
       @include responsive(md) {
-        width: calc(50% - 1rem); // Make items take up half the width minus gap
-        min-width: 120px; // Set minimum width
-        height: 40px;
+        width: calc(50% - 1rem); // make items take up half the width minus gap
+        min-width: 200px; // set minimum width
+        height: 80px;
         padding: 0.5rem 1rem;
         margin-bottom: 0.5rem; 
       }
@@ -176,3 +176,134 @@
       }
     }
   }
+
+[data-theme='dark'] {
+  .skills-grid {
+    gap: 2rem;
+  }
+
+  .skill-item {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    // specific color schemes for different technologies
+    &.python {
+      background: rgba(255, 223, 89, 0.1);
+      .skill-icon { color: #FFE873; }
+    }
+
+    &.c {
+      background: rgba(86, 156, 214, 0.1);
+      .skill-icon { color: #569CD6; }
+    }
+
+    &.html {
+      background: rgba(241, 101, 41, 0.1);
+      .skill-icon { color: #F16529; }
+    }
+
+    &.css {
+      background: rgba(41, 101, 241, 0.1);
+      .skill-icon { color: #2965F1; }
+    }
+
+    &.javascript {
+      background: rgba(247, 223, 30, 0.1);
+      .skill-icon { color: #F7DF1E; }
+    }
+
+    &.sql {
+      background: rgba(0, 122, 204, 0.1);
+      .skill-icon { color: #007ACC; }
+    }
+
+    &.csharp {
+      background: rgba(147, 51, 184, 0.1);
+      .skill-icon { color: #9333B8; }
+    }
+
+    &.r {
+      background: rgba(75, 139, 190, 0.1);
+      .skill-icon { color: #4B8BBE; }
+    }
+
+    &.react {
+      background: rgba(97, 219, 251, 0.1);
+      .skill-icon { color: #61DBFB; }
+    }
+
+    &.linux {
+      background: rgba(255, 255, 255, 0.1);
+      .skill-icon { color: #FFF; }
+    }
+
+    &.docker {
+      background: rgba(13, 150, 237, 0.1);
+      .skill-icon { color: #0D96ED; }
+    }
+
+    &.scikit {
+      background: rgba(255, 140, 0, 0.1);
+      .skill-icon { color: #FF8C00; }
+    }
+
+    &.jira {
+      background: rgba(0, 82, 204, 0.1);
+      .skill-icon { color: #0052CC; }
+    }
+
+    &.bitbucket {
+      background: rgba(37, 99, 235, 0.1);
+      .skill-icon { color: #2563EB; }
+    }
+
+    &.bootstrap {
+      background: rgba(134, 79, 241, 0.1);
+      .skill-icon { color: #864FF1; }
+    }
+
+    &.burp {
+      background: rgba(255, 69, 0, 0.1);
+      .skill-icon { color: #FF4500; }
+    }
+
+    &.metasploit {
+      background: rgba(102, 102, 102, 0.1);
+      .skill-icon { color: #666; }
+    }
+
+    &.unity {
+      background: rgba(255, 255, 255, 0.1);
+      .skill-icon { color: #FFF; }
+    }
+
+    .skill-icon {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-name {
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    &:hover .skill-icon {
+      transform: scale(1.1);
+    }
+  }
+}

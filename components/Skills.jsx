@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import 'devicon/devicon.min.css';
-
-import { 
-  faShieldHalved,
-  faBug,
-  faChartLine,
-} from '@fortawesome/free-solid-svg-icons';
+import { faShieldHalved,faBug,faChartLine,} from '@fortawesome/free-solid-svg-icons';
 import useScrollAnimation from '../hooks/useScrollAnimation';
+import 'devicon/devicon.min.css';
 
 const skillsData = [
   {
@@ -153,43 +148,15 @@ const skillsData = [
   }
 ];
 
-const learningData = [
-  { 
-    topic: 'Machine Learning', 
-    progress: 65,
-    description: 'Deep learning, Neural Networks, TensorFlow',
-    color: '#6c5ce7'
-  },
-  { 
-    topic: 'Cloud Architecture', 
-    progress: 80,
-    description: 'AWS, Azure, Cloud Infrastructure',
-    color: '#00cec9'
-  },
-  { 
-    topic: 'Cybersecurity', 
-    progress: 45,
-    description: 'Penetration Testing, Network Security',
-    color: '#fd79a8'
-  }
-];
+
 
 const Skills = () => {
-
   const skillsRef = useScrollAnimation();
-  // Organize skills by category
-  const skillsByCategory = skillsData.reduce((acc, skill) => {
-    if (!acc[skill.category]) {
-      acc[skill.category] = [];
-    }
-    acc[skill.category].push(skill);
-    return acc;
-  }, {});
 
   return (
     <section id="skills" className="skills-section">
       <div className="container skills-container">
-        <h2 className="section-title">Skills & Technologies</h2>
+        <h2 className="section-title">🛠️ Skills & Technologies</h2>
         
         <div className="skills-content scroll-animation" ref={skillsRef}>
           <div className="skills-grid">
@@ -204,17 +171,15 @@ const Skills = () => {
                 }}
               >
                 {skill.isDevicon ? (
-                  <i className={skill.icon}></i>
+                  <i className={`${skill.icon} skill-icon`}></i>
                 ) : (
-                  <FontAwesomeIcon icon={skill.icon} />
+                  <FontAwesomeIcon icon={skill.icon} className="skill-icon" />
                 )}
                 <span className="skill-name">{skill.name}</span>
               </div>
             ))}
           </div>
 
-
-          {/* Right side - Matrix Rain animation */}
           <div className="skills-visualization">
             <div className="matrix-container">
               {skillsData.map((skill, index) => (
@@ -231,9 +196,9 @@ const Skills = () => {
                   }}
                 >
                   {skill.isDevicon ? (
-                    <i className={skill.icon}></i>
+                    <i className={`${skill.icon} matrix-icon`}></i>
                   ) : (
-                    <FontAwesomeIcon icon={skill.icon} />
+                    <FontAwesomeIcon icon={skill.icon} className="matrix-icon" />
                   )}
                 </div>
               ))}
