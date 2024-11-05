@@ -16,11 +16,14 @@
 @use 'components/navbar';
 @use 'components/skills';
 @use 'components/timeline';
+@use 'components/theme.toggle';
 
 // Pages
 @use 'pages/home';
 @use 'pages/projects';
 @use 'pages/contact';
+
+@use 'sass:color';
 
 // Flexbox
 @mixin flex-center {
