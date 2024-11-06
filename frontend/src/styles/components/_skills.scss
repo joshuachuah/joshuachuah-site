@@ -49,10 +49,12 @@
       }
 
       .skills-grid {
-        padding: 0.5rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 0.5rem;
+        padding: 0.25rem;
+        grid-template-columns: repeat(2, 1fr); // Force 2 columns
+        gap: 0.25rem;
+        height: auto;
+        max-height: 400px; // Limit height for scrolling
+        overflow-y: auto;
       }
 
       .skill-item {

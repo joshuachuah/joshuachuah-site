@@ -163,6 +163,47 @@
       }
     }
   }
+
+  @include responsive(sm) {
+    height: 45px;
+  
+    .nav-content {
+      padding: 0 0.5rem;
+    }
+  
+    .nav-logo {
+      .logo-circle {
+        width: 30px;
+        height: 30px;
+      }
+  
+      .logo-text {
+        font-size: 0.9rem;
+      }
+    }
+  
+    .nav-links {
+      top: 45px;
+      padding: 1rem 0.5rem;
+      max-height: calc(100vh - 45px);
+      gap: 0.5rem;
+  
+      li {
+        a {
+          padding: 0.5rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  
+    .nav-toggle {
+      font-size: 1.2rem;
+    }
+  
+    .nav-right {
+      gap: 1rem;
+    }
+  }
 }
 
 [data-theme='dark'] {
