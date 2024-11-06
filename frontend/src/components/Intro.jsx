@@ -30,13 +30,13 @@ const Intro = () => {
         <div className="container">
           <div className="intro-grid">
             <div className="profile-image">
-              <CloudinaryImage 
-                publicId="profile-picture_du9nci"  // Update with your Cloudinary image ID
-                alt="Joshua's profile picture"
-                width={500}
-                height={500}
-                className="profile-pic"
-              />
+            <CloudinaryImage 
+              publicId="profile-picture_du9nci"
+              alt="Joshua's profile picture"
+              width={500}
+              height={500}
+              className="profile-pic"
+            />
             </div>
             <div className="intro-content">
               <div className="greeting-container">
