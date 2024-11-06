@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ClaudinaryImage from '../components/ClaudinaryImage.jsx'
+import CloudinaryImage from '@/components/CloudinaryImage'
 
 const Intro = () => {
     const greetings = [
@@ -30,7 +30,7 @@ const Intro = () => {
         <div className="container">
           <div className="intro-grid">
             <div className="profile-image">
-              <ClaudinaryImage 
+              <CloudinaryImage 
                 publicId="profile-picture_du9nci"  // Update with your Cloudinary image ID
                 alt="Joshua's profile picture"
                 width={500}

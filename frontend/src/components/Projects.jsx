@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import useScrollAnimation from '../hooks/useScrollAnimation';
-import ClaudinaryImage from '../components/ClaudinaryImage.jsx'
+import CloudinaryImage from '@/components/CloudinaryImage'
 
 const projectsData = [
   {
@@ -58,7 +58,7 @@ const Projects = () => {
           {projectsData.map((project, index) => (
             <div key={index} className="project-card">
               <div className="project-image">
-                <ClaudinaryImage
+                <CloudinaryImage
                  src={project.image} 
                  alt={project.title}
                  />
