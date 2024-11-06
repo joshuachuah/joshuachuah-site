@@ -54,9 +54,8 @@ const Intro = () => {
               </p>
               <br></br>
               <p>
-              I love solving problems and finding ways to make things work better, simpler, and more intuitive.
-              I'm a team player who brings fresh energy and a problem-solving mindset to any group I’m part of. 
-              I’m eager to keep learning and make meaningful contributions, whether it’s tackling challenges together or supporting my team to reach shared goals.
+              I’m a team player who loves solving problems and making things work better and simpler.
+              I bring fresh energy, a problem-solving mindset, and a commitment to learning and contributing meaningfully to any team I’m part of.
               </p>
               <div className="button-container">
                 <button 
