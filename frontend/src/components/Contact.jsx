@@ -6,7 +6,7 @@ import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const API_URL = process.env.NODE_ENV === 'development'
 ? 'http://localhost:5001/api'
-: 'https://your-production-url.com/api';
+: 'https://portfolio-website-rkkl.onrender.com./api';
 
 
 const Contact = () => {
