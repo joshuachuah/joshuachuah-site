@@ -33,6 +33,3 @@ build
 # OS files
 .DS_Store
 Thumbs.db
-
-# Images folder
-frontend/src/assets/images/
