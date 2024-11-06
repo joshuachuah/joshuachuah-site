@@ -61,6 +61,9 @@ const Projects = () => {
                 <CloudinaryImage 
                   publicId={project.publicId}
                   alt={project.alt}
+                  width={400}
+                  height={200}
+                  className="project-img"
                 />
                 <div className="project-links">
                   {project.githubLink && (
