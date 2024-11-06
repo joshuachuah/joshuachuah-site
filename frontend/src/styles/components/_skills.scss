@@ -3,10 +3,11 @@
 
 
 .skills-section {
-    min-height: 100vh;
+    min-height: calc(100vh - 45px); 
     padding: 4rem 0;
     background: $gradient-skills;
     position: relative;
+    margin-top: 45px;
 
     @include responsive(md){
       padding: 2rem 0;
@@ -44,6 +45,10 @@
     }
 
     @include responsive(sm) {
+      min-height: calc(100vh - 45px);
+      padding: 1rem 0;
+      overflow-y: auto;
+      
       .skills-container {
         padding: 0 1rem;
       }
