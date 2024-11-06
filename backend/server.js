@@ -2,14 +2,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const contactRoutes = require('./routes/contactRoutes');
 const errorHandler = require('./middleware/errorHandler');
-
-console.log('Environment variables loaded:', {
-    EMAIL_USER: process.env.EMAIL_USER,
-    PORT: process.env.PORT
-});
 
 const app = express();
 
@@ -27,12 +23,15 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// Routes
+// Serve static files from frontend build
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// API Routes
 app.use('/api', contactRoutes);
 
-// Basic health check route
-app.get('/', (req, res) => {
-  res.json({ message: 'Backend API is running' });
+// Serve frontend for all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 // Error handling
