@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   publicDir: 'public',
   root: path.resolve(__dirname),
-  assetsInclude: ['**/*.JPG', '**/*.jpg', '**/*.png', '**/*.jpeg'],
+  envDir: './',
   build: {
     outDir: 'dist',
     emptyOutDir: true,
