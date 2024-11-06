@@ -49,7 +49,7 @@ const Intro = () => {
                   <span className="name-text">I'm <span className="highlight-name">Joshua</span></span>
                 </h3>
               </div>
-              <p style="margin-bottom: 20px;">
+              <p>
                 I'm a passionate Full-Stack Developer based in Kalamazoo, MI. 
               </p>
               <p>
