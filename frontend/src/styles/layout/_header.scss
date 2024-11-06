@@ -1,0 +1,47 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+.header {
+    background-color: #A2D2DF;
+    color: $text-color;
+    text-align: center;
+    padding: 170px 0 100px 0;
+  
+    h1 {
+      @include heading-1;
+    }
+  
+    p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+  }
+  
+  .greeting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 10px;
+    margin-bottom: 20px;
+  
+    .greeting {
+      display: inline-block;
+      min-width: 100px;
+      text-align: center;
+      font-size: 3em;
+    }
+  
+    .name-text {
+      font-size: 4em;
+    }
+  
+    .highlight-name {
+      color: #64ffda;
+      font-weight: 700;
+      background: $gradient-primary;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
