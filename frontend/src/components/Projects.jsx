@@ -52,16 +52,18 @@ const Projects = () => {
   return (
     <section id="projects" className="projects-section">
       <div className="container">
-        <h2 className="section-title"> 👨🏻‍💻 Projects</h2>
+        <h2 className="section-title">👨🏻‍💻 Projects</h2>
         
         <div className="projects-grid" ref={projectsRef}>
           {projectsData.map((project, index) => (
             <div key={index} className="project-card">
               <div className="project-image">
-                <CloudinaryImage
-                 src={project.image} 
-                 alt={project.title}
-                 />
+                <CloudinaryImage 
+                  publicId={project.publicId}
+                  alt={project.alt}
+                  width={400}
+                  height={200}
+                />
                 <div className="project-links">
                   {project.githubLink && (
                     <a href={project.githubLink} target="_blank" rel="noopener noreferrer">

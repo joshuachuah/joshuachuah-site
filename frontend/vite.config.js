@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react()],
   publicDir: 'public',
   root: path.resolve(__dirname),
+  define: {
+    'process.env.VITE_CLOUDINARY_CLOUD_NAME': JSON.stringify(env.VITE_CLOUDINARY_CLOUD_NAME)
+  },
   envDir: './',
   build: {
     outDir: 'dist',
