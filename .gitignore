@@ -29,6 +29,7 @@ build
 *.sln
 *.sw?
 .DS_Store
+.env
 
 # OS files
 .DS_Store
