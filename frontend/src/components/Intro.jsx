@@ -53,7 +53,9 @@ const Intro = () => {
                 I'm a passionate Full-Stack Developer based in Kalamazoo, MI. 
               </p>
               <p>
-                I love turning complex problems into simple, beautiful, and intuitive solutions.
+              I love solving problems and figuring out ways to make things work better, simpler, and more intuitive.
+              I’m eager to bring fresh energy and my problem-solving mindset to a team where I can keep learning and contribute meaningfully.
+              I may be new, but I’m passionate and ready to take on challenges head-first. 
               </p>
               <div className="button-container">
                 <button 
