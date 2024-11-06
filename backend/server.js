@@ -15,7 +15,17 @@ console.log('Environment variables loaded:', {
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'https://joshuachuah.com',
+    'https://www.joshuachuah.com',
+    'https://portfolio-website-rkkl.onrender.com'
+  ],
+  methods: ['GET', 'POST'],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
