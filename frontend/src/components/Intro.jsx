@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CloudinaryImage from './CloudinaryImage';
+import CloudinaryImage from './CloudinaryImage.jsx';
 
 const Intro = () => {
     const greetings = [

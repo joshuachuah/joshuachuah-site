@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import useScrollAnimation from '../hooks/useScrollAnimation';
+import CloudinaryImage from './CloudinaryImage.jsx';
 
 const projectsData = [
   {
@@ -11,28 +12,36 @@ const projectsData = [
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     githubLink: "https://github.com/joshuachuah/unofficial-website",
     // liveLink: "https://gidle-website.com",
-    image: new URL('../assets/images/GIDLE.JPG', import.meta.url).href
+    // image: new URL('../assets/images/GIDLE.JPG', import.meta.url).href,
+    publicId: "GIDLE_ytg8ph",
+    alt: "GIDLE",
   },
   {
     title: "NBA Predictor App",
     description: "Developed an app for analyzing NBA datasets to predict player performance using Python.",
     technologies: ["Python", "Pandas", "Scikit-learn", "Django"],
     githubLink: "https://github.com/joshuachuah/StatsPicksNBA",
-    image: new URL('../assets/images/NBA-Logo.png', import.meta.url).href
+    // image: new URL('../assets/images/NBA-Logo.png', import.meta.url).href
+    publicId: "NBA-Logo_dhcp66",
+    alt: "NBA Logo",
   },
   {
     title: "Broken Song",
     description: "A program that traverses through a directory tree looking for pieces of an mp3.",
     technologies: ["C"],
     githubLink: "https://github.com/joshuachuah/Broken-Song",
-    image: new URL('../assets/images/music-notes.jpg', import.meta.url).href
+    // image: new URL('../assets/images/music-notes.jpg', import.meta.url).href
+    publicId: "music-notes_jlqtta",
+    alt: "music notes",
   },
   {
     title: "Hearthstone Card Parser",
     description: "A program that parses a .csv file full of Hearthstone card data. It will also de-duplicate, sort and then nicely print out the cards.",
     technologies: ["C"],
     githubLink: "https://github.com/joshuachuah/hearthstone-parser",
-    image: new URL('../assets/images/Hearthstone.jpg', import.meta.url).href
+    // image: new URL('../assets/images/Hearthstone.jpg', import.meta.url).href
+    publicId: "Hearthstone_xogxgk",
+    alt: "Hearthstone",
   }
 ];
 
@@ -49,7 +58,7 @@ const Projects = () => {
           {projectsData.map((project, index) => (
             <div key={index} className="project-card">
               <div className="project-image">
-                <img
+                <CloudinaryImage
                  src={project.image} 
                  alt={project.title}
                  />
