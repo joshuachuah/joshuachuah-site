@@ -32,11 +32,6 @@
         grid-template-columns: 1fr;
       }
 
-      @include responsive(mg) {
-        gap: 1rem;
-        margin-top: 1rem;
-      }
-
       @include responsive(md) {
         gap: 1rem;
         margin-top: 1rem;
@@ -77,8 +72,6 @@
       overflow-y: auto;
       
       @include responsive(md){
-        height: auto; // Remove fixed height
-        max-height: none; // Remove max-height constraint
         padding: 1rem;
         justify-content: center;
         gap: 0.75rem;
