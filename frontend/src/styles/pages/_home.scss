@@ -12,10 +12,14 @@
     padding: 60px 0; // reduced padding for mobile
   }
 
+  @include responsive(sm) {
+    padding: 0.5rem;
+  }
+
   .intro-grid {
     display: flex;
     align-items: center;
-    gap: 8rem;
+    gap: 4rem;
     max-width: $container-width;
     margin: 0 auto;
     padding: 2rem;
@@ -28,6 +32,11 @@
     @include responsive(md) {
       padding: 1rem;
       gap: 2rem;
+    }
+
+    @include responsive(sm) {
+      padding: 0.5rem;
+      gap: 1rem;
     }
   }
 

@@ -22,7 +22,7 @@
     position: relative;
     max-width: 2000px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 30px;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -165,7 +165,7 @@
   }
 
   @include responsive(sm) {
-    height: 45px;
+    height: 70px;
   
     .nav-content {
       padding: 0 0.5rem;
@@ -173,8 +173,8 @@
   
     .nav-logo {
       .logo-circle {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
       }
   
       .logo-text {
@@ -183,7 +183,7 @@
     }
   
     .nav-links {
-      top: 45px;
+      top: 69px;
       padding: 1rem 0.5rem;
       max-height: calc(100vh - 45px);
       gap: 0.5rem;

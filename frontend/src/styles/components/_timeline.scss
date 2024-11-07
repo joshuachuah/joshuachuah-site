@@ -3,11 +3,11 @@
 
 
 .journey-section {
-  min-height: calc(100vh - 45px); // Subtract navbar height
+  min-height: calc(100vh - 45px);
   padding: 2rem 0;
   background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
   position: relative;
-  margin-top: 45px; // Add navbar height as margin
+  margin-top: 45px;
   overflow: hidden;
 
   @media (max-width: 576px) {

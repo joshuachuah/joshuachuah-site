@@ -31,8 +31,6 @@ html {
 }
 
 * {
-  scrollbar-width: thin; // For Firefox
-  scrollbar-color: var(--text-secondary) var(--bg-secondary); // For Firefox
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -59,21 +57,16 @@ body {
   }
 }
 
-#root {
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: transparent;
-  padding-top: $navbar-height;
-}
+// #root {
+//   width: 100%;
+//   margin: 0 auto;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   background: transparent;
+//   padding-top: $navbar-height;
+// }
 
-@include responsive(sm) {
-  #root {
-    padding-top: 45px; // smaller navbar height
-  }
-}
 
 [data-theme='dark'] {
   // Sections background
