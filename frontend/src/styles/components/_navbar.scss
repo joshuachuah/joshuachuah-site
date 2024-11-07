@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: $navbar-height;
+  height: 70px;
   background: rgba(255, 255, 255, 0.2);
   transition: $transition-base;
   z-index: $z-navbar;
@@ -121,11 +121,11 @@
 
     .nav-links {
       position: fixed;
-      top: $navbar-height;
+      top: $navbar-heigh-sm;
       left: 0;
       right: 0;
       height: auto;
-      max-height: calc(100vh - #{$navbar-height});
+      max-height: calc(100vh - #{$navbar-height-sm});
       background: rgba(255, 255, 255, 0.95);
       flex-direction: column;
       align-items: center;
