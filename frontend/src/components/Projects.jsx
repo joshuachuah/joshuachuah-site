@@ -8,7 +8,7 @@ import CloudinaryImage from '@/components/CloudinaryImage'
 const projectsData = [
   {
     title: "Unofficial Website for G(I)-DLE",
-    description: "An unofficial website that I made for the K-Pop girl group G(I)-DLE.",
+    description: "Designed and developed a fully responsive unofficial website for the K-pop group G(I)-DLE, incorporating multimedia content and optimized for diverse device formats.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     githubLink: "https://github.com/joshuachuah/unofficial-website",
     // liveLink: "https://gidle-website.com",
