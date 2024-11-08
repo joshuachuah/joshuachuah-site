@@ -49,14 +49,17 @@ const Intro = () => {
                   <span className="name-text">I'm <span className="highlight-name">Joshua</span></span>
                 </h3>
               </div>
-              <p>
-                I'm a passionate Full-Stack Developer based in Kalamazoo, MI. 
-              </p>
-              <br></br>
-              <p>
-              I’m a team player who loves solving problems and making things work better and simpler.
-              I bring fresh energy, a problem-solving mindset, and a commitment to learning and contributing meaningfully to any team I’m part of.
-              </p>
+
+              <div className="about-me">
+                <p>
+                  I'm a passionate Full-Stack Developer based in Kalamazoo, MI. 
+                </p>
+                <br></br>
+                <p>
+                I’m a team player who loves solving problems and making things work better and simpler.
+                I bring fresh energy, a problem-solving mindset, and a commitment to learning and contributing meaningfully to any team I’m part&nbsp;of.
+                </p>
+              </div>
               <div className="button-container">
                 <button 
                   className="contact-btn"
