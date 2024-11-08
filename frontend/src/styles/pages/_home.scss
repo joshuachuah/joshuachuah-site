@@ -9,7 +9,7 @@
   background-color: $bg-light;
 
   @include responsive(md) {
-    padding: 60px 0; // reduced padding for mobile
+    padding: 60px 0; 
   }
 
   @include responsive(sm) {
@@ -218,6 +218,16 @@
     @include responsive(md) {
       justify-content: center;
       margin-top: 2rem;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .intro-section {
+    .about-me {
+      p {
+        color: white;
+      }
     }
   }
 }

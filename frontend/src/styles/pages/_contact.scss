@@ -123,10 +123,10 @@
 }
 
 .contact-info {
-display: flex;
-flex-direction: column;
-gap: 2rem;
-padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
 }
 
 .contact-info h3 {
@@ -323,6 +323,16 @@ padding: 2rem;
         opacity: 0;
         transition: all 0.3s ease;
         pointer-events: none;
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .contact-info {
+    .contact-description {
+      p {
+        color: white;
       }
     }
   }

@@ -142,16 +142,15 @@
     }
 
     .skill-name {
-      color: #333;
-      font-weight: 600;                      
-      font-size: 1.25rem;                    
+      color: #333;                    
+      font-size: 1.1rem;                    
 
       @include responsive(md) {
-        font-size: 1.1rem;                    
+        font-size: 1rem;                    
       }
 
       @include responsive(sm) {
-        font-size: 1rem;                      
+        font-size: 0.95rem;                      
       }
     }
 
