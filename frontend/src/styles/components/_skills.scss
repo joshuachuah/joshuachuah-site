@@ -66,16 +66,16 @@
     overflow-y: visible;
 
     @include responsive(sm) {
-      display: flex;
       justify-content: center;
       gap: 0.5rem;
       padding: 0.5rem;
       height: auto;                      
       overflow: visible;                 
+ 
     }
 
     @include responsive(md){
-      display: flex; 
+      display: flex; // Ensure consistency
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.75rem;
