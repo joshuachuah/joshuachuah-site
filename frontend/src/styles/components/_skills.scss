@@ -1,6 +1,7 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
+
 .skills-section {
   min-height: calc(100vh - $navbar-height); 
   padding: 4rem 0;
@@ -49,9 +50,11 @@
     min-height: calc(100vh - $navbar-height);
     padding: 1rem 0;
     
+    
     .skills-container {
       padding: 0 1rem;
     }
+
   }
 
   .skills-grid {
@@ -60,19 +63,23 @@
     gap: 1rem;
     padding: 2rem;
     width: 100%;
-    overflow-y: visible;
+    height: 600px;
+    overflow-y: auto;
 
     @include responsive(sm) {
+      display: flex;
       justify-content: center;
       gap: 0.5rem;
       padding: 0.5rem;
       height: auto;                      
       overflow: visible;                 
+ 
     }
     
     @include responsive(md){
-      display: flex; // Ensure consistency
-      flex-wrap: wrap;
+      
+      grid-template-columns: repeat(2, 1fr);
+      padding: 1rem;
       justify-content: center;
       gap: 0.75rem;
       overflow: visible;
@@ -91,237 +98,325 @@
       background: rgba($accent-color, 0.2);
       border-radius: 3px;
     }
+  }
 
-    .skill-item {
-      @include flex-center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 1.5rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      width: 150px;
-      height: 45px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      
+  .skill-item {
+    @include flex-center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 150px;
+    height: 45px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+    @include responsive(md) {
+      width: calc(50% - 1rem); 
+      min-width: 200px; 
+      height: 80px;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.5rem; 
+    }
+
+    @include responsive(sm) {
+      height: 60px;                      
+      padding: 0.75rem 1rem;       
+      font-size: 20px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+
+    i, svg {
+      font-size: 1.2rem;
+
       @include responsive(md) {
-        width: calc(50% - 1rem); 
-        min-width: 200px; 
-        height: 80px;
-        padding: 0.5rem 1rem;
-        margin-bottom: 0.5rem; 
+        font-size: 1rem;
+      }
+    }
+
+    .skill-name {
+      color: #333;
+      font-weight: 600;                      
+      font-size: 1.25rem;                    
+
+      @include responsive(md) {
+        font-size: 1.1rem;                    
       }
 
       @include responsive(sm) {
-        height: 60px;                      
-        padding: 0.75rem 1rem;       
-        font-size: 20px;
+        font-size: 1rem;                      
       }
+    }
 
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: $shadow-md;
-      }
+  
+    &.python {
+      background: rgba(55, 118, 171, 0.1);
+      .skill-icon { color: #306998; }  
+      border: 1px solid rgba(55, 118, 171, 0.2);
+    }
 
-      i, svg {
-        font-size: 1.2rem;
+    &.c {
+      background: rgba(86, 156, 214, 0.1);
+      .skill-icon { color: #569CD6; }
+    }
 
-        @include responsive(md) {
-          font-size: 1rem;
-        }
-      }
+    &.html {
+      background: rgba(241, 101, 41, 0.1);
+      .skill-icon { color: #F16529; }
+    }
 
-      .skill-name {
-        color: #333;                    
-        font-size: 1.1rem;                    
+    &.css {
+      background: rgba(41, 101, 241, 0.1);
+      .skill-icon { color: #2965F1; }
+    }
 
-        @include responsive(md) {
-          font-size: 1rem;                    
-        }
+    &.javascript {
+      background: rgba(247, 223, 30, 0.1);
+      .skill-icon { color: #C4B218; }  
+      border: 1px solid rgba(247, 223, 30, 0.2);
+    }
 
-        @include responsive(sm) {
-          font-size: 0.95rem;                      
-        }
-      }
+    &.sql {
+      background: rgba(0, 122, 204, 0.1);
+      .skill-icon { color: #007ACC; }
+    }
 
-      &.python {
-        background: rgba(55, 118, 171, 0.1);
-        .skill-icon { color: #306998; }  
-        border: 1px solid rgba(55, 118, 171, 0.2);
-      }
+    &.csharp {
+      background: rgba(147, 51, 184, 0.1);
+      .skill-icon { color: #9333B8; }
+    }
 
-      &.c {
-        background: rgba(86, 156, 214, 0.1);
-        .skill-icon { color: #569CD6; }
-      }
+    &.r {
+      background: rgba(75, 139, 190, 0.1);
+      .skill-icon { color: #4B8BBE; }
+    }
 
-      &.html {
-        background: rgba(241, 101, 41, 0.1);
-        .skill-icon { color: #F16529; }
-      }
+    &.react {
+      background: rgba(97, 219, 251, 0.1);
+      .skill-icon { color: #61DBFB; }
+    }
 
-      &.css {
-        background: rgba(41, 101, 241, 0.1);
-        .skill-icon { color: #2965F1; }
-      }
+    &.linux {
+      background: rgba(255, 255, 255, 0.1);
+      .skill-icon { color: #FFF; }
+    }
 
-      &.javascript {
-        background: rgba(247, 223, 30, 0.1);
-        .skill-icon { color: #F7DF1E; }
-      }
+    &.docker {
+      background: rgba(13, 150, 237, 0.1);
+      .skill-icon { color: #0D96ED; }
+    }
 
-      &.sql {
-        background: rgba(0, 122, 204, 0.1);
-        .skill-icon { color: #007ACC; }
-      }
+    &.scikit {
+      background: rgba(255, 140, 0, 0.1);
+      .skill-icon { color: #FF8C00; }
+    }
 
-      &.csharp {
-        background: rgba(147, 51, 184, 0.1);
-        .skill-icon { color: #9333B8; }
-      }
+    &.jira {
+      background: rgba(0, 82, 204, 0.1);
+      .skill-icon { color: #0052CC; }
+    }
 
-      &.r {
-        background: rgba(75, 139, 190, 0.1);
-        .skill-icon { color: #4B8BBE; }
-      }
+    &.bitbucket {
+      background: rgba(37, 99, 235, 0.1);
+      .skill-icon { color: #2563EB; }
+    }
 
-      &.react {
-        background: rgba(97, 219, 251, 0.1);
-        .skill-icon { color: #61DBFB; }
-      }
+    &.bootstrap {
+      background: rgba(134, 79, 241, 0.1);
+      .skill-icon { color: #864FF1; }
+    }
 
-      &.linux {
-        background: rgba(255, 255, 255, 0.05);
-        .skill-icon { color: #CCC; } // Changed from #FFF to #CCC for better contrast
-      }
+    &.burp {
+      background: rgba(255, 69, 0, 0.1);
+      .skill-icon { color: #FF4500; }
+    }
 
-      &.docker {
-        background: rgba(13, 150, 237, 0.1);
-        .skill-icon { color: #0D96ED; }
-      }
+    &.metasploit {
+      background: rgba(102, 102, 102, 0.1);
+      .skill-icon { color: #666; }
+    }
 
-      &.scikit {
-        background: rgba(255, 140, 0, 0.1);
-        .skill-icon { color: #FF8C00; }
-      }
-
-      &.jira {
-        background: rgba(0, 82, 204, 0.1);
-        .skill-icon { color: #0052CC; }
-      }
-
-      &.bitbucket {
-        background: rgba(37, 99, 235, 0.1);
-        .skill-icon { color: #2563EB; }
-      }
-
-      &.bootstrap {
-        background: rgba(134, 79, 241, 0.1);
-        .skill-icon { color: #864FF1; }
-      }
-
-      &.burp {
-        background: rgba(255, 69, 0, 0.1);
-        .skill-icon { color: #FF4500; }
-      }
-
-      &.metasploit {
-        background: rgba(102, 102, 102, 0.1);
-        .skill-icon { color: #666; }
-      }
-
-      &.unity {
-        background: rgba(255, 255, 255, 0.05);
-        .skill-icon { color: #CCC; } // Changed from #FFF to #CCC for better contrast
-      }
-
-      .skill-icon {
-        font-size: 1.5rem;
-        transition: transform 0.3s ease;
-      }
-
-      .skill-name {
-        color: var(--text-primary);
-        font-weight: 500;
-        font-size: 1rem;
-      }
-
-      &:hover .skill-icon {
-        transform: scale(1.1);
-      }
+    &.unity {
+      background: rgba(255, 255, 255, 0.1);
+      .skill-icon { color: #FFF; }
     }
   }
 
-  [data-theme='dark'] {
-    .skills-grid {
-      gap: 2rem;
+  .skills-visualization {
+    @include flex-center;
+    min-height: 400px;
+    max-height: 700px;
+    width: 600px;
+    margin: 0 auto;
+    height: 600px;
+    perspective: 1000px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+
+    .matrix-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+      padding: 2rem;
+      transform-style: preserve-3d;
     }
 
-    .skill-item {
-      background: rgba(55, 118, 171, 0.05); // Adjusted for better contrast
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 1.5rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+    .matrix-node {
+      @include flex-center;
+      font-size: 1.8rem;
+      color: var(--color);
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: 50%;
+      animation: matrixRain var(--duration) linear infinite;
+      animation-delay: var(--delay);
+    }
 
-      &:hover {
-        transform: translateY(-2px);
-        background: rgba(55, 118, 171, 0.1); // Increased opacity for hover state
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-      }
-      
-      &.python {
-        background: rgba(255, 223, 89, 0.1);
-        .skill-icon { color: #FFE873; }
-      }
+    @include responsive(lg) {
+      display: none;
+    }
+  }
+}
 
-      &.c {
-        background: rgba(86, 156, 214, 0.1);
-        .skill-icon { color: #569CD6; }
-      }
+[data-theme='dark'] {
+  .skills-grid {
+    gap: 2rem;
+  }
 
-      &.html {
-        background: rgba(241, 101, 41, 0.1);
-        .skill-icon { color: #F16529; }
-      }
+  .skill-item {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 
-      &.css {
-        background: rgba(41, 101, 241, 0.1);
-        .skill-icon { color: #2965F1; }
-      }
+    &:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
 
-      &.javascript {
-        background: rgba(247, 223, 30, 0.1);
-        .skill-icon { color: #F7DF1E; }
-      }
+    
+    &.python {
+      background: rgba(255, 223, 89, 0.1);
+      .skill-icon { color: #FFE873; }
+    }
 
-      &.sql {
-        background: rgba(0, 122, 204, 0.1);
-        .skill-icon { color: #007ACC; }
-      }
+    &.c {
+      background: rgba(86, 156, 214, 0.1);
+      .skill-icon { color: #569CD6; }
+    }
 
-      // Adjust colors for low-contrast items in dark mode
-      &.linux, &.unity {
-        background: rgba(55, 118, 171, 0.05); // Darker background for better contrast
-        .skill-icon { color: #CCC; } // Changed from #FFF to #CCC for better contrast
-      }
+    &.html {
+      background: rgba(241, 101, 41, 0.1);
+      .skill-icon { color: #F16529; }
+    }
 
-      // Ensure text remains visible
-      .skill-name {
-        color: var(--text-primary);
-      }
+    &.css {
+      background: rgba(41, 101, 241, 0.1);
+      .skill-icon { color: #2965F1; }
+    }
 
-      .skill-icon {
-        color: #FFF; // Ensured higher contrast
-      }
+    &.javascript {
+      background: rgba(247, 223, 30, 0.1);
+      .skill-icon { color: #F7DF1E; }
+    }
+
+    &.sql {
+      background: rgba(0, 122, 204, 0.1);
+      .skill-icon { color: #007ACC; }
+    }
+
+    &.csharp {
+      background: rgba(147, 51, 184, 0.1);
+      .skill-icon { color: #9333B8; }
+    }
+
+    &.r {
+      background: rgba(75, 139, 190, 0.1);
+      .skill-icon { color: #4B8BBE; }
+    }
+
+    &.react {
+      background: rgba(97, 219, 251, 0.1);
+      .skill-icon { color: #61DBFB; }
+    }
+
+    &.linux {
+      background: rgba(255, 255, 255, 0.1);
+      .skill-icon { color: #FFF; }
+    }
+
+    &.docker {
+      background: rgba(13, 150, 237, 0.1);
+      .skill-icon { color: #0D96ED; }
+    }
+
+    &.scikit {
+      background: rgba(255, 140, 0, 0.1);
+      .skill-icon { color: #FF8C00; }
+    }
+
+    &.jira {
+      background: rgba(0, 82, 204, 0.1);
+      .skill-icon { color: #0052CC; }
+    }
+
+    &.bitbucket {
+      background: rgba(37, 99, 235, 0.1);
+      .skill-icon { color: #2563EB; }
+    }
+
+    &.bootstrap {
+      background: rgba(134, 79, 241, 0.1);
+      .skill-icon { color: #864FF1; }
+    }
+
+    &.burp {
+      background: rgba(255, 69, 0, 0.1);
+      .skill-icon { color: #FF4500; }
+    }
+
+    &.metasploit {
+      background: rgba(102, 102, 102, 0.1);
+      .skill-icon { color: #666; }
+    }
+
+    &.unity {
+      background: rgba(255, 255, 255, 0.1);
+      .skill-icon { color: #FFF; }
+    }
+
+    .skill-icon {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-name {
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    &:hover .skill-icon {
+      transform: scale(1.1);
     }
   }
 }
