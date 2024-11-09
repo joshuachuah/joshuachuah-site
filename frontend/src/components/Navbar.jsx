@@ -38,10 +38,6 @@ const Navbar = () => {
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
 
-  const toggleTheme = () => {
-    setIsDark(prev => !prev);
-  };
-
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -60,9 +56,6 @@ const Navbar = () => {
             <li onClick={() => scrollToSection('projects')}>Projects</li>
             <li onClick={() => scrollToSection('contact')}>Contact</li>
           </ul>
-
-        
-          <Toggle isDark={isDark} toggleTheme={toggleTheme} />
 
         
 
