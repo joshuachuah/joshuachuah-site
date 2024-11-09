@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane,faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane,faEnvelope, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, } from '@fortawesome/free-brands-svg-icons';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 
@@ -12,7 +12,10 @@ const API_URL = process.env.NODE_ENV === 'development'
 const Contact = () => {
   const formRef = useScrollAnimation();
   const infoRef = useScrollAnimation();
-
+  const [notification, setNotification] = useState({
+    show: false,
+    message: ''
+  });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -51,8 +54,27 @@ const Contact = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitStatus({ loading: false, success: true, error: null });
+        
+        console.log('Success case triggered');
+        // Clear form
         setFormData({ name: '', email: '', subject: '', message: '' });
+        setSubmitStatus({ loading: false, success: true, error: null });
+        
+        // Show success notification
+        setNotification({
+          show: true,
+          message: 'Message sent successfully!'
+        });
+        console.log('Notification set:', { show: true, message: 'Message sent successfully!' });
+  
+        // Hide notification after 3 seconds
+        setTimeout(() => {
+          setNotification({
+            show: false,
+            message: ''
+          });
+          console.log('Notification hidden');
+        }, 3000);
       } else {
         setSubmitStatus({ loading: false, success: false, error: data.message });
       }
@@ -69,6 +91,20 @@ const Contact = () => {
   return (
     <section id="contact" className="contact-section">
       <div className="container">
+
+        {notification.show && (
+          <div className="notification">
+            <FontAwesomeIcon icon={faPaperPlane} />
+            <span>{notification.message}</span>
+          </div>
+        )}
+
+        {submitStatus.error && (
+          <div className="error-message">
+            <FontAwesomeIcon icon={faExclamationCircle} />
+            <span>{submitStatus.error}</span>
+          </div>
+        )}
         <div className="contact-content">
           <h2 className="section-title contact-title">
             <FontAwesomeIcon icon={faPaperPlane} className="title-icon" />
@@ -159,8 +195,8 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="submit-button">
-                <span>Send Message</span>
+              <button type="submit" className="submit-button" disabled={submitStatus.loading}>
+                <span>{submitStatus.loading ? 'Sending...' : 'Send Message'}</span>
                 <FontAwesomeIcon icon={faPaperPlane} />
               </button>
             </form>

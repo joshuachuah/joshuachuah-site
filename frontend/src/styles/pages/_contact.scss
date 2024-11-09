@@ -9,6 +9,7 @@
   background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .contact-content {
@@ -161,7 +162,43 @@
   transform: translateY(-3px);
 }
 
-/* Responsive Design */
+
+.notification {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease forwards;
+  
+  svg {
+    margin-right: 8px;
+  }
+}
+
+.error-message {
+  @extend .notification;
+  background-color: #ff4d4d;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 
 @media (max-width: 768px) {
   .contact-section {
@@ -232,98 +269,4 @@
   }
 
   
-}
-
-[data-theme='dark'] {
-  .contact-form {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 2rem;
-
-    label {
-      color: var(--text-primary);
-    }
-
-    input, 
-    textarea {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-primary);
-      
-      &:focus {
-        border-color: $accent-color;
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      &::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-      }
-    }
-
-    button {
-      background: $accent-color;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      
-      &:hover {
-        background: color.adjust($accent-color, $lightness: 5%);
-        transform: translateY(-2px);
-      }
-
-      svg {
-        transition: transform 0.3s ease;
-      }
-
-      &:hover svg {
-        transform: translateX(4px);
-      }
-    }
-  }
-
-  // style the social links in dark mode
-  .social-links, .contact-socials {
-    a, .social-link {
-      color: linear-gradient(135deg, #6c5ce7 0%, #a178df 100%);
-      font-size: 1.5rem;
-      transition: all 0.3s ease;
-      position: relative;
-      
-      &:hover {
-        color: #d65db1;
-        transform: translateY(-3px);
-        filter: drop-shadow(0 0 8px rgba(161, 120, 223, 0.5));
-        
-        &::after {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-      
-      // add a subtle glow effect on hover
-      &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, rgba(161, 120, 223, 0.2) 0%, transparent 70%);
-        top: 0;
-        left: 0;
-        transform: scale(0.8);
-        opacity: 0;
-        transition: all 0.3s ease;
-        pointer-events: none;
-      }
-    }
-  }
 }
