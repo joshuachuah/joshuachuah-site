@@ -178,6 +178,26 @@
   gap: 10px;
   animation: slideIn 0.3s ease forwards;
   
+  @include responsive (sm) {
+    top: 80px; 
+    right: 50%; 
+    transform: translateX(50%); 
+    padding: 12px 20px; 
+    font-size: 0.9rem; 
+    width: 90%; 
+    max-width: 300px; 
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(50%) translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(50%) translateY(0);
+        opacity: 1;
+      }
+    }
+  }
   svg {
     margin-right: 8px;
   }
@@ -186,6 +206,35 @@
 .error-message {
   @extend .notification;
   background-color: #ff4d4d;
+
+  @include responsive(sm) {
+    top: 80px; 
+    right: 50%; 
+    transform: translateX(50%); 
+    padding: 12px 20px; 
+    font-size: 0.9rem; 
+    width: 90%; 
+    max-width: 300px; 
+    @keyframes slideIn {
+      from {
+        transform: translateX(50%) translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(50%) translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Additional adjustments for very small screens
+@media (max-width: 380px) {
+  .notification, .error-message {
+    top: 60px;
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
 }
 
 @keyframes slideIn {
