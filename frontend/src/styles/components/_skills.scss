@@ -246,6 +246,12 @@
       background: rgba(255, 255, 255, 0.1);
       .skill-icon { color: #FFF; }
     }
+
+    &.springboot {
+      background: rgba(109, 179, 63, 0.1);
+      .skill-icon { color: #6DB33F; }
+      border: 1px solid rgba(109, 179, 63, 0.2);
+    }
   }
 
   .skills-visualization {

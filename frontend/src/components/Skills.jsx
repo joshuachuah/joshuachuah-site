@@ -145,6 +145,14 @@ const skillsData = [
     bgColor: 'rgba(0, 0, 0, 0.1)',
     category: 'Game Dev',
     isDevicon: true
+  },
+  {
+    icon: 'devicon-spring-plain colored',
+    name: 'Spring Boot',
+    color: '#6DB33F',
+    bgColor: 'rgba(109, 179, 63, 0.1)',
+    category: 'Backend',
+    isDevicon: true
   }
 ];
 
