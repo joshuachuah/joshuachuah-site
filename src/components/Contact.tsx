@@ -59,17 +59,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="social-links">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faLinkedin} />
-              </a>
-              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faTwitter} />
-              </a>
-            </div>
+            
           </div>
 
           <form className="contact-form" onSubmit={handleSubmit}>
