@@ -1,7 +1,5 @@
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Hero = () => {
   return (
@@ -18,10 +16,6 @@ const Hero = () => {
                 'Full Stack Developer',
                 1000,
                 'UI/UX Designer',
-                1000,
-                'Problem Solver',
-                1000,
-                'Tech Enthusiast',
                 1000,
               ]}
               wrapper="span"
