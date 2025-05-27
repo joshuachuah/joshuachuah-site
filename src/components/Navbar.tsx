@@ -5,9 +5,7 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const navLinks = [
   { to: '/', label: 'Home', exact: true },
-  { to: '/journey', label: 'Journey' },
-  { to: '/skills', label: 'Skills' },
-  { to: '/projects', label: 'Projects' },
+  { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
 
