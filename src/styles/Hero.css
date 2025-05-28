@@ -36,9 +36,7 @@
 
 .hero-title .name {
   display: block;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
@@ -57,83 +55,6 @@
   max-width: 600px;
 }
 
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.cta-button {
-  padding: 0.8rem 2rem;
-  border-radius: var(--border-radius-md);
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition-base);
-}
-
-.cta-button.primary {
-  background: var(--gradient-primary);
-  color: white;
-  border: none;
-}
-
-.cta-button.secondary {
-  background: transparent;
-  color: var(--accent-color);
-  border: 2px solid var(--accent-color);
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.social-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.social-links a {
-  color: var(--text-secondary);
-  font-size: 1.5rem;
-  transition: var(--transition-base);
-}
-
-.social-links a:hover {
-  color: var(--accent-color);
-  transform: translateY(-3px);
-}
-
-.hero-image {
-  position: relative;
-  animation: float 6s ease-in-out infinite;
-}
-
-.floating-element {
-  width: 100%;
-  height: 100%;
-  background: var(--gradient-primary);
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  animation: morph 8s ease-in-out infinite;
-}
-
-@keyframes morph {
-  0% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  }
-  25% {
-    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
-  }
-  50% {
-    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
-  }
-  75% {
-    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
-  }
-  100% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  }
-}
 
 @media (max-width: 1024px) {
   .hero-container {
