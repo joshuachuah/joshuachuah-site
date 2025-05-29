@@ -35,7 +35,7 @@
 
 .info-item svg {
   font-size: 1.5rem;
-  color: var(--accent-color);
+  color: var(--navy);
 }
 
 .info-item h3 {
@@ -67,7 +67,7 @@
 }
 
 .contact-info .social-links a:hover {
-  background: var(--accent-color);
+  background: var(--navy);
   color: white;
   transform: translateY(-3px);
 }
@@ -96,7 +96,7 @@
 
 .form-input:focus {
   outline: none;
-  border-color: var(--accent-color);
+  border-color: var(--navy);
   background: rgba(255, 255, 255, 0.1);
 }
 

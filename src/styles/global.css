@@ -1,17 +1,12 @@
 :root {
-  /* Colors */
-  --accent-color: #111;
-  --accent-color-rgb: 17, 17, 17;
-  --text-color: #111;
-  --text-color-black: #000;
-  --bg-dark: #fff;
-  --bg-light: #fff;
-  --navbar-text-color: #6D6D6D;
 
-  /* Gradients (removed, replaced with solid colors) */
-  --gradient-primary: #fff;
-  --gradient-background: #fff;
-  --gradient-skills: #fff;
+  /* Colors */
+  --navy: #001b2e;
+  --ice-blue: #eef3f9;
+  --sky-blue: #b3cde4;
+  --deep-blue: #1d3f58;
+  --steel-blue: #537692;
+  --neutral-inverse: #6D6D6D;
 
   /* Typography */
   --font-family-primary: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -21,7 +16,6 @@
   /* Layout */
   --navbar-height: 70px;
   --container-width: 1200px;
-  --section-padding: 50px;
 
   /* Breakpoints */
   --breakpoint-sm: 480px;
@@ -48,26 +42,23 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.12);
 
   /* Dark Theme Colors */
-  --bg-dark: #111;
-  --bg-dark-secondary: #222;
-  --bg-dark-tertiary: #333;
-  --text-dark-primary: #fff;
-  --text-dark-secondary: #bbb;
-  --border-dark: #222;
+  --bg-dark: var(--navy);
+  --text-dark-primary: var(--sky-blue);
+  --text-dark-secondary: var(--ice-blue);
+  --border-dark: var(--navy);
 
   /* Light theme defaults */
-  --bg-primary: #fff;
+  --bg-primary: var(--sky-blue);
   --bg-secondary: #f5f5f5;
-  --text-primary: #111;
-  --text-secondary: #444;
-  --gradient-bg: #fff;
+  --text-primary: var(--navy);
+  --text-secondary: #537692;
 }
 
 [data-theme='dark'] {
-  --bg-primary: #111;
+  --bg-primary: var(--navy);
   --bg-secondary: #222;
-  --text-primary: #fff;
-  --text-secondary: #bbb;
+  --text-primary: var(--sky-blue);
+  --text-secondary: var(--sky-blue);
   --gradient-bg: #111;
 }
 
@@ -283,7 +274,7 @@ main {
 
   .project-card .tech-tag {
     background: rgba(54, 54, 54, 0.8);
-    color: var(--accent-color);
+    color: var(--navy);
   }
 
   .project-card .tech-tag:hover {
@@ -326,7 +317,7 @@ main {
   }
 
   .form-input:focus {
-    border-color: var(--accent-color);
+    border-color: var(--navy);
     background: rgba(54, 54, 54, 0.8);
   }
 
@@ -340,11 +331,11 @@ main {
   }
 
   a {
-    color: var(--accent-color);
+    color: var(--navy);
   }
 
   a:hover {
-    color: color-mix(in srgb, var(--accent-color) 90%, white);
+    color: color-mix(in srgb, var(--navy) 90%, white);
   }
 
   /* Footer */
