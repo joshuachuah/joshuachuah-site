@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const navLinks = [
-  { to: '/', label: 'Home', exact: true },
-  { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' },
+  { to: 'hero', label: 'Home' },
+  { to: 'about', label: 'About' },
+  { to: 'contact', label: 'Contact' },
 ];
 
 const Navbar = () => {
@@ -14,7 +13,6 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [highlightStyle, setHighlightStyle] = useState<React.CSSProperties>({ opacity: 0 });
   const navRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,31 +37,49 @@ const Navbar = () => {
 
   // Animate highlight rectangle
   useEffect(() => {
-    const activeIndex = navLinks.findIndex(link =>
-      link.exact ? location.pathname === link.to : location.pathname.startsWith(link.to)
-    );
-    const activeRef = navRefs.current[activeIndex];
-    if (activeRef) {
-      const rect = activeRef.getBoundingClientRect();
-      const parentRect = activeRef.parentElement?.getBoundingClientRect();
-      setHighlightStyle({
-        left: rect.left - (parentRect?.left || 0),
-        top: rect.top - (parentRect?.top || 0),
-        width: rect.width,
-        height: rect.height,
-        opacity: 1,
+    const handleScroll = () => {
+      const sections = navLinks.map(link => document.getElementById(link.to));
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      const activeIndex = sections.findIndex(section => {
+        if (!section) return false;
+        const rect = section.getBoundingClientRect();
+        return rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3;
       });
-    } else {
-      setHighlightStyle({ opacity: 0 });
+
+      const activeRef = navRefs.current[activeIndex];
+      if (activeRef) {
+        const rect = activeRef.getBoundingClientRect();
+        const parentRect = activeRef.parentElement?.getBoundingClientRect();
+        setHighlightStyle({
+          left: rect.left - (parentRect?.left || 0),
+          top: rect.top - (parentRect?.top || 0),
+          width: rect.width,
+          height: rect.height,
+          opacity: 1,
+        });
+      } else {
+        setHighlightStyle({ opacity: 0 });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [location.pathname]);
+  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <NavLink to="/" className="nav-logo">
+        <a href="#hero" className="nav-logo" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>
           <span className="logo-circle">JC</span>
-        </NavLink>
+        </a>
         <ul className="nav-links" style={{ position: 'relative' }}>
           {/* Animated highlight rectangle */}
           <div className="nav-highlight" style={highlightStyle} />
@@ -72,13 +88,16 @@ const Navbar = () => {
               key={link.to}
               ref={el => (navRefs.current[idx] = el)}
             >
-              <NavLink
-                to={link.to}
-                end={link.exact}
-                className={({ isActive }) => (isActive ? 'active' : '')}
+              <a
+                href={`#${link.to}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.to);
+                }}
+                className="nav-link"
               >
                 {link.label}
-              </NavLink>
+              </a>
             </li>
           ))}
           <li>
