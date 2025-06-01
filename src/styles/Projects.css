@@ -1,6 +1,5 @@
 .projects-section {
   padding: var(--section-padding) 0;
-  background: #ffffff;
 }
 
 .projects-grid {
@@ -77,7 +76,6 @@
 
 .project-link:hover {
   transform: translateY(-2px);
-  background: var(--gradient-primary);
 }
 
 .project-content {
