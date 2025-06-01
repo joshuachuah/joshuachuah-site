@@ -10,12 +10,9 @@
 }
 
 .section-title {
-  text-align: center;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  background: var(--gradient-primary);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .section-description {
@@ -71,7 +68,6 @@
 
 .skill-progress {
   height: 100%;
-  background: var(--gradient-primary);
   border-radius: 4px;
   transition: width 1s ease-in-out;
 }
