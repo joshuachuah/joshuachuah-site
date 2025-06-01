@@ -7,7 +7,7 @@ const projects = [
   {
     title: 'Project One',
     description: 'A full-stack web application built with React and Node.js. Features include user authentication, real-time updates, and responsive design.',
-    image: '/images/JRS_1264.jpeg',
+    image: '/images/IMG_1779.JPG',
     technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
     github: 'https://github.com/yourusername/project1',
     live: 'https://project1.com'
@@ -15,7 +15,7 @@ const projects = [
   {
     title: 'Project Two',
     description: 'An e-commerce platform with features like product search, cart management, and secure payment processing.',
-    image: '/images/JRS_1264.jpeg',
+    image: '/images/NBA Logo.png',
     technologies: ['React', 'Redux', 'Node.js', 'PostgreSQL'],
     github: 'https://github.com/yourusername/project2',
     live: 'https://project2.com'
@@ -23,7 +23,7 @@ const projects = [
   {
     title: 'Project Three',
     description: 'A social media dashboard with analytics, user management, and content moderation features.',
-    image: '/images/JRS_1264.jpeg',
+    image: '/images/music notes.jpg',
     technologies: ['React', 'TypeScript', 'GraphQL', 'Apollo'],
     github: 'https://github.com/yourusername/project3',
     live: 'https://project3.com'
