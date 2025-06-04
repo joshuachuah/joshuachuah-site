@@ -23,9 +23,18 @@
   }
 
   h2 {
-    @apply text-lg;
+    font-size: var(--text-lg);
   }
   p {
-    @apply text-sm;
+    font-size: var(--text-sm);
   }
+}
+
+@theme {
+  --color-navy: #001b2e;
+  --color-ice-blue: #eef3f9;
+  --color-sky-blue: #b3cde4;
+  --color-deep-blue: #1d3f58;
+  --color-steel-blue: #537692;
+  --color-neutral-inverse: #6D6D6D;
 }
