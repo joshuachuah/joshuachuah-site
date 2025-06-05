@@ -80,7 +80,7 @@ const infoTwo = (
 
 const About = () => {
   return (
-    <div className="about-page">
+    <div id="about" className="about-page">
       <section className="about-me-section">
         <div className="section-container">
           <h2 className="section-title">About Me</h2>
