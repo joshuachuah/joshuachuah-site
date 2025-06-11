@@ -6,14 +6,6 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      colors: {
-        'navy': '#001b2e',
-        'ice-blue': '#eef3f9',
-        'sky-blue': '#b3cde4',
-        'deep-blue': '#1d3f58',
-        'steel-blue': '#537692',
-        'neutral-inverse': '#6D6D6D',
-      },
       fontFamily: {
         'noto': ['"Noto Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
@@ -80,8 +72,14 @@ module.exports = {
           '50%': { transform: 'translateY(-10px)' },
           '100%': { transform: 'translateY(0px)' },
         },
-        // Add other keyframes as needed
       },
+      safelist: [
+        'perspective-1000',
+        'preserve-3d',
+        'backface-hidden',
+        'rotate-y-180',
+        { pattern: /bg-(blue|cyan|green|emerald|sky|purple|neutral|indigo|violet|amber|red|yellow|black|orange)-500/,}
+      ]
     },
   },
   plugins: [],
