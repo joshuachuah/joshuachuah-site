@@ -78,7 +78,19 @@ module.exports = {
         'preserve-3d',
         'backface-hidden',
         'rotate-y-180',
-        { pattern: /bg-(blue|cyan|green|emerald|sky|purple|neutral|indigo|violet|amber|red|yellow|black|orange)-500/,}
+
+        // hobbies text
+        'text-purple-500',
+        'text-green-500',
+        'text-orange-500',
+        'text-blue-500',
+        'text-white-500',
+
+        // tech bg color
+        'bg-purple-500',
+        'bg-orange-500',
+        'bg-yellow-500',
+        'bg-indigo-500',
       ]
     },
   },
