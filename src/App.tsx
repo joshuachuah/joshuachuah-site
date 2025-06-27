@@ -2,7 +2,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Experience from './components/Experience';
 import { ThemeProvider } from './context/ThemeContext'
@@ -17,7 +16,6 @@ const App = () => {
           <About />
           <Experience />
           <Projects />
-          <Contact />
         </div>
         <Footer />
       </div>
