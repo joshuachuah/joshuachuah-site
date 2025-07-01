@@ -9,9 +9,9 @@ import { ThemeProvider } from './context/ThemeContext'
 const App = () => {
   return (
     <ThemeProvider>
-      <div className="app">
+      <div className="app min-h-screen bg-white dark:bg-gray-900">
         <Navbar />
-        <div className="content">
+        <div className="content pt-[60px]">
           <Hero />
           <About />
           <Experience />
