@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "install:all": "npm install",
+    "start:prod": "npx serve -s dist -l $PORT"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -28,6 +30,7 @@
     "react-router-dom": "^7.6.0",
     "react-spotify-embed": "^2.0.4",
     "react-type-animation": "^3.2.0",
+    "serve": "^14.2.1",
     "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
