@@ -30,7 +30,7 @@ const projects = [
   {
     title: 'Broken Song',
     description: 'A program that traverses through a directory tree looking for pieces of an mp3',
-    image: 'joshuachuah-site/public/images/music notes.webp',
+    image: '/images/music notes.webp',
     tech: [
       { name: 'C', color: "indigo" },
     ],
@@ -39,7 +39,7 @@ const projects = [
   {
     title: 'Hearthstone Card Parser',
     description: 'a program that parses a .csv file full of Hearthstone card data. It will also de-duplicate, sort and then nicely print out the cards.',
-    image: 'joshuachuah-site/public/Hearthstone.webp',
+    image: '/images/Hearthstone.webp',
     tech: [
       { name: 'C', color: "indigo" },
     ],
