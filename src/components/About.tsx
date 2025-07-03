@@ -1,9 +1,8 @@
 import React from 'react';
-import profilePic from '/images/2.jpeg';
+import profilePic from '/images/2.webp';
 import { motion } from 'framer-motion';
 import { FaReact, FaJs, FaNodeJs, FaPython } from 'react-icons/fa';
 import { SiTypescript, SiWebflow } from 'react-icons/si';
-import { PhotoGallery } from './PhotoGallery';
 
 const About = () => {
   const technologies = [

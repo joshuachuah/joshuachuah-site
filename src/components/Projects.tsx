@@ -8,7 +8,7 @@ const projects = [
   {
     title: 'Unofficial Website for (G)-IDLE',
     description: 'Designed and developed an unofficial website for the Kpop girl group (G)I-DLE',
-    image: '/images/GIDLE.JPG',
+    image: '/images/GIDLE.webp',
     tech: [
       { name: 'HTML', color: "orange"},
       { name: "CSS 3", color: "teal" },
@@ -19,7 +19,7 @@ const projects = [
   {
     title: 'StatsPicksNBA',
     description: 'A Django web application leveraging machine learning algorithms to help make predictions related to NBA betting over/under lines for player and team props.',
-    image: '/images/NBA Logo.png',
+    image: 'images/NBA Logo.webp',
     tech: [
       { name: 'Django', color: "green" },
       { name: 'Python', color: "blue" },
@@ -30,7 +30,7 @@ const projects = [
   {
     title: 'Broken Song',
     description: 'A program that traverses through a directory tree looking for pieces of an mp3',
-    image: '/images/music notes.jpg',
+    image: 'joshuachuah-site/public/images/music notes.webp',
     tech: [
       { name: 'C', color: "indigo" },
     ],
@@ -39,7 +39,7 @@ const projects = [
   {
     title: 'Hearthstone Card Parser',
     description: 'a program that parses a .csv file full of Hearthstone card data. It will also de-duplicate, sort and then nicely print out the cards.',
-    image: '/images/Hearthstone.jpg',
+    image: 'joshuachuah-site/public/Hearthstone.webp',
     tech: [
       { name: 'C', color: "indigo" },
     ],
