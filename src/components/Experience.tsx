@@ -3,13 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const experiences = [
   {
-    company: 'ONTRAC Marketing',
+    company: 'Peak Heating and Cooling',
     role: 'Web Developer',
     date: 'FEB 2025 - PRESENT',
     duration: 'Current',
     description: [
-      "Built and rebranded websites for several HVAC companies, resulting in a 20% increase in website leads and customer engagement.",
-      "Developed a fully customized scheduling web app tailored to a client’s specific business needs using React and Node.js with TypeScript. Integrated Google’s Address Validation API to reduce booking errors and ensure data consistency. The tool streamlined appointment scheduling, improved operational efficiency, and provided a smoother user experience."
+      "Rebuilt and migrated the company website from WordPress to Webflow, modernizing the design and improving load times by 15% for a smoother user experience.",
+      "Developed a custom job scheduling system using ReactJS and the ServiceTitan API, increasing booking efficiency by 10%.",
+      "Implemented SEO best practices, boosting organic traffic, improving search visibility, and increasing lead generation for HVAC services."
     ],
     color: 'rose'
   },
