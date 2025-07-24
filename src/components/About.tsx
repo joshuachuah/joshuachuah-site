@@ -1,5 +1,5 @@
 import React from 'react';
-import profilePic from '/images/2.webp';
+import profilePic from '/images/3.webp';
 import { motion } from 'framer-motion';
 import { FaReact, FaJs, FaNodeJs, FaPython } from 'react-icons/fa';
 import { SiTypescript, SiWebflow } from 'react-icons/si';
@@ -48,8 +48,8 @@ const About = () => {
               <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Current Role</h3>
             </div>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              I am currently a <span className="text-rose-500 font-semibold">Web Developer</span> at{' '}
-              <span className="text-rose-400 font-semibold">ONTRAC Marketing</span>, crafting scalable 
+              I am currently a <span className="text-rose-500 font-semibold">Full-stack Developer</span> at{' '}
+              <span className="text-rose-400 font-semibold">Peak Heating and Cooling</span>, crafting scalable 
               websites that drive business growth and user engagement.
             </p>
           </motion.div>
