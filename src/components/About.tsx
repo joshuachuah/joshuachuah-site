@@ -50,7 +50,7 @@ const About = () => {
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               I am currently a <span className="text-rose-500 font-semibold">Full-stack Developer</span> at{' '}
               <span className="text-rose-400 font-semibold">Peak Heating and Cooling</span>, crafting scalable 
-              websites that drive business growth and user engagement.
+              website and systems that drive business growth and user engagement.
             </p>
           </motion.div>
 
