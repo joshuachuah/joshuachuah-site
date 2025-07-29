@@ -19,8 +19,8 @@ const Hero = () => {
           </div>
 
           <p className="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-[600px] mx-auto text-center text-gray-600 dark:text-gray-300 px-4">
-            I'm a web developer based in Kalamazoo, MI.
-            I combine thoughtful design with a strong foundation for growth to create digital experiences that not only look great—but also support your long-term goals.
+            I'm a full stack developer based in Kalamazoo, MI.
+            I enjoy building things that are both useful and easy to use—from clean, responsive interfaces to solid, dependable backends. Whether it’s a small idea or a big project, I love helping bring it to life on the web.
           </p>
         </div>
         
