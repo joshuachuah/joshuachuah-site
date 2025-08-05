@@ -62,7 +62,7 @@ const Experience = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="flex items-center w-md">
+        <div className="flex items-center w-full overflow-hidden">
           <h2 className="text-xl md:text-3xl font-bold text-black dark:text-white mr-4 whitespace-nowrap">&lt;/ experience</h2>
           <div className="flex-1 h-px bg-gray-500 opacity-30"></div>
         </div>
