@@ -24,7 +24,7 @@ const Hero = () => {
           </p>
         </div>
         
-        <div className="mt-4">
+        <div className="w-full">
           <SpotifyRecentlyPlayed />
         </div>
       </div>
