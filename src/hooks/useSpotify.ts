@@ -89,13 +89,13 @@ export function useSpotify() {
       if (error.response?.status === 429) {
         // Handle rate limiting
         const retryAfter = error.response.headers['retry-after'] || 60;
-        console.warn(`Rate limited. Retrying after ${retryAfter} seconds`);
+        // console.warn(`Rate limited. Retrying after ${retryAfter} seconds`);
         setTimeout(() => fetchCurrentTrack(), retryAfter * 1000);
       } else if (error.response?.status === 401) {
-        console.error('Token expired, need to refresh');
+        // console.error('Token expired, need to refresh');
         // Token refresh will be handled by useSpotifyAuth
       } else {
-        console.error('Error fetching current track:', error.message);
+        // console.error('Error fetching current track:', error.message);
       }
       setCurrentTrack(null);
     }
@@ -107,7 +107,7 @@ export function useSpotify() {
       return; // Skip if called too soon
     }
     if (!token) {
-      console.warn('No access token available for top artists fetch');
+      // console.warn('No access token available for top artists fetch');
       return;
     }
     try {
@@ -127,16 +127,16 @@ export function useSpotify() {
           spotifyUrl: item.external_urls.spotify,
           genres: item.genres || [],
         }));
-        console.log('Parsed top artists:', artists);
+        // console.log('Parsed top artists:', artists);
         setTopArtists(artists);
       }
     } catch (error: any) {
       if (error.response?.status === 429) {
         const retryAfter = parseInt(error.response.headers['retry-after'], 10) || 60;
-        console.warn(`Rate limited on top artists. Retrying after ${retryAfter} seconds`);
+        // console.warn(`Rate limited on top artists. Retrying after ${retryAfter} seconds`);
         setTimeout(() => fetchTopArtists(), retryAfter * 1000);
       } else {
-        console.error('Error fetching top artists:', error.message);
+        // console.error('Error fetching top artists:', error.message);
       }
     }
   };
@@ -159,7 +159,7 @@ export function useSpotify() {
       );
 
       if (response.data && response.data.items) {
-        console.log('Top tracks response:', response.data);
+        // console.log('Top tracks response:', response.data);
         const tracks = response.data.items.map((item: any) => ({
           id: item.id,
           name: item.name,
@@ -168,16 +168,16 @@ export function useSpotify() {
           albumImageUrl: item.album.images[0].url,
           spotifyUrl: item.external_urls.spotify,
         }));
-        console.log('Parsed top tracks:', tracks);
+        // console.log('Parsed top tracks:', tracks);
         setTopTracks(tracks);
       }
     } catch (error: any) {
       if (error.response?.status === 429) {
         const retryAfter = parseInt(error.response.headers['retry-after'], 10) || 60;
-        console.warn(`Rate limited on top tracks. Retrying after ${retryAfter} seconds`);
+        // console.warn(`Rate limited on top tracks. Retrying after ${retryAfter} seconds`);
         setTimeout(() => fetchTopTracks(), retryAfter * 1000);
       } else {
-        console.error('Error fetching top tracks:', error.message);
+        // console.error('Error fetching top tracks:', error.message);
       }
     }
   };
@@ -200,7 +200,7 @@ export function useSpotify() {
       );
 
       if (response.data && response.data.items) {
-        console.log('Recently played tracks response:', response.data);
+        // console.log('Recently played tracks response:', response.data);
         const tracks = response.data.items.map((item: any) => ({
           id: item.track.id,
           name: item.track.name,
@@ -210,16 +210,16 @@ export function useSpotify() {
           spotifyUrl: item.track.external_urls.spotify,
           playedAt: item.played_at,
         }));
-        console.log('Parsed recently played tracks:', tracks);
+        // console.log('Parsed recently played tracks:', tracks);
         setRecentlyPlayedTracks(tracks);
       }
     } catch (error: any) {
       if (error.response?.status === 429) {
         const retryAfter = parseInt(error.response.headers['retry-after'], 10) || 60;
-        console.warn(`Rate limited on recently played tracks. Retrying after ${retryAfter} seconds`);
+        // console.warn(`Rate limited on recently played tracks. Retrying after ${retryAfter} seconds`);
         setTimeout(() => fetchRecentlyPlayedTracks(), retryAfter * 1000);
       } else {
-        console.error('Error fetching recently played tracks:', error.message);
+        // console.error('Error fetching recently played tracks:', error.message);
       }
     }
   };
