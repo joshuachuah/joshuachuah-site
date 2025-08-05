@@ -31,10 +31,12 @@ const SpotifyRecentlyPlayed = () => {
             {/* Show current track first if playing */}
             {currentTrack && (
               <FadeIn delay={0}>
-                <Spotify 
-                  wide
-                  link={currentTrack.spotifyUrl}
-                />
+                <div className="w-full">
+                  <Spotify 
+                    wide
+                    link={currentTrack.spotifyUrl}
+                  />
+                </div>
               </FadeIn>
             )}
             
@@ -50,8 +52,41 @@ const SpotifyRecentlyPlayed = () => {
             {/* Show recent tracks */}
             {(currentTrack ? recentlyPlayedTracks.slice(0, 3) : mobileTracks).map((track, idx) => (
               <FadeIn key={`${track.id}-recent-${idx}`} delay={0.1 * (currentTrack ? idx + 1 : idx)}>
+                <div className="w-full">
+                  <Spotify 
+                    wide
+                    link={track.spotifyUrl}
+                  />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <p className="text-gray-500 dark:text-gray-400">
+              No recently played tracks found
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Tablet: 2x2 Grid */}
+      <div className="hidden sm:block lg:hidden">
+        {(mobileTracks && mobileTracks.length > 0) || recentlyPlayedTracks.length > 0 ? (
+          <div className="grid grid-cols-2 gap-4">
+            {/* Show current track first if playing */}
+            {currentTrack && (
+              <FadeIn delay={0}>
                 <Spotify 
-                  wide
+                  link={currentTrack.spotifyUrl}
+                />
+              </FadeIn>
+            )}
+            
+            {/* Show recent tracks to fill the 2x2 grid */}
+            {recentlyPlayedTracks.slice(0, currentTrack ? 3 : 4).map((track, idx) => (
+              <FadeIn key={`${track.id}-${track.playedAt}`} delay={0.1 * (currentTrack ? idx + 1 : idx)}>
+                <Spotify 
                   link={track.spotifyUrl}
                 />
               </FadeIn>
@@ -67,7 +102,7 @@ const SpotifyRecentlyPlayed = () => {
       </div>
 
       {/* Desktop: Multiple tracks with scrolling */}
-      <div className="hidden sm:block">
+      <div className="hidden lg:block">
         <div className="flex gap-4 overflow-x-auto scrollbar-hide">
           {/* Show current track first if playing */}
           {currentTrack && (
