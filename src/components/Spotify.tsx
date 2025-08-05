@@ -7,7 +7,7 @@ const SpotifyRecentlyPlayed = () => {
 
   // Determine eyebrow text based on listening status
   const eyebrowText = currentTrack 
-    ? "What I've been listening to (Now Playing)"
+    ? "Now Playing"
     : "What I've been listening to";
 
   // For mobile, show current track + 3 recent tracks
