@@ -26,9 +26,7 @@ const Footer = () => {
               <FontAwesomeIcon icon={faLinkedin} className="text-xl sm:text-2xl" />
             </a>
             <a 
-              href="https://twitter.com/yourusername" 
-              target="_blank" 
-              rel="noopener noreferrer"
+              href="mailto:jchuah07@gmail.com" 
               className="text-gray-400 hover:text-rose-500 transition-colors duration-300"
             >
               <FontAwesomeIcon icon={faEnvelope} className="text-xl sm:text-2xl" />
