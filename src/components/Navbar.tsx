@@ -15,7 +15,7 @@ const navLinks = [
 const socialLinks = [  
   { href: 'http://github.com/joshuachuah', icon: faGithub, label: 'Github' },
   { href: 'https://linkedin.com/in/joshua-chuah00', icon: faLinkedin, label: 'LinkedIn' },
-  { href: 'mailto:your@jchuah07.com', icon: faEnvelope, label: 'Email' }
+  { href: 'mailto:jchuah07@gmail.com', icon: faEnvelope, label: 'Email' }
 ];
 
 const Navbar = () => {
