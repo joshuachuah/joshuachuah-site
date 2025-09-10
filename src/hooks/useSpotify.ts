@@ -41,6 +41,7 @@ export function useSpotify() {
   const [topArtists, setTopArtists] = useState<Artist[]>([]);
   const [topTracks, setTopTracks] = useState<Track[]>([]);
   const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState<RecentlyPlayedTrack[]>([]);
+  const [uniqueTrackHistory, setUniqueTrackHistory] = useState<RecentlyPlayedTrack[]>([]);
   const { token } = useSpotifyAuth();
   
   // Use refs to track last fetch times
@@ -54,6 +55,29 @@ export function useSpotify() {
   const MIN_TOP_ARTISTS_INTERVAL = 300000; // 5 minutes for top artists
   const MIN_TOP_INTERVAL = 300000; // 5 minutes for top tracks
   const MIN_RECENTLY_PLAYED_INTERVAL = 60000; // 1 minute for recently played
+
+  // Helper function to filter unique tracks (removes consecutive duplicates)
+  const filterUniqueConsecutiveTracks = (tracks: RecentlyPlayedTrack[]): RecentlyPlayedTrack[] => {
+    return tracks.reduce((unique: RecentlyPlayedTrack[], track) => {
+      const lastTrack = unique[unique.length - 1];
+      if (!lastTrack || lastTrack.id !== track.id) {
+        unique.push(track);
+      }
+      return unique;
+    }, []);
+  };
+
+  // Helper function to build unique track history
+  const buildUniqueTrackHistory = (newTracks: RecentlyPlayedTrack[], currentHistory: RecentlyPlayedTrack[]): RecentlyPlayedTrack[] => {
+    // Combine new tracks with existing history
+    const allTracks = [...newTracks, ...currentHistory];
+    
+    // Filter to get unique consecutive tracks
+    const uniqueTracks = filterUniqueConsecutiveTracks(allTracks);
+    
+    // Keep only the most recent 20 unique tracks to manage memory
+    return uniqueTracks.slice(0, 20);
+  };
 
   const fetchCurrentTrack = async () => {
     const now = Date.now();
@@ -210,8 +234,14 @@ export function useSpotify() {
           spotifyUrl: item.track.external_urls.spotify,
           playedAt: item.played_at,
         }));
-        // console.log('Parsed recently played tracks:', tracks);
-        setRecentlyPlayedTracks(tracks);
+        
+        // Build unique track history
+        setUniqueTrackHistory(prev => buildUniqueTrackHistory(tracks, prev));
+        
+        // For display, filter out consecutive duplicates
+        const uniqueTracks = filterUniqueConsecutiveTracks(tracks);
+        // console.log('Parsed recently played tracks:', uniqueTracks);
+        setRecentlyPlayedTracks(uniqueTracks);
       }
     } catch (error: any) {
       if (error.response?.status === 429) {
@@ -283,10 +313,29 @@ export function useSpotify() {
     };
   }, [token]);
 
+  // Helper function to get display tracks based on repeat detection
+  const getDisplayTracks = (): RecentlyPlayedTrack[] => {
+    // If no current track, show recent tracks as usual
+    if (!currentTrack) {
+      return recentlyPlayedTracks;
+    }
+    
+    // Check if current track is on repeat (same as most recent track in history)
+    const isOnRepeat = uniqueTrackHistory.length > 0 && uniqueTrackHistory[0].id === currentTrack.id;
+    
+    if (isOnRepeat) {
+      // Show previous unique tracks (skip the repeated current track)
+      return uniqueTrackHistory.slice(1);
+    }
+    
+    // Not on repeat, show recent tracks as usual
+    return recentlyPlayedTracks;
+  };
+
   return {
     currentTrack,
     topArtists,
     topTracks,
-    recentlyPlayedTracks,
+    recentlyPlayedTracks: getDisplayTracks(),
   };
 }
