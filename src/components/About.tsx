@@ -48,8 +48,7 @@ const About = () => {
               <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Overview</h3>
             </div>
               <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                I'm a <span className="text-rose-500 font-semibold">Full-Stack Developer</span> with experience building scalable 
-                websites and systems that drive business growth and user engagement. I'm currently{' '}
+               I'm currently{' '}
                 <span className="text-rose-400 font-semibold">exploring new opportunities</span> where I can contribute my 
                 technical expertise and passion for creating impactful digital solutions.
               </p>
