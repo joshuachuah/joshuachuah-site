@@ -6,7 +6,7 @@ const experiences = [
     company: 'Peak Heating and Cooling',
     role: 'Web Developer',
     date: 'FEB 2025 - AUG 2025',
-    duration: 'Current',
+    duration: '6 months',
     description: [
       "Rebuilt and migrated the company website from WordPress to Webflow, modernizing the design and improving load times by 15% for a smoother user experience.",
       "Developed a custom job scheduling system using ReactJS and the ServiceTitan API, increasing booking efficiency by 10%.",
