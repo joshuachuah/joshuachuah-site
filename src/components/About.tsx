@@ -47,11 +47,12 @@ const About = () => {
               <div className="w-3 h-3 bg-rose-400 rounded-full mr-3"></div>
               <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Current Role</h3>
             </div>
-            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              I am currently a <span className="text-rose-500 font-semibold">Full-stack Developer</span> at{' '}
-              <span className="text-rose-400 font-semibold">Peak Heating and Cooling</span>, crafting scalable 
-              website and systems that drive business growth and user engagement.
-            </p>
+              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                I'm a <span className="text-rose-500 font-semibold">Full-Stack Developer</span> with experience building scalable 
+                websites and systems that drive business growth and user engagement. I'm currently{' '}
+                <span className="text-rose-400 font-semibold">exploring new opportunities</span> where I can contribute my 
+                technical expertise and passion for creating impactful digital solutions.
+              </p>
           </motion.div>
 
           {/* Technologies card */}
