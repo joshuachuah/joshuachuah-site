@@ -2,16 +2,17 @@ import React from 'react';
 import profilePic from '/images/3.webp';
 import { motion } from 'framer-motion';
 import { FaReact, FaJs, FaNodeJs, FaPython } from 'react-icons/fa';
-import { SiTypescript, SiWebflow } from 'react-icons/si';
+import { SiTypescript, SiExpress } from 'react-icons/si';
+
 
 const About = () => {
   const technologies = [
-    { name: 'Webflow', icon: SiWebflow },
+    { name: 'Python', icon: FaPython },
+    { name: 'Express', icon: SiExpress },
     { name: 'TypeScript', icon: SiTypescript },
     { name: 'React.js', icon: FaReact },
     { name: 'JavaScript ES6+', icon: FaJs },
     { name: 'Node.js', icon: FaNodeJs },
-    { name: 'Python', icon: FaPython }
   ];
 
   // Detect if user is on mobile
