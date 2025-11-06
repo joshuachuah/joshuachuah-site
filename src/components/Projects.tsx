@@ -15,6 +15,7 @@ const projects = [
       { name: "JavaScript", color: "yellow" },
     ],
     github: 'https://github.com/joshuachuah/unofficial-website',
+    website: 'https://joshuachuah.github.io/unofficial-website/',
   },
   {
     title: 'StatsPicksNBA',
@@ -103,6 +104,18 @@ const Projects = () => {
                       >
                         <FontAwesomeIcon icon={faGithub} />
                       </motion.a>
+                      {project.website && (
+                        <motion.a
+                          href={project.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 bg-white/20 rounded-lg text-white hover:bg-white/30 transition-colors"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <FontAwesomeIcon icon={faExternalLinkAlt} />
+                        </motion.a>
+                      )}
                     </div>
                   </div>
                 </div>
