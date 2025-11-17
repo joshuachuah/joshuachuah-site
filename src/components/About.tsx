@@ -98,7 +98,7 @@ const About = () => {
             </div>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               When I'm not coding, I read about the latest <span className="text-green-500 font-semibold">Cybersecurity</span> news, specifically in malware. I also
-              enjoy playing <span className="text-purple-500 font-semibold">video games</span>, and binge-watch{' '}
+              enjoy playing <span className="text-purple-500 font-semibold">video games</span>, and binge-watching{' '}
               <span className="text-pink-500 font-semibold">K-dramas</span>.
             </p>
           </motion.div>
