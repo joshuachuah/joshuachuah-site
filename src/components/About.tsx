@@ -28,7 +28,7 @@ const About = () => {
         <p className="text-sm uppercase tracking-[0.25em] text-theme-tan/50 font-medium mb-3">
           Get Cozy
         </p>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-gray-800 mb-4">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-theme-tan/90 mb-4">
           About Me
         </h2>
         <p className="text-lg md:text-xl text-gray-600 font-light leading-relaxed max-w-2xl">
