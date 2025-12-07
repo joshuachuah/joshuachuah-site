@@ -68,7 +68,7 @@ const Projects = () => {
             <div className="flex-1 h-[2px] bg-gradient-to-r from-theme-tan/60 via-theme-tan/40 to-transparent rounded-full" />
           </div>
           <p className="text-center text-gray-600/80 text-sm font-light italic">
-            A cozy collection of my favorite projects
+            A collection of my favorite projects
           </p>
         </motion.div>
 

@@ -18,7 +18,7 @@ const generateParticles = (count: number) => {
 };
 
 const taglines = [
-  "Building cozy digital experiences ✨",
+  "Building impactful and innvative digital experiences ✨",
   "Turning caffeine into code ☕",
   "Crafting pixels with purpose 🎨",
   "Making the web a better place 🌐",
@@ -141,7 +141,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.7 }}
             >
-              Based in Kalamazoo, MI. I craft cozy digital experiences with clean, responsive interfaces and robust backends.
+              Based in Kalamazoo, MI. I develop seamless digital experiences with clean, responsive interfaces and robust backends.
               Passionate about turning ideas into impactful web solutions.
             </motion.p>
 
