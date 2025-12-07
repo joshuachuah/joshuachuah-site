@@ -19,7 +19,7 @@ const projects = [
   {
     title: 'StatsPicksNBA',
     description: 'A Django web application leveraging machine learning algorithms to help make predictions related to NBA betting over/under lines for player and team props.',
-    image: 'images/NBA Logo.webp',
+    image: '/images/nba-logo.webp',
     tech: [
       { name: 'Django', color: "green" },
       { name: 'Python', color: "blue" },
@@ -30,7 +30,7 @@ const projects = [
   {
     title: 'Broken Song',
     description: 'A program that traverses through a directory tree looking for pieces of an mp3',
-    image: '/images/music notes.webp',
+    image: '/images/music-notes.webp',
     tech: [
       { name: 'C', color: "indigo" },
     ],
