@@ -4,7 +4,6 @@ import About from '@/components/AboutClient';
 import Projects from '@/components/ProjectsClient';
 import Footer from '@/components/Footer';
 import Experience from '@/components/ExperienceClient';
-import Music from '@/components/MusicClient';
 import FallingLeaves from '@/components/FallingLeaves';
 
 export default function Home() {
