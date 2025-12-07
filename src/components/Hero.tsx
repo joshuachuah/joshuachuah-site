@@ -1,5 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMemo, useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 
 // Generate consistent particle positions
 const generateParticles = (count: number) => {
@@ -205,9 +207,9 @@ const Hero = () => {
                     />
                   </div>
 
-                  {/* Back side - Cozy emoji */}
+                  {/* Back side - Developer icon */}
                   <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-theme-sage via-theme-tan to-theme-tan flex items-center justify-center">
-                    <span className="text-8xl sm:text-9xl lg:text-[10rem]">🌙</span>
+                    <FontAwesomeIcon icon={faLaptopCode} className="text-7xl sm:text-8xl lg:text-9xl text-white" />
                   </div>
                 </div>
               </div>
