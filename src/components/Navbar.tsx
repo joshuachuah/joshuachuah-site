@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faSun, faMoon, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { useTheme } from '../context/ThemeContext';
-// import { useNavigate, useLocation } from 'react-router-dom';
 
 const navLinks = [
   { to: 'hero', label: 'Home' },
@@ -19,14 +17,11 @@ const socialLinks = [
 ];
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
       const sections = navLinks.map(link => document.getElementById(link.to));
       sections.forEach((section, index) => {
         if (!section) return;
@@ -63,11 +58,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 h-[60px] z-[1000] transition-all duration-300 bg-white dark:bg-gray-900 shadow-sm`}> 
+    <nav className="fixed top-0 left-0 right-0 h-[60px] z-[1000] transition-all duration-500 bg-white/40 backdrop-blur-md border-b-2 border-theme-sage/30 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 h-full flex items-center justify-between">
         {/* Left: Name */}
         <div className="flex items-center">
-          <span className="text-gray-900 dark:text-white font-bold text-lg tracking-wide">Joshua Chuah</span>
+          <span className="text-theme-tan font-medium text-lg tracking-wide">Joshua Chuah ☕</span>
         </div>
 
         {/* Desktop Navigation */}
@@ -81,8 +76,8 @@ const Navbar = () => {
                     e.preventDefault();
                     scrollToSection(link.to);
                   }}
-                  className={`font-medium no-underline transition-colors duration-200 px-2 py-1 text-base text-gray-600 dark:text-gray-300 hover:text-rose-500 ${
-                    activeTab === link.to ? 'text-rose-500' : ''
+                  className={`font-light no-underline transition-colors duration-500 px-2 py-1 text-base text-gray-700 hover:text-theme-tan ${
+                    activeTab === link.to ? 'text-theme-tan font-medium' : ''
                   }`}
                   style={{ cursor: 'pointer' }}
                 >
@@ -93,7 +88,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* Right: Social Icons, Theme Toggle, and Mobile Menu Button */}
+        {/* Right: Social Icons and Mobile Menu Button */}
         <div className="flex items-center gap-4">
           {/* Desktop Social Icons */}
           <div className="hidden md:flex items-center gap-4">
@@ -103,7 +98,7 @@ const Navbar = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-rose-500 transition-colors duration-200 text-lg px-2"
+                className="text-gray-700 hover:text-theme-tan transition-colors duration-500 text-lg px-2"
                 aria-label={social.label}
               >
                 <FontAwesomeIcon icon={social.icon} />
@@ -111,20 +106,10 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="text-gray-600 dark:text-gray-300 hover:text-rose-500 transition-colors duration-200 text-lg px-2"
-            aria-label="Toggle theme"
-            style={{ cursor: 'pointer' }}
-          >
-            <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
-          </button>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-gray-600 dark:text-gray-300 hover:text-rose-500 transition-colors duration-200 text-lg p-2"
+            className="md:hidden text-gray-700 hover:text-theme-tan transition-colors duration-500 text-lg p-2"
             aria-label="Toggle mobile menu"
           >
             <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
@@ -135,7 +120,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 top-[60px] bg-black bg-opacity-50 z-[999] mobile-menu">
-          <div className="bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-700">
+          <div className="bg-white/40 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-2 border-theme-sage/30">
             <div className="px-4 py-6">
               {/* Mobile Navigation Links */}
               <ul className="space-y-4 mb-6">
@@ -147,10 +132,10 @@ const Navbar = () => {
                         e.preventDefault();
                         scrollToSection(link.to);
                       }}
-                      className={`block font-medium text-lg py-3 px-4 rounded-lg transition-colors duration-200 ${
-                        activeTab === link.to 
-                          ? 'text-rose-500 bg-rose-50 dark:bg-rose-900/20' 
-                          : 'text-gray-600 dark:text-gray-300 hover:text-rose-500 hover:bg-gray-50 dark:hover:bg-gray-800'
+                      className={`block font-light text-lg py-3 px-4 rounded-2xl transition-all duration-500 ${
+                        activeTab === link.to
+                          ? 'text-theme-tan bg-white/50 border-2 border-theme-tan/40 shadow-[0_8px_30px_rgb(212,163,115,0.15)] font-medium'
+                          : 'text-gray-700 hover:text-theme-tan hover:bg-white/30 border-2 border-transparent'
                       }`}
                       style={{ cursor: 'pointer' }}
                     >
@@ -161,14 +146,14 @@ const Navbar = () => {
               </ul>
 
               {/* Mobile Social Links */}
-              <div className="flex justify-center gap-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex justify-center gap-6 pt-4 border-t-2 border-theme-sage/30">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 dark:text-gray-300 hover:text-rose-500 transition-colors duration-200 text-xl p-2"
+                    className="text-gray-700 hover:text-theme-tan transition-colors duration-500 text-xl p-2"
                     aria-label={social.label}
                   >
                     <FontAwesomeIcon icon={social.icon} />
