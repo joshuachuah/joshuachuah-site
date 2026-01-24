@@ -1,0 +1,1 @@
+export const technologies = ['Python', 'Express', 'TypeScript', 'React.js', 'JavaScript', 'Node.js'];

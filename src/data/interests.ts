@@ -1,0 +1,1 @@
+export const interests = ['Cybersecurity', 'Gaming', 'K-dramas'];
