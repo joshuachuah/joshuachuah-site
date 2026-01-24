@@ -1,7 +1,14 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { ThemeProvider } from './providers';
-import PageLoadAnimation from '@/components/PageLoadAnimation';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+  themeColor: '#FAF9F6',
+};
 
 export const metadata: Metadata = {
   title: 'Joshua Chuah - Portfolio',
@@ -24,9 +31,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <PageLoadAnimation>
-            {children}
-          </PageLoadAnimation>
+          {children}
         </ThemeProvider>
       </body>
     </html>

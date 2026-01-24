@@ -7,7 +7,7 @@ import FadeIn from '../styles/FadeIn';
 
 const SpotifyRecentlyPlayed = () => {
   const [activeTab, setActiveTab] = useState<'recent' | 'top'>('recent');
-  
+
   // Ensure your hook returns topTracks
   const { currentTrack, recentlyPlayedTracks, topTracks } = useSpotify();
 
@@ -23,10 +23,10 @@ const SpotifyRecentlyPlayed = () => {
   const TabButton = ({ label, tabKey }: { label: string, tabKey: 'recent' | 'top' }) => (
     <button
       onClick={() => setActiveTab(tabKey)}
-      className={`text-sm uppercase tracking-wide font-medium pb-2 border-b-2 transition-colors duration-200 ${
+      className={`text-sm uppercase tracking-wide font-medium pb-2 border-b-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2D2D2D]/50 focus-visible:ring-offset-2 ${
         activeTab === tabKey
-          ? 'border-green-500 text-gray-900'
-          : 'border-transparent text-gray-400 hover:text-gray-600'
+          ? 'border-[#2D2D2D] text-[#2D2D2D]'
+          : 'border-transparent text-[#2D2D2D]/40 hover:text-[#2D2D2D]/60'
       }`}
     >
       {label}
@@ -36,7 +36,7 @@ const SpotifyRecentlyPlayed = () => {
   return (
     <div className="w-full">
       {/* Navigation Tabs */}
-      <div className="flex space-x-6 mb-6 border-b border-gray-100">
+      <div className="flex space-x-6 mb-6 border-b border-[#2D2D2D]/10">
         {/* The label here is now dynamic based on listening status */}
         <TabButton label={recentTabLabel} tabKey="recent" />
         <TabButton label="Top Tracks" tabKey="top" />
@@ -63,7 +63,7 @@ const SpotifyRecentlyPlayed = () => {
                    // Only show this sub-header if we have a current track AND history
                    currentTrack && (
                     <div className="mt-6 mb-2">
-                      <p className="text-sm text-gray-600 uppercase tracking-wide font-medium">
+                      <p className="text-sm text-[#2D2D2D]/60 uppercase tracking-wide font-medium">
                         Recently Played
                       </p>
                     </div>
@@ -80,7 +80,7 @@ const SpotifyRecentlyPlayed = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-600">No tracks found.</p>
+              <p className="text-[#2D2D2D]/60">No tracks found.</p>
             )}
           </div>
 
@@ -120,7 +120,7 @@ const SpotifyRecentlyPlayed = () => {
                 </FadeIn>
               ))
             ) : (
-              <p className="text-gray-600">No top tracks loaded.</p>
+              <p className="text-[#2D2D2D]/60">No top tracks loaded.</p>
             )}
           </div>
         </>

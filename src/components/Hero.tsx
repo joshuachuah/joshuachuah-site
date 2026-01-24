@@ -1,275 +1,131 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useMemo, useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptopCode } from '@fortawesome/free-solid-svg-icons';
+'use client';
 
-// Generate consistent particle positions
-const generateParticles = (count: number) => {
-  const particles = [];
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      id: i,
-      left: (i * 37.5 + 12.3) % 100,
-      top: (i * 43.7 + 8.9) % 100,
-      xOffset: (i * 17.3) % 20 - 10,
-      duration: 3 + (i * 7.1) % 4,
-      delay: (i * 5.3) % 2,
-    });
-  }
-  return particles;
-};
+import { motion } from 'framer-motion';
+import { RefObject } from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 
-const taglines = [
-  "Building impactful and innvative digital experiences ✨",
-  "Turning caffeine into code ☕",
-  "Crafting pixels with purpose 🎨",
-  "Making the web a better place 🌐",
-  "One commit at a time 🚀",
-];
+interface HeroProps {
+  heroOpacity: any;
+  heroY: any;
+  heroRef: RefObject<HTMLElement>;
+}
 
-const Hero = () => {
-  const particles = useMemo(() => generateParticles(20), []);
-  const [currentTagline, setCurrentTagline] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTagline((prev) => (prev + 1) % taglines.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
+const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
   return (
-    <section id="hero" className="h-screen bg-theme-cream flex items-center relative overflow-hidden">
-      {/* Animated grid background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Dot grid pattern */}
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle, rgba(204, 213, 174, 0.15) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }}></div>
+    <motion.section
+      ref={heroRef}
+      className="min-h-screen flex items-center px-4 sm:px-6 md:px-8 lg:px-16 relative pt-20 sm:pt-0"
+      style={{ opacity: heroOpacity }}
+    >
+      {/* Decorative vertical line - hidden on mobile */}
+      <motion.div
+        className="absolute left-4 sm:left-6 md:left-8 lg:left-16 top-0 w-px bg-border-subtle hidden sm:block"
+        initial={{ height: 0 }}
+        animate={{ height: '100%' }}
+        transition={{ duration: 2, ease: 'easeOut' }}
+      />
 
-        {/* Animated gradient blobs */}
+      <motion.div className="max-w-5xl mx-auto w-full pt-16 sm:pt-24" style={{ y: heroY }}>
         <motion.div
-          className="absolute top-1/4 -left-1/4 w-96 h-96 bg-gradient-to-br from-theme-sage/20 to-theme-tan/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut'
-          }}
-        ></motion.div>
-        <motion.div
-          className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-gradient-to-br from-theme-tan/20 to-theme-sage/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -30, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1
-          }}
-        ></motion.div>
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 lg:gap-16 items-center"
+        >
+          {/* Left spacer */}
+          <div className="lg:col-span-1 hidden lg:block" />
 
-        {/* Floating particles */}
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute w-1 h-1 bg-theme-tan/30 rounded-full"
-            style={{
-              left: `${particle.left}%`,
-              top: `${particle.top}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, particle.xOffset, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: particle.delay,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left side - Text content */}
-          <motion.div
-            className="space-y-6 order-2 lg:order-1"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            {/* Role badge */}
+          {/* Main content */}
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left w-full">
+            {/* Available badge */}
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.7 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="flex items-center justify-center lg:justify-start gap-3"
             >
-              <span className="inline-block px-4 py-2 bg-white/40 backdrop-blur-md border-2 border-theme-sage/30 rounded-full text-sm font-light text-theme-tan shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:bg-white/50 hover:border-theme-tan/40 transition-all duration-500">
-                Full Stack Developer ☕
-              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] tracking-wider text-text-dim uppercase">Available for opportunities</span>
             </motion.div>
 
-            {/* Main heading with typing animation */}
-            <div className="space-y-2">
-              <motion.p
-                className="text-lg sm:text-xl text-gray-600"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
-              >
-                Hello, I'm
-              </motion.p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#D4A373]">
-                Joshua Chuah
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 1.2 }}
+            >
+              <p className="text-[10px] tracking-wide-tight text-text-dim uppercase mb-4 sm:mb-6">
+                Full Stack Developer
+              </p>
+              <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1]">
+                Joshua
+                <br />
+                <span className="text-text-secondary">Chuah</span>
               </h1>
-            </div>
+            </motion.div>
 
-            {/* Description */}
+            {/* Zen line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: '6rem' }}
+              transition={{ delay: 1, duration: 1.5, ease: 'easeInOut' }}
+              className="h-px bg-border-subtle mx-auto lg:mx-0"
+            />
+
             <motion.p
-              className="text-base sm:text-lg leading-relaxed text-gray-600 max-w-xl font-light"
+              className="text-base sm:text-lg font-light text-text-secondary max-w-md leading-relaxed mx-auto lg:mx-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.7 }}
+              transition={{ delay: 1.2, duration: 1 }}
             >
-              Based in Kalamazoo, MI. I develop seamless digital experiences with clean, responsive interfaces and robust backends.
-              Passionate about turning ideas into impactful web solutions.
+              Developing seamless digital experiences with clean,
+              responsive interfaces and robust backends.
             </motion.p>
 
-            {/* Animated Tagline */}
+            {/* CTA */}
             <motion.div
-              className="relative max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.7 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 1 }}
+              className="flex flex-col xs:flex-row items-center justify-center lg:justify-start gap-4 xs:gap-6 sm:gap-8 pt-2 sm:pt-4"
             >
-              <div className="relative h-16 flex items-center">
-                <AnimatePresence mode="wait">
-                  <motion.p
-                    key={currentTagline}
-                    className="text-xl sm:text-2xl font-light text-theme-tan italic"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  >
-                    "{taglines[currentTagline]}"
-                  </motion.p>
-                </AnimatePresence>
-              </div>
-
-              {/* Progress dots */}
-              <div className="flex gap-2 mt-4">
-                {taglines.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTagline(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentTagline
-                        ? 'bg-theme-tan w-6'
-                        : 'bg-theme-sage/40 hover:bg-theme-sage/60'
-                    }`}
-                    aria-label={`Go to tagline ${index + 1}`}
-                  />
-                ))}
-              </div>
+              <a
+                href="#contact"
+                className="group flex items-center gap-3 text-sm text-text-secondary hover:text-text-primary transition-colors duration-500"
+              >
+                <span className="tracking-tight uppercase">Get in touch</span>
+                <FaArrowRight aria-hidden="true" className="text-xs group-hover:translate-x-1 transition-transform duration-500" />
+              </a>
+              <a
+                href="#work"
+                className="text-sm tracking-tight uppercase text-text-dim hover:text-text-secondary transition-colors duration-500"
+              >
+                View work
+              </a>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Right side - Profile image with animated border */}
+          {/* Profile Image */}
           <motion.div
-            className="flex justify-center lg:justify-end order-1 lg:order-2"
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="lg:col-span-5 flex justify-center lg:justify-end mb-6 lg:mb-0"
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ delay: 0.5, duration: 1 }}
           >
-            <div className="relative">
-              {/* Profile image flip card */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 [perspective:1000px] group">
-                <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                  {/* Front side - Profile image */}
-                  <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] [backface-visibility:hidden]">
-                    <img
-                      src="/images/3.webp"
-                      alt="Joshua Chuah"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  {/* Back side - Developer icon */}
-                  <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-theme-sage via-theme-tan to-theme-tan flex items-center justify-center">
-                    <FontAwesomeIcon icon={faLaptopCode} className="text-7xl sm:text-8xl lg:text-9xl text-white" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating decorative elements */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-theme-sage to-theme-tan rounded-full blur-xl opacity-60"
-                animate={{
-                  y: [0, -20, 0],
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: 'easeInOut'
-                }}
-              ></motion.div>
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-theme-tan to-theme-sage rounded-full blur-xl opacity-60"
-                animate={{
-                  y: [0, 20, 0],
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: 1
-                }}
-              ></motion.div>
+            <div className="relative w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+              <div className="absolute inset-0 rounded-full border border-subtle" />
+              <img
+                src="/images/3.webp"
+                alt="Joshua Chuah"
+                width={320}
+                height={320}
+                className="w-full h-full object-cover rounded-full"
+              />
             </div>
           </motion.div>
-        </div>
-
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        onClick={() => {
-          const nextSection = document.querySelector('#hero')?.nextElementSibling;
-          nextSection?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      >
-        <div className="w-6 h-10 border-2 border-theme-tan/50 rounded-full flex justify-center p-2">
-          <motion.div
-            className="w-1.5 h-1.5 bg-theme-tan rounded-full"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </div>
-        <p className="text-xs text-gray-400 mt-2 text-center">Scroll</p>
+        </motion.div>
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 
-export default Hero; 
+export default Hero;

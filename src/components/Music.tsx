@@ -1,37 +1,25 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import SpotifyRecentlyPlayed from './SpotifyClient';
+import SpotifyRecentlyPlayed from '@/components/SpotifyClient';
 
 const Music = () => {
   return (
-    <section id="music" className="py-5 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-16">
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear'
-          }}
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-        {/* Spotify component */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 1.2 }}
+          className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16"
         >
-          <SpotifyRecentlyPlayed />
+          <div className="lg:col-span-3">
+            <p className="text-[10px] tracking-widest text-text-dim uppercase">Music</p>
+          </div>
+          <div className="lg:col-span-9">
+            <SpotifyRecentlyPlayed />
+          </div>
         </motion.div>
       </div>
     </section>
