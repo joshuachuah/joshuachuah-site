@@ -6,7 +6,7 @@ import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
 import About from '@/components/About';
 import Interests from '@/components/Interests';
-import Music from '@/components/Music';
+// import Music from '@/components/Music';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
