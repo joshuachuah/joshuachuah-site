@@ -15,14 +15,14 @@ const Skills = () => {
           className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16"
         >
           <div className="lg:col-span-3">
-            <p className="text-[10px] tracking-widest text-text-dim uppercase">Technologies</p>
+            <p className="text-[12px] tracking-widest text-text-dim uppercase">Technologies</p>
           </div>
           <div className="lg:col-span-9">
             <div className="flex flex-wrap gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-3 sm:gap-y-4 lg:gap-y-5">
               {technologies.map((tech, index) => (
                 <motion.span
                   key={tech}
-                  className="text-sm font-light text-text-muted hover:text-text-secondary transition-colors duration-500 cursor-default"
+                  className="text-[14px] font-light text-text-muted hover:text-text-secondary transition-colors duration-500 cursor-default"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}

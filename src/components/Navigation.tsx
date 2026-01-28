@@ -28,7 +28,7 @@ const Navigation = ({ time }: NavigationProps) => {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-xs tracking-wider text-text-light hover:text-text-primary transition-colors duration-700 uppercase hidden sm:block"
+                className="text-xs tracking-wider text-text-light hover:text-text-primary transition-colors duration-700 uppercase hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary/50 rounded"
               >
                 {item.label}
               </a>
@@ -82,7 +82,7 @@ const Navigation = ({ time }: NavigationProps) => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-2xl tracking-wider text-text-secondary hover:text-text-primary transition-colors uppercase"
+                  className="text-2xl tracking-wider text-text-secondary hover:text-text-primary transition-colors uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary/50 rounded"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 + index * 0.1 }}

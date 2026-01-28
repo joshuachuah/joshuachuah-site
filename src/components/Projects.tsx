@@ -16,7 +16,7 @@ const Projects = () => {
           className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16"
         >
           <div className="lg:col-span-3">
-            <p className="text-[10px] tracking-widest text-text-dim uppercase">Projects</p>
+            <p className="text-xs tracking-widest text-text-dim uppercase">Projects</p>
           </div>
           <div className="lg:col-span-9 space-y-10 sm:space-y-12 lg:space-y-16">
             {projects.map((project, index) => (
@@ -25,7 +25,7 @@ const Projects = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block"
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary/50 rounded"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -36,12 +36,12 @@ const Projects = () => {
                     <span className="truncate">{project.title}</span>
                     <FaArrowRight aria-hidden="true" className="text-xs opacity-0 -translate-x-2 group-hover:opacity-60 group-hover:translate-x-0 transition-all duration-500 shrink-0" />
                   </h3>
-                  <span className="text-[10px] tracking-wider text-text-faint shrink-0">{project.year}</span>
+                  <span className="text-[12px] tracking-wider text-text-faint shrink-0">{project.year}</span>
                 </div>
                 <p className="text-sm text-text-muted mb-3 sm:mb-4 leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
                   {project.tech.map((t) => (
-                    <span key={t} className="text-[10px] tracking-tight text-text-faint uppercase">
+                    <span key={t} className="text-[12px] tracking-tight text-text-faint uppercase">
                       {t}
                     </span>
                   ))}

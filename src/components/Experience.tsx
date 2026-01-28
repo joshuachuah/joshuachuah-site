@@ -15,7 +15,7 @@ const Experience = () => {
           className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16"
         >
           <div className="lg:col-span-3">
-            <p className="text-[10px] tracking-widest text-text-dim uppercase">Experience</p>
+            <p className="text-xs tracking-widest text-text-muted uppercase">Experience</p>
           </div>
           <div className="lg:col-span-9 space-y-8 sm:space-y-10 lg:space-y-12">
             {experiences.map((exp, index) => (

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { RefObject } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
+import Image from 'next/image';
 
 interface HeroProps {
   heroOpacity: any;
@@ -53,7 +54,7 @@ const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 1.2 }}
             >
-              <p className="text-[10px] tracking-wide-tight text-text-dim uppercase mb-4 sm:mb-6">
+              <p className="text-[12px] tracking-wide-tight text-text-dim uppercase mb-4 sm:mb-6">
                 Full Stack Developer
               </p>
               <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1]">
@@ -90,14 +91,14 @@ const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
             >
               <a
                 href="#contact"
-                className="group flex items-center gap-3 text-sm text-text-secondary hover:text-text-primary transition-colors duration-500"
+                className="group flex items-center gap-3 text-sm text-text-secondary hover:text-text-primary transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary/50 rounded"
               >
                 <span className="tracking-tight uppercase">Get in touch</span>
                 <FaArrowRight aria-hidden="true" className="text-xs group-hover:translate-x-1 transition-transform duration-500" />
               </a>
               <a
                 href="#work"
-                className="text-sm tracking-tight uppercase text-text-dim hover:text-text-secondary transition-colors duration-500"
+                className="text-sm tracking-tight uppercase text-text-dim hover:text-text-secondary transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary/50 rounded"
               >
                 View work
               </a>
@@ -113,12 +114,13 @@ const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
           >
             <div className="relative w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
               <div className="absolute inset-0 rounded-full border border-subtle" />
-              <img
+              <Image
                 src="/images/3.webp"
                 alt="Joshua Chuah"
                 width={320}
                 height={320}
                 className="w-full h-full object-cover rounded-full"
+                priority
               />
             </div>
           </motion.div>

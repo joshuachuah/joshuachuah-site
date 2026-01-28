@@ -15,14 +15,14 @@ const Interests = () => {
           className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16"
         >
           <div className="lg:col-span-3">
-            <p className="text-[10px] tracking-widest text-text-dim uppercase">Interests</p>
+            <p className="text-[12px] tracking-widest text-text-dim uppercase">Interests</p>
           </div>
           <div className="lg:col-span-9">
             <div className="flex flex-wrap gap-6 sm:gap-8 lg:gap-10">
               {interests.map((interest, index) => (
                 <motion.span
                   key={index}
-                  className="text-sm font-light text-text-muted hover:text-text-secondary transition-colors duration-500 cursor-default"
+                  className="text-base font-light text-text-muted hover:text-text-secondary transition-colors duration-500 cursor-default"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

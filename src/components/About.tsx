@@ -14,7 +14,7 @@ const About = () => {
           className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16"
         >
           <div className="lg:col-span-3">
-            <p className="text-[10px] tracking-widest text-text-dim uppercase">About</p>
+            <p className="text-xs tracking-widest text-text-dim uppercase">About</p>
           </div>
           <div className="lg:col-span-9 space-y-6 sm:space-y-8 lg:space-y-10">
             <p className="text-lg sm:text-xl font-light text-text-secondary leading-relaxed">
@@ -25,13 +25,13 @@ const About = () => {
             {/* Info Grid */}
             <div className="grid grid-cols-1 xs:grid-cols-2 gap-6 sm:gap-8 pt-2 sm:pt-4">
               <div>
-                <p className="text-[10px] tracking-wider text-text-faint uppercase mb-2">Location</p>
-                <p className="text-sm text-text-secondary">Kalamazoo, Michigan</p>
+                <p className="text-[12px] tracking-wider text-text-faint uppercase mb-2">Location</p>
+                <p className="text-[14px] text-text-secondary">Kalamazoo, Michigan</p>
               </div>
               <div>
-                <p className="text-[10px] tracking-wider text-text-faint uppercase mb-2">Education</p>
-                <p className="text-sm text-text-secondary">Western Michigan University</p>
-                <p className="text-xs text-text-dim mt-1">B.S. Computer Science</p>
+                <p className="text-[12px] tracking-wider text-text-faint uppercase mb-2">Education</p>
+                <p className="text-[14px] text-text-secondary">Western Michigan University</p>
+                <p className="text-[14px] text-text-dim mt-1">B.S. Computer Science</p>
               </div>
             </div>
           </div>
