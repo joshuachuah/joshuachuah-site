@@ -46,7 +46,7 @@ const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
               className="flex items-center justify-center lg:justify-start gap-3"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[10px] tracking-wider text-text-dim uppercase">Available for opportunities</span>
+              <span className="text-[12px] tracking-wider text-text-dim uppercase">Available for opportunities</span>
             </motion.div>
 
             <motion.div
@@ -54,7 +54,7 @@ const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 1.2 }}
             >
-              <p className="text-[12px] tracking-wide-tight text-text-dim uppercase mb-4 sm:mb-6">
+              <p className="text-[14px] tracking-wide-tight text-text-dim uppercase mb-4 sm:mb-6">
                 Full Stack Developer
               </p>
               <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1]">
