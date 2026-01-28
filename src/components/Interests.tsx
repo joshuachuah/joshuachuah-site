@@ -26,8 +26,8 @@ const Interests = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.15, duration: 0.8 }}
-                  whileHover={{ y: -3, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
+                  transition={{ delay: index * 0.15, duration: 0.8, y: { type: 'spring', stiffness: 200, damping: 25 } }}
+                  whileHover={{ y: -3 }}
                 >
                   {interest}
                 </motion.span>
