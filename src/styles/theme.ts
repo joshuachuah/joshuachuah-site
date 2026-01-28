@@ -21,9 +21,9 @@ export const theme = {
 
     // Text colors
     text: {
-      primary: '#000000',    // Pure black for main text and headings
-      secondary: '#6B7280',  // Gray for body text and descriptions
-      tertiary: '#9CA3AF',   // Light gray for subtle text like dates
+      primary: '#1A1A1A',    // Dark charcoal for main text and headings
+      secondary: '#4B5563',  // Darker gray for body text and descriptions
+      tertiary: '#6B7280',   // Medium gray for subtle text like dates
       inverse: '#FFFFFF',    // White text for dark backgrounds
     },
 
