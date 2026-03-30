@@ -26,7 +26,7 @@ const About = () => {
             <div className="grid grid-cols-1 xs:grid-cols-2 gap-6 sm:gap-8 pt-2 sm:pt-4">
               <div>
                 <p className="text-[12px] tracking-wider text-text-faint uppercase mb-2">Location</p>
-                <p className="text-[14px] text-text-secondary">Kalamazoo, Michigan</p>
+                <p className="text-[14px] text-text-secondary">Kuala Lumpur, Malaysia</p>
               </div>
               <div>
                 <p className="text-[12px] tracking-wider text-text-faint uppercase mb-2">Education</p>

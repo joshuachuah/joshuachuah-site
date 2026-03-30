@@ -45,8 +45,8 @@ const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="flex items-center justify-center lg:justify-start gap-3"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[12px] tracking-wider text-text-dim uppercase">Available for opportunities</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-[12px] tracking-wider text-text-dim uppercase">🧑‍🍳 Cooking in the kitchen</span>
             </motion.div>
 
             <motion.div

@@ -1,1 +1,1 @@
-export const interests = ['Data Analyst', 'System Analyst', 'Web Developer', 'Software Engineer', 'Cybersecurity', 'Gaming', 'Building Custom Keyboards', 'K-dramas'];
+export const interests = ['Web Developer', 'Software Engineer', 'Cybersecurity', 'Gaming', 'Building Custom Keyboards', 'K-dramas'];
