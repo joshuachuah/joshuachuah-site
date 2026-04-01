@@ -46,7 +46,7 @@ const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
               className="flex items-center justify-center lg:justify-start gap-3"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-[12px] tracking-wider text-text-dim uppercase">🧑‍🍳 Cooking in the kitchen</span>
+              <span className="text-[12px] tracking-wider text-text-dim uppercase">Shipping</span>
             </motion.div>
 
             <motion.div
