@@ -115,7 +115,7 @@ const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {
             <div className="relative w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
               <div className="absolute inset-0 rounded-full border border-subtle" />
               <Image
-                src="/images/3.webp"
+                src="/images/hero.webp"
                 alt="Joshua Chuah"
                 width={320}
                 height={320}
