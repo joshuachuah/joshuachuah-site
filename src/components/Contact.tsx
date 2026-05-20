@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 
 const Contact = () => {
@@ -23,7 +23,7 @@ const Contact = () => {
           <p className="text-[10px] tracking-widest text-text-dim uppercase">Connect</p>
 
           <p className="text-lg sm:text-xl font-light text-text-secondary max-w-md mx-auto leading-relaxed px-4 sm:px-0">
-            Have a project in mind? Let's create something meaningful together.
+            Have a project in mind? Let&apos;s create something meaningful together.
           </p>
 
           <motion.a

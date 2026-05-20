@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useSpotifyAuth } from './useSpotifyAuth.next';
 
-interface Track {
+export interface Track {
   id: string;
   name: string;
   artist: string;
@@ -18,7 +18,24 @@ interface Artist {
   genres: string[];
 }
 
-interface RecentlyPlayedTrack {
+interface CurrentTrackResponse {
+  isPlaying: boolean;
+  track?: Track;
+}
+
+interface SpotifyArtistsResponse {
+  artists?: Artist[];
+}
+
+interface SpotifyTracksResponse {
+  tracks?: Track[];
+}
+
+interface RecentlyPlayedTracksResponse {
+  tracks?: RecentlyPlayedTrack[];
+}
+
+export interface RecentlyPlayedTrack {
   id: string;
   name: string;
   artist: string;
@@ -27,6 +44,12 @@ interface RecentlyPlayedTrack {
   spotifyUrl: string;
   playedAt: string;
 }
+
+// Minimum time between fetches.
+const MIN_FETCH_INTERVAL = 5000; // 5 seconds for current track
+const MIN_TOP_ARTISTS_INTERVAL = 300000; // 5 minutes for top artists
+const MIN_TOP_INTERVAL = 300000; // 5 minutes for top tracks
+const MIN_RECENTLY_PLAYED_INTERVAL = 60000; // 1 minute for recently played
 
 export function useSpotify() {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
@@ -41,13 +64,7 @@ export function useSpotify() {
   const lastTopTracksFetch = useRef<number>(0);
   const lastRecentlyPlayedFetch = useRef<number>(0);
 
-  // Minimum time between fetches (in ms)
-  const MIN_FETCH_INTERVAL = 5000; // 5 seconds for current track
-  const MIN_TOP_ARTISTS_INTERVAL = 300000; // 5 minutes for top artists
-  const MIN_TOP_INTERVAL = 300000; // 5 minutes for top tracks
-  const MIN_RECENTLY_PLAYED_INTERVAL = 60000; // 1 minute for recently played
-
-  const fetchCurrentTrack = async () => {
+  const fetchCurrentTrack = useCallback(async () => {
     const now = Date.now();
     if (now - lastCurrentTrackFetch.current < MIN_FETCH_INTERVAL) {
       return; // Skip if called too soon
@@ -62,7 +79,7 @@ export function useSpotify() {
           'Authorization': `Bearer ${token}`,
         },
       });
-      const data = await response.json();
+      const data = (await response.json()) as CurrentTrackResponse;
 
       if (data.isPlaying && data.track) {
         setCurrentTrack(data.track);
@@ -73,9 +90,9 @@ export function useSpotify() {
       console.error('Error fetching current track:', error);
       setCurrentTrack(null);
     }
-  };
+  }, [token]);
 
-  const fetchTopArtists = async () => {
+  const fetchTopArtists = useCallback(async () => {
     const now = Date.now();
     if (now - lastTopArtistsFetch.current < MIN_TOP_ARTISTS_INTERVAL) {
       return; // Skip if called too soon
@@ -90,7 +107,7 @@ export function useSpotify() {
           'Authorization': `Bearer ${token}`,
         },
       });
-      const data = await response.json();
+      const data = (await response.json()) as SpotifyArtistsResponse;
 
       if (data.artists) {
         setTopArtists(data.artists);
@@ -98,9 +115,9 @@ export function useSpotify() {
     } catch (error) {
       console.error('Error fetching top artists:', error);
     }
-  };
+  }, [token]);
 
-  const fetchTopTracks = async () => {
+  const fetchTopTracks = useCallback(async () => {
     const now = Date.now();
     if (now - lastTopTracksFetch.current < MIN_TOP_INTERVAL) {
       return; // Skip if called too soon
@@ -115,7 +132,7 @@ export function useSpotify() {
           'Authorization': `Bearer ${token}`,
         },
       });
-      const data = await response.json();
+      const data = (await response.json()) as SpotifyTracksResponse;
 
       if (data.tracks) {
         setTopTracks(data.tracks);
@@ -123,9 +140,9 @@ export function useSpotify() {
     } catch (error) {
       console.error('Error fetching top tracks:', error);
     }
-  };
+  }, [token]);
 
-  const fetchRecentlyPlayedTracks = async () => {
+  const fetchRecentlyPlayedTracks = useCallback(async () => {
     const now = Date.now();
     if (now - lastRecentlyPlayedFetch.current < MIN_RECENTLY_PLAYED_INTERVAL) {
       return; // Skip if called too soon
@@ -140,7 +157,7 @@ export function useSpotify() {
           'Authorization': `Bearer ${token}`,
         },
       });
-      const data = await response.json();
+      const data = (await response.json()) as RecentlyPlayedTracksResponse;
 
       if (data.tracks) {
         setRecentlyPlayedTracks(data.tracks);
@@ -148,48 +165,67 @@ export function useSpotify() {
     } catch (error) {
       console.error('Error fetching recently played tracks:', error);
     }
-  };
+  }, [token]);
 
   // Fetch current track
   useEffect(() => {
     if (!token) return;
 
-    // Initial fetch
-    fetchCurrentTrack();
+    const initialFetch = setTimeout(() => {
+      void fetchCurrentTrack();
+    }, 0);
 
     // Poll for updates with controlled interval
-    const interval = setInterval(fetchCurrentTrack, 10000); // Poll every 10 seconds
+    const interval = setInterval(() => {
+      void fetchCurrentTrack();
+    }, 10000); // Poll every 10 seconds
 
     return () => {
+      clearTimeout(initialFetch);
       clearInterval(interval);
     };
-  }, [token]);
+  }, [token, fetchCurrentTrack]);
 
   // Fetch top artists
   useEffect(() => {
     if (!token) return;
-    fetchTopArtists();
-  }, [token]);
+
+    const initialFetch = setTimeout(() => {
+      void fetchTopArtists();
+    }, 0);
+
+    return () => clearTimeout(initialFetch);
+  }, [token, fetchTopArtists]);
 
   // Fetch top tracks
   useEffect(() => {
     if (!token) return;
-    fetchTopTracks();
-  }, [token]);
+
+    const initialFetch = setTimeout(() => {
+      void fetchTopTracks();
+    }, 0);
+
+    return () => clearTimeout(initialFetch);
+  }, [token, fetchTopTracks]);
 
   // Fetch recently played tracks
   useEffect(() => {
     if (!token) return;
 
-    fetchRecentlyPlayedTracks();
+    const initialFetch = setTimeout(() => {
+      void fetchRecentlyPlayedTracks();
+    }, 0);
 
     // Update every 5 minutes
-    const interval = setInterval(fetchRecentlyPlayedTracks, 300000);
+    const interval = setInterval(() => {
+      void fetchRecentlyPlayedTracks();
+    }, 300000);
 
     return () => {
+      clearTimeout(initialFetch);
       clearInterval(interval);
     };
-  }, [token]);
+  }, [token, fetchRecentlyPlayedTracks]);
 
   // Helper function to get display tracks, skipping duplicates of current track
   const getDisplayTracks = (): RecentlyPlayedTrack[] => {

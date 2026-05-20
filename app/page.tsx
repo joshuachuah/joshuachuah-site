@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { useState, useEffect, useRef } from 'react';
 import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';

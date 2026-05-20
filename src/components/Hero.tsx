@@ -1,14 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type MotionValue } from 'motion/react';
 import { RefObject } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 
 interface HeroProps {
-  heroOpacity: any;
-  heroY: any;
-  heroRef: RefObject<HTMLElement>;
+  heroOpacity: MotionValue<number>;
+  heroY: MotionValue<number>;
+  heroRef: RefObject<HTMLElement | null>;
 }
 
 const Hero = ({ heroOpacity, heroY, heroRef }: HeroProps) => {

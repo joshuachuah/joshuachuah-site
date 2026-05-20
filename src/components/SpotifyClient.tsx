@@ -5,8 +5,30 @@ import { useSpotify } from '../hooks/useSpotify.next';
 import { Spotify } from 'react-spotify-embed';
 import FadeIn from '../styles/FadeIn';
 
+type TabKey = 'recent' | 'top';
+
+interface TabButtonProps {
+  activeTab: TabKey;
+  label: string;
+  onSelect: (tab: TabKey) => void;
+  tabKey: TabKey;
+}
+
+const TabButton = ({ activeTab, label, onSelect, tabKey }: TabButtonProps) => (
+  <button
+    onClick={() => onSelect(tabKey)}
+    className={`text-sm uppercase tracking-wide font-medium pb-2 border-b-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2D2D2D]/50 focus-visible:ring-offset-2 ${
+      activeTab === tabKey
+        ? 'border-[#2D2D2D] text-[#2D2D2D]'
+        : 'border-transparent text-[#2D2D2D]/40 hover:text-[#2D2D2D]/60'
+    }`}
+  >
+    {label}
+  </button>
+);
+
 const SpotifyRecentlyPlayed = () => {
-  const [activeTab, setActiveTab] = useState<'recent' | 'top'>('recent');
+  const [activeTab, setActiveTab] = useState<TabKey>('recent');
 
   // Ensure your hook returns topTracks
   const { currentTrack, recentlyPlayedTracks, topTracks } = useSpotify();
@@ -19,27 +41,13 @@ const SpotifyRecentlyPlayed = () => {
     ? [currentTrack, ...recentlyPlayedTracks.slice(0, 3)]
     : recentlyPlayedTracks.slice(0, 4);
 
-  // Helper for Tab Buttons
-  const TabButton = ({ label, tabKey }: { label: string, tabKey: 'recent' | 'top' }) => (
-    <button
-      onClick={() => setActiveTab(tabKey)}
-      className={`text-sm uppercase tracking-wide font-medium pb-2 border-b-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2D2D2D]/50 focus-visible:ring-offset-2 ${
-        activeTab === tabKey
-          ? 'border-[#2D2D2D] text-[#2D2D2D]'
-          : 'border-transparent text-[#2D2D2D]/40 hover:text-[#2D2D2D]/60'
-      }`}
-    >
-      {label}
-    </button>
-  );
-
   return (
     <div className="w-full">
       {/* Navigation Tabs */}
       <div className="flex space-x-6 mb-6 border-b border-[#2D2D2D]/10">
         {/* The label here is now dynamic based on listening status */}
-        <TabButton label={recentTabLabel} tabKey="recent" />
-        <TabButton label="Top Tracks" tabKey="top" />
+        <TabButton activeTab={activeTab} label={recentTabLabel} onSelect={setActiveTab} tabKey="recent" />
+        <TabButton activeTab={activeTab} label="Top Tracks" onSelect={setActiveTab} tabKey="top" />
       </div>
 
       {/* === RECENT / NOW PLAYING TAB === */}
@@ -112,7 +120,7 @@ const SpotifyRecentlyPlayed = () => {
         <>
           <div className="grid grid-cols-1 gap-4">
             {topTracks && topTracks.length > 0 ? (
-              topTracks.slice(0, 4).map((track: any, index: number) => (
+              topTracks.slice(0, 4).map((track, index) => (
                 <FadeIn key={track.id || index} delay={index * 0.1}>
                   <div className="w-full">
                     <Spotify wide link={track.spotifyUrl} />

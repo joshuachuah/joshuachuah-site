@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 
-const useScrollAnimation = (options = { threshold: 0.1 }) => {
+const defaultObserverOptions = { threshold: 0.1 };
+
+const useScrollAnimation = (options = defaultObserverOptions) => {
   const elementRef = useRef(null);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const useScrollAnimation = (options = { threshold: 0.1 }) => {
         observer.disconnect();
       }
     };
-  }, []);
+  }, [options]);
 
   return elementRef;
 };

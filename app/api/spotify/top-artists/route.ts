@@ -2,6 +2,16 @@ import { NextResponse } from 'next/server';
 
 const TOP_ARTISTS_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5';
 
+interface SpotifyTopArtist {
+  id: string;
+  name: string;
+  images: { url?: string }[];
+  external_urls: {
+    spotify: string;
+  };
+  genres?: string[];
+}
+
 export async function GET(request: Request) {
   const authHeader = request.headers.get('authorization');
   const token = authHeader?.replace('Bearer ', '');
@@ -18,7 +28,7 @@ export async function GET(request: Request) {
       next: { revalidate: 300 }, // Cache for 5 minutes
     });
 
-    const data = await response.json();
+    const data = (await response.json()) as { items: SpotifyTopArtist[] };
 
     if (!response.ok) {
       return NextResponse.json(
@@ -27,7 +37,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const artists = data.items.map((item: any) => ({
+    const artists = data.items.map((item) => ({
       id: item.id,
       name: item.name,
       imageUrl: item.images[0]?.url || '',

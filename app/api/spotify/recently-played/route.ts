@@ -2,6 +2,28 @@ import { NextResponse } from 'next/server';
 
 const RECENTLY_PLAYED_ENDPOINT = 'https://api.spotify.com/v1/me/player/recently-played?limit=10';
 
+interface SpotifyArtist {
+  name: string;
+}
+
+interface SpotifyTrack {
+  id: string;
+  name: string;
+  artists: SpotifyArtist[];
+  album: {
+    name: string;
+    images: { url?: string }[];
+  };
+  external_urls: {
+    spotify: string;
+  };
+}
+
+interface RecentlyPlayedItem {
+  track: SpotifyTrack;
+  played_at: string;
+}
+
 export async function GET(request: Request) {
   const authHeader = request.headers.get('authorization');
   const token = authHeader?.replace('Bearer ', '');
@@ -18,7 +40,7 @@ export async function GET(request: Request) {
       next: { revalidate: 60 }, // Cache for 1 minute
     });
 
-    const data = await response.json();
+    const data = (await response.json()) as { items: RecentlyPlayedItem[] };
 
     if (!response.ok) {
       return NextResponse.json(
@@ -27,7 +49,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const tracks = data.items.map((item: any) => ({
+    const tracks = data.items.map((item) => ({
       id: item.track.id,
       name: item.track.name,
       artist: item.track.artists.map((artist: { name: string }) => artist.name).join(', '),
